@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from validation_pipeline.translation_checker import enforce_translation
 from pdf_processing.pdf_analyzer import PDFAnalyzer
+from font_matching.matcher_service import FontMatcherService
 
 def main():
     colorama.init()
@@ -21,32 +22,44 @@ def main():
     
     args = parser.parse_args()
 
-    print(Fore.CYAN + "="*60)
+    print(Fore.CYAN + "="*65)
     print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - INICIANDO PROCESAMIENTO")
-    print(Fore.CYAN + "="*60 + Style.RESET_ALL)
+    print(Fore.CYAN + "="*65 + Style.RESET_ALL)
     
-    # 1. Fase de Análisis y Extracción
-    print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS ESTRUCTURAL Y TIPOGRÁFICO{Style.RESET_ALL}")
+    # --- FASE 1: ANÁLISIS ESTRUCTURAL ---
+    print(f"\n{Fore.YELLOW}>>> FASE 1: EXTRACCIÓN DE PDF{Style.RESET_ALL}")
     analyzer = PDFAnalyzer(args.input)
     analyzer.analyze()
     
-    if args.generate_font_report:
-        print("\n" + Fore.MAGENTA + analyzer.get_font_report() + Style.RESET_ALL)
-
-    # 2. Fase de Traducción (con validación 1:1)
-    print(f"\n{Fore.YELLOW}>>> FASE 2: TRADUCCIÓN Y RESTRICCIÓN DE LONGITUD (1:1){Style.RESET_ALL}")
+    # --- FASE 2: MATCHING DE FUENTES ONLINE ---
+    print(f"\n{Fore.YELLOW}>>> FASE 2: IDENTIFICACIÓN DE FUENTES ONLINE{Style.RESET_ALL}")
+    matcher = FontMatcherService()
+    font_results = matcher.analyze_fonts(analyzer.fonts)
     
-    # Extraemos solo las primeras palabras detectadas para la demostración
+    if args.generate_font_report:
+        print(Fore.MAGENTA + "="*50)
+        print(" INFORME DE TIPOGRAFÍAS REQUERIDAS (1:1)")
+        print("="*50 + Style.RESET_ALL)
+        for font in font_results:
+            color = Fore.GREEN if "DISPONIBLE" in font['status_icon'] else Fore.RED
+            print(f" PDF Original : {font['raw_name']}")
+            print(f" Detectada    : {Style.BRIGHT}{font['real_name']}{Style.RESET_ALL}")
+            print(f" Estado       : {color}{font['status_icon']}{Style.RESET_ALL}")
+            print(f" Proveedor    : {font['provider']}")
+            print(f" Acción req.  : {font['action']}")
+            print("-" * 50)
+
+    # --- FASE 3: TRADUCCIÓN Y VALIDACIÓN ---
+    print(f"\n{Fore.YELLOW}>>> FASE 3: TRADUCCIÓN Y RESTRICCIÓN DE LONGITUD (1:1){Style.RESET_ALL}")
+    
     palabras_extraidas = [elem.text.split()[0] for elem in analyzer.elements if elem.text]
     
     for palabra in palabras_extraidas:
-        # Simulamos una traducción cruda desde un LLM
-        traduccion_simulada_llm = palabra + "x" if len(palabra) % 2 == 0 else palabra 
-        
-        print(f"\nProcesando Caja de Texto original: '{palabra}'")
+        traduccion_simulada_llm = palabra + "s" if len(palabra) % 2 != 0 else palabra 
+        print(f"\nProcesando: '{palabra}'")
         enforce_translation(palabra, traduccion_simulada_llm)
 
-    print("\n" + Fore.GREEN + "[OK] Análisis y validación finalizados con éxito." + Style.RESET_ALL)
+    print("\n" + Fore.GREEN + Style.BRIGHT + "[OK] Pipeline de Procesamiento Finalizado con Éxito." + Style.RESET_ALL)
 
 if __name__ == "__main__":
     main()

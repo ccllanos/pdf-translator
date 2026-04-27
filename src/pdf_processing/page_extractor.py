@@ -1,47 +1,50 @@
-import fitz  # PyMuPDF
+import fitz
 from pydantic import BaseModel
 from typing import List, Tuple, Set
 
-class TextElement(BaseModel):
-    """Modelo estricto para preservar la información de cada elemento de texto."""
+class TextBlock(BaseModel):
+    """Modelo que representa un párrafo/bloque completo de texto y su espacio físico."""
     text: str
-    bbox: Tuple[float, float, float, float]  # (x0, y0, x1, y1)
-    font_name: str
-    font_size: float
+    bbox: Tuple[float, float, float, float]  # (x0, y0, x1, y1) de todo el bloque
+    primary_font: str
     page_num: int
+    char_count: int
 
-def extract_text_elements(pdf_path: str) -> Tuple[List[TextElement], Set[str]]:
-    """
-    Analiza el PDF y extrae el texto junto con sus coordenadas exactas y tipografía.
-    También recopila un set de todas las fuentes únicas utilizadas (para el informe).
-    """
-    elements = []
+def extract_text_elements(pdf_path: str) -> Tuple[List[TextBlock], Set[str]]:
+    blocks_extracted = []
     unique_fonts = set()
     
     try:
         doc = fitz.open(pdf_path)
         for page_num in range(len(doc)):
             page = doc[page_num]
-            # Extraer en formato diccionario para obtener metadata de fuentes
             dict_text = page.get_text("dict")
             
             for block in dict_text.get("blocks", []):
-                if block.get("type") == 0:  # Tipo 0 es bloque de texto
+                if block.get("type") == 0:  # Tipo texto
+                    block_text = ""
+                    primary_font = "Unknown"
+                    
+                    # Ensamblar el bloque completo
                     for line in block.get("lines", []):
                         for span in line.get("spans", []):
                             text = span.get("text", "").strip()
                             if text:
-                                font = span.get("font", "Unknown")
-                                unique_fonts.add(font)
-                                
-                                elements.append(TextElement(
-                                    text=text,
-                                    bbox=span.get("bbox"),
-                                    font_name=font,
-                                    font_size=span.get("size"),
-                                    page_num=page_num + 1
-                                ))
+                                block_text += text + " "
+                                if primary_font == "Unknown":
+                                    primary_font = span.get("font", "Unknown")
+                                unique_fonts.add(span.get("font", "Unknown"))
+                    
+                    block_text = block_text.strip()
+                    if block_text:
+                        blocks_extracted.append(TextBlock(
+                            text=block_text,
+                            bbox=block.get("bbox"),
+                            primary_font=primary_font,
+                            page_num=page_num + 1,
+                            char_count=len(block_text)
+                        ))
         doc.close()
-        return elements, unique_fonts
+        return blocks_extracted, unique_fonts
     except Exception as e:
-        raise RuntimeError(f"Error procesando el PDF {pdf_path}: {str(e)}")
+        raise RuntimeError(f"Error procesando el PDF: {str(e)}")

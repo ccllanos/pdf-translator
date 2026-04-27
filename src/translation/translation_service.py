@@ -1,49 +1,56 @@
 import logging
-
-# IMPORTACIONES ABSOLUTAS (Sin los "..")
 from lm_studio_integration.client import LMStudioClient
-from validation_pipeline.translation_checker import validate_translation_length, LengthValidationError
+from validation_pipeline.translation_checker import validate_spatial_fit, SpatialOverflowError
 
 class TranslationService:
     def __init__(self):
         self.llm_client = LMStudioClient()
-        self.max_retries = 3
+        self.max_retries = 2
 
-    def translate_with_constraints(self, word: str, source: str, target: str) -> str:
-        """
-        Traduce una palabra asegurando que cumple la regla 1:1.
-        Implementa un bucle de reintento si el LLM falla la validación de longitud.
-        """
-        required_length = len(word)
+    def translate_block(self, text_block: str, source: str, target: str) -> str:
+        """Traduce un bloque completo (párrafo) respetando el espacio visual."""
         
-        # Ignorar puntuación simple o espacios vacíos
-        if required_length == 0 or word.isspace():
-            return word
+        if not text_block or text_block.isspace():
+            return text_block
+
+        current_prompt_constraint = "Translate accurately, keeping a natural tone."
+        max_chars = int(len(text_block) * 1.15) + (5 if len(text_block) < 20 else 0)
 
         for attempt in range(1, self.max_retries + 1):
-            logging.info(f"Pidiendo traducción al LLM: '{word}' (Req: {required_length} chars) - Intento {attempt}/{self.max_retries}")
+            logging.info(f"Traduciendo Bloque ({len(text_block)} chars) - Intento {attempt}")
             
-            # 1. Solicitar al LLM
-            llm_output = self.llm_client.generate_translation(word, source, target, required_length)
-            
-            if not llm_output:
+            # Ajustamos el cliente (no necesitamos required_length exacto, solo pasamos el prompt modificado)
+            system_prompt = (
+                f"You are a professional document translator. Translate from {source} to {target}. "
+                f"CRITICAL CONSTRAINT: {current_prompt_constraint} "
+                f"Output ONLY the translation. No thinking process, no reasoning, no quotes."
+            )
+
+            try:
+                response = self.llm_client.client.chat.completions.create(
+                    model=self.llm_client.model,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": f"Text to translate:\n\n{text_block}"}
+                    ],
+                    temperature=0.3,
+                    max_tokens=500  # Espacio amplio para traducir párrafos enteros
+                )
+                
+                llm_output = response.choices[0].message.content.strip()
+                
+                # Validación Espacial
+                validate_spatial_fit(text_block, llm_output)
+                logging.info("✅ TRADUCCIÓN ACEPTADA (Encaja en la caja delimitadora)")
+                return llm_output
+                
+            except SpatialOverflowError as e:
+                logging.warning(f"❌ FALLO ESPACIAL: {e}")
+                # Modificamos la restricción para el siguiente intento
+                current_prompt_constraint = f"Summarize the translation to be STRICTLY LESS THAN {max_chars} characters. Be concise!"
+            except Exception as e:
+                logging.error(f"Error de conexión LLM: {e}")
                 return "<ERROR_LLM>"
                 
-            # 2. Validar a través del pipeline crítico
-            try:
-                validate_translation_length(word, llm_output)
-                logging.info(f"✅ TRADUCCIÓN ACEPTADA: '{word}' -> '{llm_output}'")
-                return llm_output
-            except LengthValidationError as e:
-                logging.warning(f"❌ FALLO DE LONGITUD: El LLM generó '{llm_output}' (len {len(llm_output)}). Esperado: {required_length}")
-                
-        # Si agota los intentos, forzamos un truncamiento o padding visual
-        logging.error(f"Se agotaron los intentos para '{word}'. Forzando longitud.")
-        return self._force_length(llm_output, required_length)
-
-    def _force_length(self, text: str, required_length: int) -> str:
-        """Medida de contingencia drástica si el LLM es incapaz de cumplir la regla."""
-        if len(text) > required_length:
-            return text[:required_length]  # Recorta
-        else:
-            return text.ljust(required_length, '-') # Rellena (padding)
+        logging.error("Se agotaron los intentos. Forzando ajuste de texto en la caja.")
+        return llm_output[:max_chars] + "..." # Truncamiento suave al final del bloque

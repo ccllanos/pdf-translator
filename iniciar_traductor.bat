@@ -33,6 +33,7 @@ echo [INFO] Generando manifiesto de dependencias exactas (Pinning)...
   echo openai==1.12.0
   echo pydantic==2.6.1
   echo colorama==0.4.6
+  echo requests==2.31.0
 ) > %REQ_FILE%
 
 if not exist ".gitignore" (
@@ -44,17 +45,17 @@ if not exist ".gitignore" (
 echo [INFO] Instalando/Verificando librerias bloqueadas...
 pip install -r %REQ_FILE% >nul 2>&1
 
-REM --- GENERAR PDF DE PRUEBA (Sin usar parentesis en bloques IF) ---
+REM --- GENERAR PDF DE PRUEBA MULTI-FUENTE ---
 if exist "test.pdf" goto skip_pdf
 
 echo [INFO] Generando documento PDF de prueba (test.pdf)...
-python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato legal tiene una consecuencia grave.', fontsize=12, fontname='helv'); doc.save('test.pdf'); doc.close()"
+python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato legal', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'tiene una consecuencia', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
 
 :skip_pdf
 
 REM Crear __init__.py necesarios
 if not exist "src\__init__.py" type nul > "src\__init__.py"
-if not exist "src\pdf_processing\__init__.py" type nul > "src\pdf_processing\__init__.py"
+if not exist "src\font_matching\__init__.py" type nul > "src\font_matching\__init__.py"
 
 REM --- EJECUCION DEL SISTEMA ---
 echo [OK] Entorno listo. Iniciando sistema...

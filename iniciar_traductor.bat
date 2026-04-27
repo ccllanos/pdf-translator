@@ -19,7 +19,7 @@ if %errorlevel% neq 0 (
 )
 
 if not exist "%VENV_DIR%" (
-    echo [INFO] Creando entorno virtual en %VENV_DIR%...
+    echo [INFO] Creando entorno virtual limpio en %VENV_DIR%...
     py -%PYTHON_VER% -m venv %VENV_DIR%
 )
 
@@ -30,7 +30,8 @@ echo [INFO] Generando manifiesto de dependencias exactas (Pinning)...
 (
   echo # LISTA DE VERSIONES PINNED - PDF Translator v1.2
   echo PyMuPDF==1.23.8
-  echo openai==1.12.0
+  echo openai==1.35.0
+  echo httpx==0.27.2
   echo pydantic==2.6.1
   echo colorama==0.4.6
   echo requests==2.31.0
@@ -42,27 +43,28 @@ if not exist ".gitignore" (
     echo *.pdf >> .gitignore
 )
 
-echo [INFO] Instalando/Verificando librerias bloqueadas...
+echo [INFO] Instalando librerias bloqueadas (Esto tomara un momento)...
 pip install -r %REQ_FILE% >nul 2>&1
 
-REM --- GENERAR PDF DE PRUEBA MULTI-FUENTE ---
+REM --- GENERAR PDF DE PRUEBA ---
 if exist "test.pdf" goto skip_pdf
 
-echo [INFO] Generando documento PDF de prueba (test.pdf)...
-python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato legal', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'tiene una consecuencia', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
+echo [INFO] Generando documento PDF de prueba...
+python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'tiene ley', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
 
 :skip_pdf
 
 REM Crear __init__.py necesarios
 if not exist "src\__init__.py" type nul > "src\__init__.py"
-if not exist "src\font_matching\__init__.py" type nul > "src\font_matching\__init__.py"
+if not exist "src\lm_studio_integration\__init__.py" type nul > "src\lm_studio_integration\__init__.py"
+if not exist "src\translation\__init__.py" type nul > "src\translation\__init__.py"
 
 REM --- EJECUCION DEL SISTEMA ---
 echo [OK] Entorno listo. Iniciando sistema...
 echo =======================================================
 echo.
 
-python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source es --target en --generate-font-report
+python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source es --target en
 
 echo.
 echo =======================================================

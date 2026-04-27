@@ -7,8 +7,8 @@ from colorama import Fore, Style
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from pdf_processing.pdf_analyzer import PDFAnalyzer
-from font_matching.matcher_service import FontMatcherService
 from translation.translation_service import TranslationService
+from reconstruction.pdf_rebuilder import PDFRebuilder
 
 def main():
     colorama.init()
@@ -18,32 +18,44 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--source', required=True)
     parser.add_argument('--target', required=True)
-    parser.add_argument('--generate-font-report', action='store_true')
     
     args = parser.parse_args()
 
     print(Fore.CYAN + "="*65)
-    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - TRADUCCIÓN SEMÁNTICA POR BLOQUES")
+    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - PIPELINE COMPLETO")
     print(Fore.CYAN + "="*65 + Style.RESET_ALL)
     
-    print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS DEL LAYOUT (PÁRRAFOS Y CAJAS){Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS DEL LAYOUT{Style.RESET_ALL}")
     analyzer = PDFAnalyzer(args.input)
     analyzer.analyze()
     
     print(f"\n{Fore.YELLOW}>>> FASE 2: TRADUCCIÓN SEMÁNTICA (SPATIAL 1:1){Style.RESET_ALL}")
     translator = TranslationService()
     
-    # Procesamos los bloques lógicos detectados en lugar de palabras sueltas
+    # Lista para almacenar los datos listos para inyectar
+    datos_para_reconstruir = []
+
     for idx, block in enumerate(analyzer.elements):
-        print(f"\n{Fore.CYAN}--- PROCESANDO BLOQUE {idx+1} (Página {block.page_num}) ---{Style.RESET_ALL}")
-        print(f"Texto Original: {Style.DIM}{block.text}{Style.RESET_ALL}")
-        print(f"Fuente Primaria: {block.primary_font} | Bounding Box: {block.bbox}")
+        print(f"\n{Fore.CYAN}Procesando Bloque {idx+1}...{Style.RESET_ALL}")
         
+        # 1. Traducir
         resultado = translator.translate_block(block.text, args.source, args.target)
         
-        print(f"{Fore.GREEN}Texto Traducido:{Style.RESET_ALL} {Style.BRIGHT}{resultado}{Style.RESET_ALL}")
+        # 2. Guardar estructura
+        datos_para_reconstruir.append({
+            'page_num': block.page_num,
+            'bbox': block.bbox,
+            'translated_text': resultado
+        })
+        
+        print(f"{Fore.GREEN}Traducido:{Style.RESET_ALL} {resultado}")
 
-    print("\n" + Fore.GREEN + Style.BRIGHT + "[OK] Pipeline de Traducción por Bloques Finalizado." + Style.RESET_ALL)
+    print(f"\n{Fore.YELLOW}>>> FASE 3: DESTRUCCIÓN Y RECONSTRUCCIÓN FÍSICA{Style.RESET_ALL}")
+    
+    rebuilder = PDFRebuilder(args.input, args.output)
+    rebuilder.destroy_and_rebuild(datos_para_reconstruir)
+
+    print("\n" + Fore.GREEN + Style.BRIGHT + f"[OK] Proceso Finalizado. Archivo generado: {args.output}" + Style.RESET_ALL)
 
 if __name__ == "__main__":
     main()

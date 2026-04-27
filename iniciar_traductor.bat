@@ -14,51 +14,53 @@ echo [INFO] Verificando Python %PYTHON_VER%...
 
 py -%PYTHON_VER% --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [ERROR] No se encontro Python %PYTHON_VER% o el 'py launcher' no esta instalado.
-    echo Por favor, instala Python %PYTHON_VER% y asegurate de marcar "py launcher" durante la instalacion.
+    echo [ERROR] Instala Python %PYTHON_VER% y el 'py launcher'.
     pause && exit /b
 )
 
 if not exist "%VENV_DIR%" (
-    echo [INFO] Creando entorno virtual aislado en %VENV_DIR%...
+    echo [INFO] Creando entorno virtual en %VENV_DIR%...
     py -%PYTHON_VER% -m venv %VENV_DIR%
 )
 
-echo [INFO] Activando entorno virtual...
 call %VENV_DIR%\Scripts\activate
 
-REM --- GENERACION DE RECURSOS ---
+REM --- GENERACION DE RECURSOS Y DEPENDENCIAS ---
 echo [INFO] Generando manifiesto de dependencias exactas (Pinning)...
 (
   echo # LISTA DE VERSIONES PINNED - PDF Translator v1.2
   echo PyMuPDF==1.23.8
   echo openai==1.12.0
   echo pydantic==2.6.1
-  echo click==8.1.7
   echo colorama==0.4.6
 ) > %REQ_FILE%
 
 if not exist ".gitignore" (
-    echo [INFO] Generando .gitignore base...
     echo .venv/ > .gitignore
     echo __pycache__/ >> .gitignore
     echo *.pdf >> .gitignore
-    echo font_report/ >> .gitignore
 )
 
-if not exist "src\__init__.py" type nul > "src\__init__.py"
-if not exist "src\pdf_translation\__init__.py" type nul > "src\pdf_translation\__init__.py"
-if not exist "src\validation_pipeline\__init__.py" type nul > "src\validation_pipeline\__init__.py"
-
-REM --- INSTALACION Y EJECUCION ---
 echo [INFO] Instalando/Verificando librerias bloqueadas...
 pip install -r %REQ_FILE% >nul 2>&1
 
-echo [OK] Entorno listo y validado.
+REM --- GENERAR PDF DE PRUEBA (Sin usar parentesis en bloques IF) ---
+if exist "test.pdf" goto skip_pdf
+
+echo [INFO] Generando documento PDF de prueba (test.pdf)...
+python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato legal tiene una consecuencia grave.', fontsize=12, fontname='helv'); doc.save('test.pdf'); doc.close()"
+
+:skip_pdf
+
+REM Crear __init__.py necesarios
+if not exist "src\__init__.py" type nul > "src\__init__.py"
+if not exist "src\pdf_processing\__init__.py" type nul > "src\pdf_processing\__init__.py"
+
+REM --- EJECUCION DEL SISTEMA ---
+echo [OK] Entorno listo. Iniciando sistema...
 echo =======================================================
 echo.
 
-REM Ejecutando el modulo principal con una prueba de concepto
 python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source es --target en --generate-font-report
 
 echo.

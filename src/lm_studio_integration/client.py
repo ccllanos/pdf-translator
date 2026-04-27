@@ -7,9 +7,10 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 class LMStudioClient:
     """Cliente para interactuar con un LLM local a través de LM-Studio (API compatible con OpenAI)."""
     
+    # Hemos actualizado el puerto por defecto a 9000, según la configuración de tu LM-Studio
     def __init__(self, base_url: str = "http://localhost:9000/v1", api_key: str = "lm-studio"):
         self.client = OpenAI(base_url=base_url, api_key=api_key)
-        self.model = "local-model" # LM-Studio ignora esto y usa el que esté cargado
+        self.model = "local-model" 
 
     def generate_translation(self, word: str, source_lang: str, target_lang: str, required_length: int) -> Optional[str]:
         """
@@ -20,7 +21,7 @@ class LMStudioClient:
             f"RULE: The translation MUST be EXACTLY {required_length} characters long. "
             f"If you can't find a direct translation of that length, use a synonym or abbreviation "
             f"that fits the {required_length} characters constraint perfectly. "
-            f"Output ONLY the translated word, no punctuation, no explanations."
+            f"Output ONLY the translated word, NO punctuation, NO explanations, NO reasoning."
         )
 
         try:
@@ -30,11 +31,18 @@ class LMStudioClient:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": f"Translate this word to exactly {required_length} characters: '{word}'"}
                 ],
-                temperature=0.3, # Baja temperatura para que sea más determinista
-                max_tokens=20
+                temperature=0.3,
+                # Aumentamos los tokens de 20 a 150 para permitir que modelos con "Reasoning/Chain of Thought" 
+                # (como Qwen o similares) terminen de pensar y arrojen el resultado final.
+                max_tokens=150 
             )
-            return response.choices[0].message.content.strip()
+            
+            # Limpiamos posibles espacios o saltos de línea adicionales que añada el modelo
+            result = response.choices[0].message.content
+            if result:
+                return result.strip().strip("'").strip('"') # Quitamos posibles comillas extra
+            return None
+            
         except Exception as e:
             logging.error(f"Error conectando a LM-Studio: {e}")
-            logging.error("Asegúrate de que LM-Studio está abierto y el servidor local está corriendo (Start Server).")
             return None

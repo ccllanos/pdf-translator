@@ -12,8 +12,8 @@ class TextElement(BaseModel):
 
 def extract_text_elements(pdf_path: str) -> Tuple[List[TextElement], Set[str]]:
     """
-    Analiza el PDF y extrae el texto junto con sus coordenadas exactas y tipografia.
-    Tambien recopila un set de todas las fuentes unicas utilizadas (para el informe).
+    Analiza el PDF y extrae el texto junto con sus coordenadas exactas y tipografía.
+    También recopila un set de todas las fuentes únicas utilizadas (para el informe).
     """
     elements = []
     unique_fonts = set()

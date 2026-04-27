@@ -13,42 +13,51 @@ class PDFRebuilder:
         self.doc = fitz.open(self.input_pdf)
 
     def destroy_and_rebuild(self, translated_blocks: List[Dict]):
-        """
-        1. Destruye el texto viejo (Redacción).
-        2. Inyecta el texto nuevo.
-        3. Guarda el documento.
-        """
         logging.info("Iniciando fase de DESTRUCCIÓN y RECONSTRUCCIÓN...")
 
         for block in translated_blocks:
-            page = self.doc[block['page_num'] - 1] # PyMuPDF usa índice 0
+            page = self.doc[block['page_num'] - 1]
             bbox = block['bbox']
             new_text = block['translated_text']
             
-            # --- FASE 1: DESTRUCCIÓN ABSOLUTA ---
-            # add_redact_annot marca la zona. fill=(1,1,1) pinta de blanco el fondo 
-            # para tapar escaneos (Escenario B y C).
+            # --- FASE 1: DESTRUCCIÓN ESTRUCTURAL ---
             page.add_redact_annot(bbox, fill=(1, 1, 1))
-            
-            # apply_redactions() purga físicamente el texto y la imagen de esa coordenada
             page.apply_redactions()
 
             # --- FASE 2: INYECCIÓN DE TRADUCCIÓN ---
-            # Insertamos el texto nuevo en la misma caja delimitadora.
-            # Usamos un tamaño de fuente que se auto-ajuste (fontsize=-1) o uno aproximado
+            # Transformamos las coordenadas a un objeto Rectángulo manipulable
+            rect = fitz.Rect(bbox)
+            
+            # MARGEN DE SEGURIDAD: Expandimos la caja virtualmente hacia la derecha y abajo
+            # para dar espacio a traducciones que naturalmente ocupan más ancho (ej. Inglés a Español)
+            rect.x1 += 30  # Expandir ancho
+            rect.y1 += 15  # Expandir alto
+            
             try:
-                page.insert_textbox(
-                    fitz.Rect(bbox), 
+                # Al poner fontsize=-1, PyMuPDF calcula el tamaño máximo de fuente
+                # que permite que el texto quepa en el rectángulo sin cortarse.
+                resultado_insercion = page.insert_textbox(
+                    rect, 
                     new_text, 
-                    fontsize=11, # En futuras iteraciones lo extraeremos del original
+                    fontsize=-1, 
                     fontname="helv", 
                     color=(0, 0, 0),
-                    align=0 # Alineación a la izquierda
+                    align=0
                 )
+                
+                # Si insert_textbox devuelve un número < 0, significa que falló por falta de espacio
+                if resultado_insercion < 0:
+                    logging.warning(f"La caja es demasiado restrictiva. Usando inyección libre para: '{new_text[:10]}...'")
+                    
+                    # FALLBACK: Inyectar el texto directamente en el punto de inicio X, Y 
+                    # sin forzarlo a encajar en una caja cerrada. (El +10 es para alinear la línea base).
+                    punto_inicio = fitz.Point(bbox[0], bbox[1] + 10)
+                    page.insert_text(punto_inicio, new_text, fontsize=10, fontname="helv", color=(0, 0, 0))
+                    
             except Exception as e:
                 logging.error(f"Error inyectando texto en caja {bbox}: {e}")
 
         # Guardar el PDF resultante
-        self.doc.save(self.output_pdf, garbage=4, deflate=True) # garbage=4 limpia recursos huérfanos
+        self.doc.save(self.output_pdf, garbage=4, deflate=True)
         self.doc.close()
         logging.info(f"✅ Documento final generado exitosamente en: {self.output_pdf}")

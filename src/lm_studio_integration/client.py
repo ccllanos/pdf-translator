@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 class LMStudioClient:
     """Cliente para interactuar con un LLM local a través de LM-Studio (API compatible con OpenAI)."""
     
-    def __init__(self, base_url: str = "http://localhost:1234/v1", api_key: str = "lm-studio"):
+    def __init__(self, base_url: str = "http://localhost:9000/v1", api_key: str = "lm-studio"):
         self.client = OpenAI(base_url=base_url, api_key=api_key)
         self.model = "local-model" # LM-Studio ignora esto y usa el que esté cargado
 

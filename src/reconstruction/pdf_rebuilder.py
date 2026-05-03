@@ -15,7 +15,7 @@ class PDFRebuilder:
         return raw_font.split('+')[-1] if '+' in raw_font else raw_font
 
     def destroy_and_rebuild(self, translated_blocks: List[Dict]):
-        logging.info("Iniciando reconstrucción con algoritmo seguro de escalado...")
+        logging.info("Iniciando reconstrucción con ajuste de fuente milimétrico...")
 
         for block in translated_blocks:
             page = self.doc[block['page_num'] - 1]
@@ -29,24 +29,26 @@ class PDFRebuilder:
             page.add_redact_annot(bbox, fill=(1, 1, 1))
             page.apply_redactions()
 
-            # FASE 2: Preparación matemática segura de la caja
+            # FASE 2: Preparación Estricta de la Caja
             rect = fitz.Rect(bbox)
-            rect.normalize()  # CRÍTICO: Previene que la caja esté invertida matemáticamente
+            rect.normalize()
             
-            # Margen de seguridad más amplio para traducciones al español
-            rect.x1 += 30  # Expandir ancho (Word Wrap)
-            rect.y1 += 20  # Expandir alto (Multilínea)
+            # CRÍTICO: Reducimos la generosidad drásticamente.
+            # Solo damos 2 puntos verticales para tolerar letras que "cuelgan" (como g, p, q)
+            # y 5 puntos horizontales para dar un pequeño margen de respiración.
+            # Esto PROHÍBE físicamente el salto de línea.
+            rect.x1 += 5  
+            rect.y1 += 2  
             
             clean_original_font = self._clean_font_name(block['font_name'])
             safe_font = self.user_font_mapping.get(clean_original_font, "helv")
             
-            # FASE 3: Inyección Segura (Safe Shrink-to-Fit)
-            current_size = block['font_size']
-            min_size = 6.0  # Límite absoluto para no quedar ciego
+            # FASE 3: Inyección Algorítmica de Precisión (Shrink-to-Fit Granular)
+            current_size = float(block['font_size'])
+            min_size = 5.0
             texto_insertado = False
 
             while current_size >= min_size:
-                # Intentamos insertar con el tamaño actual
                 resultado = page.insert_textbox(
                     rect, 
                     new_text, 
@@ -57,26 +59,20 @@ class PDFRebuilder:
                 )
                 
                 if resultado >= 0:
-                    # Éxito: El texto cupo perfectamente sin invertirse
                     texto_insertado = True
+                    # Logeamos a qué tamaño se logró encajar perfectamente
+                    if current_size < block['font_size']:
+                        logging.info(f"Ajuste preciso logrado: '{new_text[:15]}...' reducido de {block['font_size']}pt a {current_size}pt")
                     break
                 else:
-                    # Fallo: Es muy grande. Reducimos 1 punto y volvemos a intentar
-                    current_size -= 1.0
+                    # Reducción fina: 0.5 puntos en lugar de 1 entero para un encaje mucho más natural
+                    current_size -= 0.5
 
-            # FALLBACK DE EMERGENCIA: Si ni siquiera en tamaño 6 cabe en la caja
             if not texto_insertado:
-                logging.warning(f"Texto demasiado largo para la caja. Forzando inyección libre.")
-                # Lo inyectamos forzosamente en la esquina superior izquierda a 8pts
-                punto_seguro = fitz.Point(rect.x0, rect.y0 + 8)
-                page.insert_text(
-                    punto_seguro, 
-                    new_text, 
-                    fontsize=8, 
-                    fontname=safe_font, 
-                    color=(0, 0, 0)
-                )
+                logging.warning(f"Extrema longitud. Forzando inyección en 5pt para: {new_text[:15]}...")
+                punto_seguro = fitz.Point(rect.x0, rect.y0 + 5)
+                page.insert_text(punto_seguro, new_text, fontsize=5, fontname=safe_font, color=(0, 0, 0))
 
         self.doc.save(self.output_pdf, garbage=4, deflate=True)
         self.doc.close()
-        logging.info(f"✅ Documento generado de forma segura en: {self.output_pdf}")
+        logging.info(f"✅ Documento generado con ajuste algorítmico perfecto en: {self.output_pdf}")

@@ -3,10 +3,10 @@ from pydantic import BaseModel
 from typing import List, Tuple, Set
 
 class TextBlock(BaseModel):
-    """Modelo que representa un párrafo/bloque completo de texto y su espacio físico."""
     text: str
-    bbox: Tuple[float, float, float, float]  # (x0, y0, x1, y1) de todo el bloque
+    bbox: Tuple[float, float, float, float]
     primary_font: str
+    font_size: float  # NUEVO: Capturar tamaño de letra
     page_num: int
     char_count: int
 
@@ -21,11 +21,11 @@ def extract_text_elements(pdf_path: str) -> Tuple[List[TextBlock], Set[str]]:
             dict_text = page.get_text("dict")
             
             for block in dict_text.get("blocks", []):
-                if block.get("type") == 0:  # Tipo texto
+                if block.get("type") == 0:
                     block_text = ""
                     primary_font = "Unknown"
+                    primary_size = 12.0
                     
-                    # Ensamblar el bloque completo
                     for line in block.get("lines", []):
                         for span in line.get("spans", []):
                             text = span.get("text", "").strip()
@@ -33,6 +33,7 @@ def extract_text_elements(pdf_path: str) -> Tuple[List[TextBlock], Set[str]]:
                                 block_text += text + " "
                                 if primary_font == "Unknown":
                                     primary_font = span.get("font", "Unknown")
+                                    primary_size = span.get("size", 12.0) # Capturamos el tamaño
                                 unique_fonts.add(span.get("font", "Unknown"))
                     
                     block_text = block_text.strip()
@@ -41,6 +42,7 @@ def extract_text_elements(pdf_path: str) -> Tuple[List[TextBlock], Set[str]]:
                             text=block_text,
                             bbox=block.get("bbox"),
                             primary_font=primary_font,
+                            font_size=primary_size, # Lo guardamos
                             page_num=page_num + 1,
                             char_count=len(block_text)
                         ))

@@ -12,17 +12,15 @@ from reconstruction.pdf_rebuilder import PDFRebuilder
 
 def main():
     colorama.init()
-    
-    parser = argparse.ArgumentParser(description="PDF Translator v1.2")
+    parser = argparse.ArgumentParser()
     parser.add_argument('--input', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--source', required=True)
     parser.add_argument('--target', required=True)
-    
     args = parser.parse_args()
 
     print(Fore.CYAN + "="*65)
-    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - PIPELINE COMPLETO")
+    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - TRADUCCIÓN INGLÉS A ESPAÑOL")
     print(Fore.CYAN + "="*65 + Style.RESET_ALL)
     
     print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS DEL LAYOUT{Style.RESET_ALL}")
@@ -31,31 +29,25 @@ def main():
     
     print(f"\n{Fore.YELLOW}>>> FASE 2: TRADUCCIÓN SEMÁNTICA (SPATIAL 1:1){Style.RESET_ALL}")
     translator = TranslationService()
-    
-    # Lista para almacenar los datos listos para inyectar
     datos_para_reconstruir = []
 
     for idx, block in enumerate(analyzer.elements):
         print(f"\n{Fore.CYAN}Procesando Bloque {idx+1}...{Style.RESET_ALL}")
-        
-        # 1. Traducir
         resultado = translator.translate_block(block.text, args.source, args.target)
         
-        # 2. Guardar estructura
         datos_para_reconstruir.append({
             'page_num': block.page_num,
             'bbox': block.bbox,
-            'translated_text': resultado
+            'translated_text': resultado,
+            'font_name': block.primary_font, # Pasamos la fuente original
+            'font_size': block.font_size     # Pasamos el tamaño original
         })
-        
         print(f"{Fore.GREEN}Traducido:{Style.RESET_ALL} {resultado}")
 
-    print(f"\n{Fore.YELLOW}>>> FASE 3: DESTRUCCIÓN Y RECONSTRUCCIÓN FÍSICA{Style.RESET_ALL}")
-    
+    print(f"\n{Fore.YELLOW}>>> FASE 3: DESTRUCCIÓN Y RECONSTRUCCIÓN AVANZADA{Style.RESET_ALL}")
     rebuilder = PDFRebuilder(args.input, args.output)
     rebuilder.destroy_and_rebuild(datos_para_reconstruir)
-
-    print("\n" + Fore.GREEN + Style.BRIGHT + f"[OK] Proceso Finalizado. Archivo generado: {args.output}" + Style.RESET_ALL)
+    print("\n" + Fore.GREEN + Style.BRIGHT + f"[OK] Proceso Finalizado. Archivo: {args.output}" + Style.RESET_ALL)
 
 if __name__ == "__main__":
     main()

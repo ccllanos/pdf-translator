@@ -35,6 +35,7 @@ echo [INFO] Generando manifiesto de dependencias exactas (Pinning)...
   echo pydantic==2.6.1
   echo colorama==0.4.6
   echo requests==2.31.0
+  echo PyQt6==6.6.1
 ) > %REQ_FILE%
 
 if not exist ".gitignore" (
@@ -43,26 +44,18 @@ if not exist ".gitignore" (
     echo *.pdf >> .gitignore
 )
 
-echo [INFO] Instalando librerias bloqueadas...
+echo [INFO] Instalando librerias bloqueadas (PyQt6 tomara unos segundos)...
 pip install -r %REQ_FILE% >nul 2>&1
 
 REM --- GENERAR PDF DE PRUEBA EN INGLÉS ---
 if exist "test.pdf" del "test.pdf"
-
-echo [INFO] Generando documento PDF de prueba (en Inglés)...
 python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'The legal contract', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'has severe consequences', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
-
-REM Crear __init__.py necesarios
-if not exist "src\__init__.py" type nul > "src\__init__.py"
-if not exist "src\lm_studio_integration\__init__.py" type nul > "src\lm_studio_integration\__init__.py"
-if not exist "src\translation\__init__.py" type nul > "src\translation\__init__.py"
 
 REM --- EJECUCION DEL SISTEMA ---
 echo [OK] Entorno listo. Iniciando sistema...
 echo =======================================================
 echo.
 
-REM ¡NÓTESE EL CAMBIO DE IDIOMAS AQUÍ!
 python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source English --target Spanish
 
 echo.

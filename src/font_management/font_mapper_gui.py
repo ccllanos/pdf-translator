@@ -1,14 +1,15 @@
-import tkinter as tk
-from tkinter import ttk, messagebox
 from typing import Set, Dict
+from PyQt6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, 
+                             QLabel, QComboBox, QPushButton, QGridLayout, QMessageBox)
+from PyQt6.QtCore import Qt
 
-class FontMapperGUI:
+class FontMapperGUI(QDialog):
     def __init__(self, pdf_fonts: Set[str]):
+        super().__init__()
         self.pdf_fonts = self._clean_font_names(pdf_fonts)
         self.final_mapping = {}
+        self.comboboxes = {}
         
-        # Fuentes seguras que PyMuPDF puede inyectar nativamente (Base 14)
-        # En el futuro, aquí cargaremos las fuentes .ttf de tu Windows.
         self.available_system_fonts = [
             "Helvetica (Sans-Serif)", 
             "Times-Roman (Serif)", 
@@ -24,83 +25,81 @@ class FontMapperGUI:
             "Symbol": "symb",
             "ZapfDingbats": "zadb"
         }
+        
+        self._init_ui()
 
     def _clean_font_names(self, raw_fonts: Set[str]) -> Set[str]:
-        """Limpia los nombres internos del PDF (ej. 'AAAAAA+Arial-Bold' -> 'Arial-Bold')"""
-        clean_fonts = set()
-        for font in raw_fonts:
-            name = font.split('+')[-1] if '+' in font else font
-            clean_fonts.add(name)
-        return clean_fonts
+        return {f.split('+')[-1] if '+' in f else f for f in raw_fonts}
 
-    def show(self) -> Dict[str, str]:
-        """Abre la ventana gráfica y pausa la ejecución hasta que el usuario confirme."""
-        self.root = tk.Tk()
-        self.root.title("Inspector de Fuentes - PDF Translator")
-        self.root.geometry("600x400")
+    def _init_ui(self):
+        self.setWindowTitle("Inspector de Fuentes - PDF Translator")
+        self.resize(550, 300)
         
-        # Estilos
-        style = ttk.Style()
-        style.configure("TLabel", font=("Segoe UI", 10))
-        style.configure("Header.TLabel", font=("Segoe UI", 12, "bold"))
-        
+        # Diseño principal
+        layout = QVBoxLayout(self)
+
         # Encabezado
-        header_frame = ttk.Frame(self.root, padding=15)
-        header_frame.pack(fill=tk.X)
-        ttk.Label(header_frame, text="🎨 Mapeo de Tipografías (Estilo 'Reemplazar Color')", style="Header.TLabel").pack(anchor=tk.W)
-        ttk.Label(header_frame, text="Se han detectado las siguientes fuentes en el documento.\nSelecciona con cuál deseas reemplazarlas en el PDF traducido:").pack(anchor=tk.W, pady=(5,0))
+        header = QLabel("🎨 Mapeo de Tipografías")
+        header.setStyleSheet("font-size: 16px; font-weight: bold; color: #2c3e50;")
+        layout.addWidget(header)
 
-        # Contenedor principal
-        main_frame = ttk.Frame(self.root, padding=15)
-        main_frame.pack(fill=tk.BOTH, expand=True)
+        desc = QLabel("Se han detectado las siguientes fuentes en el documento.\nSelecciona con cuál deseas reemplazarlas en la traducción:")
+        layout.addWidget(desc)
+        layout.addSpacing(15)
 
-        # Crear tabla de mapeo
-        self.comboboxes = {}
-        
-        # Encabezados de tabla
-        ttk.Label(main_frame, text="Fuente Original (En el PDF)", font=("Segoe UI", 10, "bold")).grid(row=0, column=0, sticky=tk.W, pady=5)
-        ttk.Label(main_frame, text="Fuente de Reemplazo (Destino)", font=("Segoe UI", 10, "bold")).grid(row=0, column=1, sticky=tk.W, pady=5, padx=20)
+        # Cuadrícula para las fuentes
+        grid = QGridLayout()
+        grid.addWidget(QLabel("<b>Fuente Original (PDF)</b>"), 0, 0)
+        grid.addWidget(QLabel("<b>Fuente de Reemplazo</b>"), 0, 1)
 
-        for idx, font in enumerate(self.pdf_fonts, start=1):
-            # Nombre de la fuente original
-            ttk.Label(main_frame, text=f"• {font}").grid(row=idx, column=0, sticky=tk.W, pady=5)
+        row = 1
+        for font in self.pdf_fonts:
+            lbl = QLabel(f"• {font}")
+            cb = QComboBox()
+            cb.addItems(self.available_system_fonts)
             
-            # Dropdown para elegir el reemplazo
-            cb = ttk.Combobox(main_frame, values=self.available_system_fonts, state="readonly", width=30)
-            
-            # Pre-seleccionar inteligentemente
-            if "times" in font.lower() or "serif" in font.lower():
-                cb.set("Times-Roman (Serif)")
-            elif "cour" in font.lower() or "mono" in font.lower():
-                cb.set("Courier (Mono)")
+            # Autoselección inteligente
+            font_lower = font.lower()
+            if "times" in font_lower or "serif" in font_lower:
+                cb.setCurrentText("Times-Roman (Serif)")
+            elif "cour" in font_lower or "mono" in font_lower:
+                cb.setCurrentText("Courier (Mono)")
             else:
-                cb.set("Helvetica (Sans-Serif)") # Por defecto
-                
-            cb.grid(row=idx, column=1, sticky=tk.W, pady=5, padx=20)
+                cb.setCurrentText("Helvetica (Sans-Serif)")
+            
+            cb.setStyleSheet("padding: 3px;")
+            grid.addWidget(lbl, row, 0)
+            grid.addWidget(cb, row, 1)
+            
             self.comboboxes[font] = cb
+            row += 1
+
+        layout.addLayout(grid)
+        layout.addStretch()
 
         # Botones inferiores
-        btn_frame = ttk.Frame(self.root, padding=15)
-        btn_frame.pack(fill=tk.X, side=tk.BOTTOM)
+        btn_layout = QHBoxLayout()
         
-        ttk.Button(btn_frame, text="Cancelar y Abortar", command=self._abort).pack(side=tk.LEFT)
-        ttk.Button(btn_frame, text="Confirmar y Traducir ➔", command=self._confirm).pack(side=tk.RIGHT)
-
-        # Iniciar el bucle de la GUI (Bloquea la consola hasta cerrarse)
-        self.root.mainloop()
+        btn_cancel = QPushButton("Cancelar y Abortar")
+        btn_cancel.clicked.connect(self.reject)
         
-        return self.final_mapping
+        btn_confirm = QPushButton("Confirmar y Traducir ➔")
+        btn_confirm.setStyleSheet("background-color: #27ae60; color: white; font-weight: bold; padding: 8px;")
+        btn_confirm.clicked.connect(self.accept)
 
-    def _confirm(self):
-        # Recolectar las selecciones del usuario
-        for original_font, cb in self.comboboxes.items():
-            selected_display_name = cb.get()
-            # Mapear el nombre visual ("Helvetica") al código que usa PyMuPDF ("helv")
-            self.final_mapping[original_font] = self.font_to_pdf_code[selected_display_name]
+        btn_layout.addWidget(btn_cancel)
+        btn_layout.addStretch()
+        btn_layout.addWidget(btn_confirm)
         
-        self.root.destroy()
+        layout.addLayout(btn_layout)
 
-    def _abort(self):
-        if messagebox.askyesno("Abortar", "¿Estás seguro de que quieres cancelar la traducción?"):
-            self.final_mapping = None
-            self.root.destroy()
+    def get_mapping(self) -> Dict[str, str]:
+        """Abre la ventana y retorna el diccionario de fuentes si el usuario acepta."""
+        result = self.exec()  # Bloquea la ejecución hasta que se cierre la ventana
+        
+        if result == QDialog.DialogCode.Accepted:
+            for original_font, cb in self.comboboxes.items():
+                self.final_mapping[original_font] = self.font_to_pdf_code[cb.currentText()]
+            return self.final_mapping
+            
+        return None

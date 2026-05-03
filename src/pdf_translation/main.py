@@ -20,31 +20,33 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--source', required=True)
     parser.add_argument('--target', required=True)
+    # NUEVO: Argumento opcional para carpeta de fondos
+    parser.add_argument('--bg-folder', required=False, help="Carpeta con imágenes de fondo limpio (ej. page_1.png)")
+    
     args = parser.parse_args()
 
     app = QApplication(sys.argv)
 
     print(Fore.CYAN + "="*65)
-    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - GESTOR DE FUENTES AVANZADO")
+    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - MODO EDITORIAL")
     print(Fore.CYAN + "="*65 + Style.RESET_ALL)
+    
+    if args.bg_folder:
+        print(f"{Fore.GREEN}[INFO] Modo Editorial Activado. Se usarán fondos de: {args.bg_folder}{Style.RESET_ALL}")
     
     print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS DEL LAYOUT{Style.RESET_ALL}")
     analyzer = PDFAnalyzer(args.input)
     analyzer.analyze()
     
-    print(f"\n{Fore.YELLOW}>>> FASE 1.5: CONSULTA A LA NUBE (CLOUD MATCHING){Style.RESET_ALL}")
     matcher = FontMatcherService()
     font_cloud_report = matcher.analyze_fonts(analyzer.fonts)
     
-    print(f"\n{Fore.MAGENTA}>>> FASE INTERMEDIA: Abriendo Inspector de Fuentes...{Style.RESET_ALL}")
+    print(f"\n{Fore.MAGENTA}>>> FASE INTERMEDIA: Abriendo Inspector...{Style.RESET_ALL}")
     gui = FontMapperGUI(font_cloud_report)
     user_mapping = gui.get_mapping() 
     
     if not user_mapping:
-        print(f"\n{Fore.RED}[ABORTADO] Traducción cancelada por el usuario.{Style.RESET_ALL}")
         sys.exit(0)
-
-    print(f"{Fore.GREEN}[OK] Mapeo de fuentes confirmado. Procediendo con IA.{Style.RESET_ALL}")
     
     print(f"\n{Fore.YELLOW}>>> FASE 2: TRADUCCIÓN SEMÁNTICA{Style.RESET_ALL}")
     translator = TranslationService()
@@ -61,8 +63,9 @@ def main():
             'font_size': block.font_size
         })
 
-    print(f"\n{Fore.YELLOW}>>> FASE 3: RECONSTRUCCIÓN E INYECCIÓN DE FUENTES{Style.RESET_ALL}")
-    rebuilder = PDFRebuilder(args.input, args.output, user_mapping)
+    print(f"\n{Fore.YELLOW}>>> FASE 3: RECONSTRUCCIÓN{Style.RESET_ALL}")
+    # Pasamos la carpeta de fondos al reconstructor
+    rebuilder = PDFRebuilder(args.input, args.output, user_mapping, args.bg_folder)
     rebuilder.destroy_and_rebuild(datos_para_reconstruir)
     print("\n" + Fore.GREEN + Style.BRIGHT + f"[OK] Proceso Finalizado. Archivo: {args.output}" + Style.RESET_ALL)
 

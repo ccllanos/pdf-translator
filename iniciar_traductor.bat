@@ -26,16 +26,16 @@ if not exist "%VENV_DIR%" (
 call %VENV_DIR%\Scripts\activate
 
 REM --- GENERACION DE RECURSOS Y DEPENDENCIAS ---
-echo [INFO] Generando manifiesto de dependencias exactas (Pinning)...
+echo [INFO] Generando manifiesto de dependencias exactas...
 (
-  echo # LISTA DE VERSIONES PINNED - PDF Translator v1.2
+  echo # LISTA DE VERSIONES PINNED
   echo PyMuPDF==1.23.8
   echo openai==1.35.0
   echo httpx==0.27.2
   echo pydantic==2.6.1
   echo colorama==0.4.6
   echo requests==2.31.0
-  echo PyQt6==6.6.1
+  echo PySide6==6.6.2
 ) > %REQ_FILE%
 
 if not exist ".gitignore" (
@@ -44,7 +44,7 @@ if not exist ".gitignore" (
     echo *.pdf >> .gitignore
 )
 
-echo [INFO] Instalando librerias bloqueadas (PyQt6 tomara unos segundos)...
+echo [INFO] Instalando librerias (PySide6 tomara unos segundos)...
 pip install -r %REQ_FILE% >nul 2>&1
 
 REM --- GENERAR PDF DE PRUEBA EN INGLÉS ---

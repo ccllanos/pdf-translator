@@ -1,7 +1,8 @@
 from typing import Set, Dict
-from PyQt6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, 
-                             QLabel, QComboBox, QPushButton, QGridLayout, QMessageBox)
-from PyQt6.QtCore import Qt
+# Cambiado a PySide6
+from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, 
+                               QLabel, QComboBox, QPushButton, QGridLayout)
+from PySide6.QtCore import Qt
 
 class FontMapperGUI(QDialog):
     def __init__(self, pdf_fonts: Set[str]):
@@ -35,10 +36,8 @@ class FontMapperGUI(QDialog):
         self.setWindowTitle("Inspector de Fuentes - PDF Translator")
         self.resize(550, 300)
         
-        # Diseño principal
         layout = QVBoxLayout(self)
 
-        # Encabezado
         header = QLabel("🎨 Mapeo de Tipografías")
         header.setStyleSheet("font-size: 16px; font-weight: bold; color: #2c3e50;")
         layout.addWidget(header)
@@ -47,7 +46,6 @@ class FontMapperGUI(QDialog):
         layout.addWidget(desc)
         layout.addSpacing(15)
 
-        # Cuadrícula para las fuentes
         grid = QGridLayout()
         grid.addWidget(QLabel("<b>Fuente Original (PDF)</b>"), 0, 0)
         grid.addWidget(QLabel("<b>Fuente de Reemplazo</b>"), 0, 1)
@@ -58,7 +56,6 @@ class FontMapperGUI(QDialog):
             cb = QComboBox()
             cb.addItems(self.available_system_fonts)
             
-            # Autoselección inteligente
             font_lower = font.lower()
             if "times" in font_lower or "serif" in font_lower:
                 cb.setCurrentText("Times-Roman (Serif)")
@@ -77,7 +74,6 @@ class FontMapperGUI(QDialog):
         layout.addLayout(grid)
         layout.addStretch()
 
-        # Botones inferiores
         btn_layout = QHBoxLayout()
         
         btn_cancel = QPushButton("Cancelar y Abortar")
@@ -94,10 +90,10 @@ class FontMapperGUI(QDialog):
         layout.addLayout(btn_layout)
 
     def get_mapping(self) -> Dict[str, str]:
-        """Abre la ventana y retorna el diccionario de fuentes si el usuario acepta."""
-        result = self.exec()  # Bloquea la ejecución hasta que se cierre la ventana
+        result = self.exec() 
         
-        if result == QDialog.DialogCode.Accepted:
+        # En PySide6 evaluamos QDialog.Accepted
+        if result == QDialog.Accepted:
             for original_font, cb in self.comboboxes.items():
                 self.final_mapping[original_font] = self.font_to_pdf_code[cb.currentText()]
             return self.final_mapping

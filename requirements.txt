@@ -1,8 +1,8 @@
-# LISTA DE VERSIONES PINNED - PDF Translator v1.2
+# LISTA DE VERSIONES PINNED
 PyMuPDF==1.23.8
 openai==1.35.0
 httpx==0.27.2
 pydantic==2.6.1
 colorama==0.4.6
 requests==2.31.0
-PyQt6==6.6.1
+PySide6==6.6.2

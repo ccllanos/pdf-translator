@@ -56,7 +56,7 @@ echo [OK] Entorno listo. Iniciando sistema...
 echo =======================================================
 echo.
 
-python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source English --target Spanish
+python src\pdf_translation\main.py --input documento_real.pdf --output traducido_real.pdf --source English --target Spanish --bg-folder fondos_limpios
 
 echo.
 echo =======================================================

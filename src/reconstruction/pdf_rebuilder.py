@@ -82,7 +82,7 @@ class PDFRebuilder:
                     )
                 
                 # GUÍA VISUAL
-                page.draw_rect(rect, color=(0, 0, 1), width=0.5)
+                # page.draw_rect(rect, color=(0, 0, 1), width=0.5)
 
             except Exception as e:
                 logging.error(f"Error inyectando texto en {bbox}: {e}")

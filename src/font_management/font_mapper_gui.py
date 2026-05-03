@@ -100,12 +100,19 @@ class FontMapperGUI(QDialog):
         file_path, _ = QFileDialog.getOpenFileName(
             self, 
             "Seleccionar fuente TTF/OTF", 
-            "C:\\Windows\\Fonts", # Abrir carpeta de fuentes de Windows por defecto
+            "C:\\Windows\\Fonts",
             "Fuentes (*.ttf *.otf)"
         )
         if file_path:
-            combobox.setCurrentText("-- USAR ARCHIVO .TTF --")
             short_name = file_path.split("/")[-1]
+            
+            # BLOQUEO DE ARCHIVOS FANTASMA DE MAC
+            if short_name.startswith("._") or "__MACOSX" in file_path:
+                QMessageBox.warning(self, "Archivo Inválido", 
+                                  f"Has seleccionado '{short_name}', que es un archivo residual basura de Mac, no una fuente real.\n\nPor favor, busca el archivo original que NO empieza con '._'")
+                return
+
+            combobox.setCurrentText("-- USAR ARCHIVO .TTF --")
             label.setText(short_name)
             label.setStyleSheet("color: blue; font-size: 10px; font-weight: bold;")
             self.custom_paths[font_name] = file_path

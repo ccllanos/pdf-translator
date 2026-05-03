@@ -42,11 +42,16 @@ class PDFRebuilder:
             if mapping_info["type"] == "custom":
                 ttf_path = mapping_info["value"]
                 if os.path.exists(ttf_path):
-                    # Generamos un nombre interno único (ej: cfont_0)
                     target_fontname = f"cfont_{self.custom_font_counter}"
-                    # ¡MAGIA! Incrustamos el archivo TTF dentro del PDF
-                    page.insert_font(fontname=target_fontname, fontfile=ttf_path)
-                    self.custom_font_counter += 1
+                    
+                    # MAGIA SEGURA: Intentamos incrustar la fuente
+                    try:
+                        page.insert_font(fontname=target_fontname, fontfile=ttf_path)
+                        self.custom_font_counter += 1
+                    except Exception as e:
+                        logging.error(f"❌ Error al cargar la fuente física '{ttf_path}': {e}")
+                        logging.warning("El archivo está corrupto. Usando Helvetica de respaldo para salvar el documento.")
+                        target_fontname = "helv"
                 else:
                     logging.warning(f"No se encontró el archivo {ttf_path}. Usando base.")
             else:

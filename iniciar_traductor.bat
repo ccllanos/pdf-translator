@@ -43,16 +43,14 @@ if not exist ".gitignore" (
     echo *.pdf >> .gitignore
 )
 
-echo [INFO] Instalando librerias bloqueadas (Esto tomara un momento)...
+echo [INFO] Instalando librerias bloqueadas...
 pip install -r %REQ_FILE% >nul 2>&1
 
-REM --- GENERAR PDF DE PRUEBA ---
-if exist "test.pdf" goto skip_pdf
+REM --- GENERAR PDF DE PRUEBA EN INGLÉS ---
+if exist "test.pdf" del "test.pdf"
 
-echo [INFO] Generando documento PDF de prueba...
-python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'El contrato', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'tiene ley', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
-
-:skip_pdf
+echo [INFO] Generando documento PDF de prueba (en Inglés)...
+python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'The legal contract', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'has severe consequences', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
 
 REM Crear __init__.py necesarios
 if not exist "src\__init__.py" type nul > "src\__init__.py"
@@ -64,7 +62,8 @@ echo [OK] Entorno listo. Iniciando sistema...
 echo =======================================================
 echo.
 
-python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source es --target en
+REM ¡NÓTESE EL CAMBIO DE IDIOMAS AQUÍ!
+python src\pdf_translation\main.py --input test.pdf --output test_translated.pdf --source English --target Spanish
 
 echo.
 echo =======================================================

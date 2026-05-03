@@ -70,7 +70,7 @@ class FontMapperGUI(QDialog):
             lbl_file.setStyleSheet("color: gray; font-size: 10px;")
             
             # Conectar botón pasándole el raw_name
-            btn_browse.clicked.connect(lambda _, n=raw_name, c=cb, l=lbl_file: self._browse_font(n, c, l))
+            btn_browse.clicked.connect(lambda n=raw_name, c=cb, l=lbl_file: self._browse_font(n, c, l))
 
             
             btn_layout.addWidget(btn_browse)

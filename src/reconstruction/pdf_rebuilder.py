@@ -20,7 +20,6 @@ class PDFRebuilder:
     def _apply_backgrounds(self):
         if not self.bg_folder or not os.path.isdir(self.bg_folder):
             return
-
         for page_num in range(len(self.doc)):
             page = self.doc[page_num]
             human_page = page_num + 1
@@ -30,14 +29,34 @@ class PDFRebuilder:
                 if os.path.exists(test_path):
                     bg_path = test_path
                     break
-            
             if bg_path:
                 logging.info(f"Aplicando fondo limpio a la página {human_page}...")
                 page.insert_image(page.rect, filename=bg_path)
 
+    def _wrap_text_math(self, text: str, font_obj: fitz.Font, fontsize: float, max_width: float) -> List[str]:
+        """Algoritmo matemático para cortar el texto en líneas perfectas respetando el ancho."""
+        words = text.split()
+        lines = []
+        current_line = ""
+        for word in words:
+            test_line = current_line + (" " if current_line else "") + word
+            # Medimos matemáticamente si la línea + la nueva palabra cabe en el ancho
+            if font_obj.text_length(test_line, fontsize=fontsize) <= max_width:
+                current_line = test_line
+            else:
+                if current_line:
+                    lines.append(current_line)
+                    current_line = word
+                else:
+                    lines.append(word)
+                    current_line = ""
+        if current_line:
+            lines.append(current_line)
+        return lines
+
     def destroy_and_rebuild(self, translated_blocks: List[Dict]):
         self._apply_backgrounds()
-        logging.info("Iniciando reconstrucción tipográfica respetando arte e interlineado...")
+        logging.info("Iniciando reconstrucción con estequiometría de párrafos...")
 
         for block in translated_blocks:
             page = self.doc[block['page_num'] - 1]
@@ -48,20 +67,11 @@ class PDFRebuilder:
             if not new_text or new_text.isspace():
                 continue
 
-            # === FASE 1: DESTRUCCIÓN NO DESTRUCTIVA DEL ARTE ===
-            if self.bg_folder:
-                # MODO EDITORIAL: Fondo provisto.
-                # Como ya tapamos el arte original con la imagen nueva, aplicamos redacción estándar.
-                # (Se borra la memoria del texto de fondo).
-                page.add_redact_annot(bbox)
-                page.apply_redactions()
-            else:
-                # MODO NORMAL: D&D sin fondo de reemplazo.
-                # Aquí pintamos el rectángulo blanco, pero usamos la constante correcta
-                # images=fitz.PDF_REDACT_IMAGE_NONE para proteger las fotos e ilustraciones que
-                # pudieran estar cruzando la caja de texto.
-                page.add_redact_annot(bbox, fill=(1, 1, 1))
-                page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
+            # === FASE 1: DESTRUCCIÓN TRANSPARENTE (Preservación del Arte) ===
+            # Sin parámetro 'fill'. Esto borra la información vectorial del texto original
+            # pero DEJA INTACTOS los píxeles del pergamino, arte o textura que haya debajo.
+            page.add_redact_annot(bbox, cross_out=False)
+            page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
 
             rect = fitz.Rect(bbox)
             rect.normalize()
@@ -70,7 +80,7 @@ class PDFRebuilder:
             
             is_single_line = box_height <= (block['font_size'] * 1.8)
 
-            # === FASE 2: CARGA DE FUENTES ===
+            # === FASE 2: CARGA DE FUENTES Y MÉTRICAS ===
             mapping_info = self.user_font_mapping.get(raw_font, {"type": "base", "value": "helv"})
             font_obj = None
 
@@ -84,57 +94,70 @@ class PDFRebuilder:
                         self.custom_font_counter += 1
                     except:
                         target_fontname = "helv"
+                        font_obj = fitz.Font(fontname=target_fontname)
                 else:
                     target_fontname = "helv"
+                    font_obj = fitz.Font(fontname=target_fontname)
             else:
                 target_fontname = mapping_info["value"]
                 font_obj = fitz.Font(fontname=target_fontname)
 
-            # === FASE 3: INYECCIÓN CON ESTEQUIOMETRÍA EDITORIAL ===
+            # === FASE 3: ESTEQUIOMETRÍA Y DISTRIBUCIÓN ARMÓNICA ===
             if is_single_line:
-                if font_obj:
-                    len_1pt = font_obj.text_length(new_text, fontsize=1)
-                    if len_1pt > 0:
-                        perfect_size = box_width / len_1pt
-                        final_size = min(perfect_size, block['font_size'] * 1.15)
-                    else:
-                        final_size = block['font_size']
+                # Títulos: Ajuste exacto al ancho
+                len_1pt = font_obj.text_length(new_text, fontsize=1)
+                if len_1pt > 0:
+                    final_size = min(box_width / len_1pt, block['font_size'] * 1.15)
                 else:
                     final_size = block['font_size']
 
                 baseline_y = rect.y0 + (final_size * 0.85)
-                punto_base = fitz.Point(rect.x0, baseline_y)
-                page.insert_text(punto_base, new_text, fontsize=final_size, fontname=target_fontname, color=(0, 0, 0))
+                page.insert_text(fitz.Point(rect.x0, baseline_y), new_text, fontsize=final_size, fontname=target_fontname, color=(0, 0, 0))
                 
             else:
-                rect.x1 += 5
-                rect.y1 += 5
-                
+                # Cuerpos de Texto: Algoritmo de Distribución Vertical
                 current_size = float(block['font_size'])
-                texto_insertado = False
-                
-                # INTERLINEADO EDITORIAL
-                espaciado_lineal = 1.35 
+                min_size = 6.0
+                best_lines = []
+                best_size = current_size
 
-                while current_size >= 6.0:
-                    resultado = page.insert_textbox(
-                        rect, new_text, 
-                        fontsize=current_size, 
-                        fontname=target_fontname, 
-                        color=(0, 0, 0), 
-                        align=0,
-                        lineheight=espaciado_lineal
-                    )
-                    
-                    if resultado >= 0:
-                        texto_insertado = True
+                # Buscamos el tamaño de fuente perfecto donde el texto envuelto quepa en la caja
+                while current_size >= min_size:
+                    lines = self._wrap_text_math(new_text, font_obj, current_size, box_width)
+                    estimated_height = len(lines) * (current_size * 1.2) # Altura base
+                    if estimated_height <= box_height * 1.1: # Permitimos un desborde milimétrico (10%)
+                        best_lines = lines
+                        best_size = current_size
                         break
-                    else:
-                        current_size -= 0.5
+                    current_size -= 0.5
+                
+                if not best_lines:
+                    best_size = 6.0
+                    best_lines = self._wrap_text_math(new_text, font_obj, best_size, box_width)
 
-                if not texto_insertado:
-                    punto_seguro = fitz.Point(rect.x0, rect.y0 + 8)
-                    page.insert_text(punto_seguro, new_text, fontsize=8, fontname=target_fontname, color=(0, 0, 0))
+                # Inyección Línea por Línea
+                N = len(best_lines)
+                if N == 1:
+                    baseline_y = rect.y0 + (best_size * 0.85)
+                    page.insert_text(fitz.Point(rect.x0, baseline_y), best_lines[0], fontsize=best_size, fontname=target_fontname, color=(0, 0, 0))
+                else:
+                    # CÁLCULO DE INTERLINEADO (LEADING):
+                    # Espacio total libre repartido entre los huecos de las líneas
+                    gap = (box_height - (N * best_size)) / (N - 1)
+                    
+                    # Límites armónicos: Ni muy pegado, ni exageradamente separado
+                    max_gap = best_size * 0.6
+                    min_gap = best_size * 0.15
+                    
+                    if gap > max_gap: gap = max_gap
+                    if gap < min_gap: gap = min_gap
+
+                    # Coordenada 'Y' inicial (Línea base de la primera letra)
+                    y_cursor = rect.y0 + (best_size * 0.85)
+                    
+                    for line in best_lines:
+                        page.insert_text(fitz.Point(rect.x0, y_cursor), line, fontsize=best_size, fontname=target_fontname, color=(0, 0, 0))
+                        y_cursor += best_size + gap # Avanzamos al siguiente renglón
 
         self.doc.save(self.output_pdf, garbage=4, deflate=True)
         self.doc.close()

@@ -10,7 +10,7 @@ class PDFRebuilder:
         self.input_pdf = input_pdf
         self.output_pdf = output_pdf
         self.user_font_mapping = user_font_mapping
-        self.bg_folder = bg_folder  # NUEVO: Carpeta de fondos limpios
+        self.bg_folder = bg_folder
         self.doc = fitz.open(self.input_pdf)
         self.custom_font_counter = 0
 
@@ -18,18 +18,12 @@ class PDFRebuilder:
         return raw_font.split('+')[-1] if '+' in raw_font else raw_font
 
     def _apply_backgrounds(self):
-        """Si el usuario provee imágenes limpias, las superpone sobre las páginas originales."""
         if not self.bg_folder or not os.path.isdir(self.bg_folder):
             return
 
-        logging.info("Modo Editorial: Buscando fondos limpios...")
         for page_num in range(len(self.doc)):
             page = self.doc[page_num]
-            # Buscamos archivos como page_1.png, page_1.jpg, pagina_1.png, etc.
-            # PyMuPDF usa índice 0, pero los humanos usamos 1
             human_page = page_num + 1
-            
-            # Buscar posibles extensiones
             bg_path = None
             for ext in ['.png', '.jpg', '.jpeg']:
                 test_path = os.path.join(self.bg_folder, f"page_{human_page}{ext}")
@@ -39,14 +33,11 @@ class PDFRebuilder:
             
             if bg_path:
                 logging.info(f"Aplicando fondo limpio a la página {human_page}...")
-                # Insertamos la imagen cubriendo exactamente el rectángulo completo de la página
                 page.insert_image(page.rect, filename=bg_path)
 
     def destroy_and_rebuild(self, translated_blocks: List[Dict]):
-        # Paso previo: Si hay fondos limpios, los colocamos primero
         self._apply_backgrounds()
-
-        logging.info("Iniciando reconstrucción tipográfica...")
+        logging.info("Iniciando reconstrucción tipográfica respetando arte e interlineado...")
 
         for block in translated_blocks:
             page = self.doc[block['page_num'] - 1]
@@ -57,16 +48,17 @@ class PDFRebuilder:
             if not new_text or new_text.isspace():
                 continue
 
-            # FASE 1: Destrucción Estructural
+            # === FASE 1: DESTRUCCIÓN NO DESTRUCTIVA DEL ARTE ===
             if self.bg_folder:
-                # MODO EDITORIAL: Como la imagen de fondo ya tapa el arte original, 
-                # solo borramos el texto internamente sin pintar un rectángulo blanco encima.
-                page.add_redact_annot(bbox) # Sin fill (transparente)
+                # Si hay fondo provisto, aplicamos redacción transparente
+                page.add_redact_annot(bbox, cross_out=False)
             else:
-                # MODO NORMAL: Pintamos de blanco
-                page.add_redact_annot(bbox, fill=(1, 1, 1))
+                # Modo normal: caja blanca
+                page.add_redact_annot(bbox, fill=(1, 1, 1), cross_out=False)
                 
-            page.apply_redactions()
+            # CRÍTICO PARA D&D: images=0, graphics=0 evita que el motor borre las 
+            # ilustraciones o texturas de pergamino que están debajo del texto.
+            page.apply_redactions(images=0, graphics=0)
 
             rect = fitz.Rect(bbox)
             rect.normalize()
@@ -75,7 +67,7 @@ class PDFRebuilder:
             
             is_single_line = box_height <= (block['font_size'] * 1.8)
 
-            # FASE 2: Carga de Fuente
+            # === FASE 2: CARGA DE FUENTES ===
             mapping_info = self.user_font_mapping.get(raw_font, {"type": "base", "value": "helv"})
             font_obj = None
 
@@ -95,13 +87,14 @@ class PDFRebuilder:
                 target_fontname = mapping_info["value"]
                 font_obj = fitz.Font(fontname=target_fontname)
 
-            # FASE 3: Inyección Inteligente
+            # === FASE 3: INYECCIÓN CON ESTEQUIOMETRÍA EDITORIAL ===
             if is_single_line:
+                # ALGORITMO PARA TÍTULOS (Adventure Summary)
                 if font_obj:
                     len_1pt = font_obj.text_length(new_text, fontsize=1)
                     if len_1pt > 0:
                         perfect_size = box_width / len_1pt
-                        final_size = min(perfect_size, block['font_size'] * 1.1)
+                        final_size = min(perfect_size, block['font_size'] * 1.15)
                     else:
                         final_size = block['font_size']
                 else:
@@ -112,15 +105,26 @@ class PDFRebuilder:
                 page.insert_text(punto_base, new_text, fontsize=final_size, fontname=target_fontname, color=(0, 0, 0))
                 
             else:
-                rect.y1 += 30 
+                # ALGORITMO PARA PÁRRAFOS (El cuerpo del texto de Odoacer)
+                # Damos un pequeñísimo margen de respiración
                 rect.x1 += 5
+                rect.y1 += 5
+                
                 current_size = float(block['font_size'])
                 texto_insertado = False
+                
+                # INTERLINEADO EDITORIAL: 1.35 es el estándar para lectura en manuales de rol/libros
+                # Da un espaciado armonioso entre líneas, evitando que se vea "apretado".
+                espaciado_lineal = 1.35 
 
                 while current_size >= 6.0:
                     resultado = page.insert_textbox(
-                        rect, new_text, fontsize=current_size, 
-                        fontname=target_fontname, color=(0, 0, 0), align=0
+                        rect, new_text, 
+                        fontsize=current_size, 
+                        fontname=target_fontname, 
+                        color=(0, 0, 0), 
+                        align=0,
+                        lineheight=espaciado_lineal  # Aplicamos el interlineado
                     )
                     
                     if resultado >= 0:
@@ -130,9 +134,10 @@ class PDFRebuilder:
                         current_size -= 0.5
 
                 if not texto_insertado:
+                    # Fallback final
                     punto_seguro = fitz.Point(rect.x0, rect.y0 + 8)
                     page.insert_text(punto_seguro, new_text, fontsize=8, fontname=target_fontname, color=(0, 0, 0))
 
         self.doc.save(self.output_pdf, garbage=4, deflate=True)
         self.doc.close()
-        logging.info(f"✅ Documento generado en: {self.output_pdf}")
+        logging.info(f"✅ Documento editorial generado en: {self.output_pdf}")

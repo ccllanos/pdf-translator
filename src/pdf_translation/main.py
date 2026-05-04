@@ -101,7 +101,7 @@ def main():
     
     print(Fore.GREEN + "="*65)
     print(f" PROCESO COMPLETADO")
-    print(f" Archivo final generado en: {output_path}")
+    print(f" Archivo final generado en: {output_pdf}")
     print("="*65 + Style.RESET_ALL)
 
 if __name__ == "__main__":

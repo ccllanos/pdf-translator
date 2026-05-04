@@ -1,37 +1,9 @@
 {
   "pdf_path": "C:\\PLAYGROUND\\Feast-of-Odoacer_CoC.pdf",
   "font_mappings": {
-    "GiveYouWhatYouLike": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/Give You What You Like - OTF.otf"
-    },
-    "RomanSD": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/ROMANS.ttf"
-    },
     "AGaramondPro-SemiboldIta": {
       "type": "custom",
       "value": "C:/Users/hungi/Downloads/AGaramondPro-SemiboldItalic.otf"
-    },
-    "AGaramondPro-Italic": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
-    },
-    "AGaramondPro-Semibold": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/AGaramondPro-Semibold.otf"
-    },
-    "MinionPro-Regular": {
-      "type": "custom",
-      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Regular.otf"
-    },
-    "TheanoModern-Regular": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/theano-modern.regular.ttf"
-    },
-    "AGaramondPro-Italic-SC70": {
-      "type": "custom",
-      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
     },
     "AGaramondPro-Regular": {
       "type": "custom",
@@ -40,12 +12,40 @@
     "TrajanPro-Bold": {
       "type": "custom",
       "value": "C:/Users/hungi/Downloads/trajan-pro-bold.ttf"
+    },
+    "TheanoModern-Regular": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/theano-modern.regular.ttf"
+    },
+    "GiveYouWhatYouLike": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/Give You What You Like - OTF.otf"
+    },
+    "MinionPro-Regular": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Regular.otf"
+    },
+    "AGaramondPro-Semibold": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Semibold.otf"
+    },
+    "AGaramondPro-Italic": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
+    },
+    "AGaramondPro-Italic-SC70": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
+    },
+    "RomanSD": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/ROMANS.ttf"
     }
   },
   "pages": {
     "1": {
       "mode": "editorial",
-      "bg_path": "C:/Apps/PDFTranslator/fondos_limpios/page_1.png",
+      "bg_path": "C:\\Apps\\PDFTranslator\\projects\\Feast-of-Odoacer_CoC\\fondos\\page_1.png",
       "blocks": [
         {
           "bbox": [
@@ -76,7 +76,7 @@
             299.5000915527344,
             282.4692077636719
           ],
-          "translated_text": "Festín de Odacro es un juego de Llamada a Cthulhu: Cthulhu Invictus.",
+          "translated_text": "Fiesta de Odacero es un juego de Llamada a Cthulhu: Cthulhu Invictus.",
           "font_name": "AGaramondPro-Italic",
           "font_size": 11.0
         },
@@ -87,7 +87,7 @@
             302.2669372558594,
             295.6692199707031
           ],
-          "translated_text": "tura, aunque puede adaptarse fácilmente a otros sistemas (un",
+          "translated_text": "tura, aunque puede adaptarse fácilmente a otros sistemas (una",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },
@@ -109,7 +109,7 @@
             302.2801818847656,
             414.4692077636719
           ],
-          "translated_text": "com). La aventura está ambientada en Rávena en marzo de 493 d.C., apenas unas décadas después de que el último emperador romano abdicara y Italia pasara al control de Odoacro, un patricio que intentó desesperadamente mantener los restos del Imperio intactos. La aventura es adecuada para cuatro a seis investigadores, apropiados para ser sirvientes de alto nivel del rey Odoacro; el final de la aventura incluye seis personajes pregenerados.",
+          "translated_text": "com). La aventura se desarrolla en Rávena en marzo de 493 d.C., tan solo unas décadas después de que el último emperador romano abdicara y Italia pasara al control de Odoacro, un patricio que intentó desesperadamente mantener los restos del Imperio. La aventura es adecuada para cuatro a seis investigadores, apropiados para ser sirvientes de alto nivel del rey Odoacro; el final de la aventura incluye seis personajes pregenerados.",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },
@@ -120,7 +120,7 @@
             302.3099670410156,
             520.0691528320312
           ],
-          "translated_text": "Los personajes introducidos por primera vez en la aventura se destacan en MAYÚSCULAS. Las tiradas de habilidad están en minúsculas. Las secciones marcadas con un mapa son misiones secundarias y elementos para iniciar aventuras que no son esenciales para el argumento principal. Las secciones marcadas con una persona representan oportunidades para tipos específicos de investigadores, especialmente los personajes pregenerados de esta aventura.",
+          "translated_text": "Los personajes introducidos por primera vez en la aventura se destacan en MAYÚSCULAS. Las tiradas de habilidad están en minúsculas. Las secciones marcadas con un mapa son misiones secundarias y puntos de enganche para la aventura, y no son importantes para el argumento general. Las secciones marcadas con una persona representan oportunidades para tipos específicos de investigadores, especialmente los personajes pregenerados de esta aventura.",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },
@@ -142,7 +142,7 @@
             271.2579345703125,
             695.2691650390625
           ],
-          "translated_text": "Para el año 493 d.C., el Imperio Romano había colapsado. EL REY FLAVIO ODOACER (pronunciado o-do-a-cer) gobierna los restos de Italia. Antaño bendecido por Zeno, el emperador del imperio oriental, Odoacer es ahora considerado un rival. Decidido a eliminar a Odoacer del poder, el emperador Zeno ha prometido Italia a un joven caudillo godo ostrogótico, TEODORICO. Tras siete años de guerra y numerosas derrotas, Odoacer finalmente se ha atrincherado en la ciudad capital amurallada de Rávena, desesperado por aferrarse al poder y sobrevivir al largo asedio.",
+          "translated_text": "Para el año 493 d.C., el Imperio Romano había colapsado. El rey Flavio Odoacro (pronunciado o-do-a-cro) gobierna los restos de Italia. Antaño bendecido por Zenón, el emperador del imperio oriental, Odoacro es ahora considerado un rival. Decidido a eliminar a Odoacro del poder, el emperador Zenón ha prometido Italia a Teodorico, un joven caudillo godo ostrogótico. Tras siete años de guerra y numerosas derrotas, Odoacro se ha atrincherado finalmente en la capital amurallada de Rávena, desesperado por aferrarse al poder y sobrevivir al largo asedio.",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },
@@ -164,7 +164,7 @@
             575.859130859375,
             384.7742004394531
           ],
-          "translated_text": "años, incluso mientras se ha vuelto más miserable. Sabiendo que la situación empeora día tras día, Odoacro los envía a buscar a Severino, un monje misterioso que le ha escrito cartas cada vez más frenéticas insistiendo en que ha encontrado algo que puede ayudar a Odoacro a resistir la conquista de Teodorico. Sin embargo, Severino se ha vuelto loco después de presenciar cómo cultistas, los Discípulos de Teritus, experimentaban con un cadáver antinatural y abisal. El monje cree que los Discípulos han encontrado una reliquia que puede detener a Teodorico y suplica a los investigadores que lleven los secretos del culto al rey.",
+          "translated_text": "años, incluso mientras se ha vuelto más miserable. Sabiendo que la situación empeora día tras día, Odoacro los envía a buscar a Severino, un misterioso monje que le ha escrito cartas cada vez más frenéticas insistiendo en haber encontrado algo que puede ayudar a Odoacro a resistir la conquista de Teodorico. Sin embargo, Severino se ha vuelto loco después de presenciar cómo cultistas, los Discípulos de Teritus, experimentaban con un cadáver antinatural y abismal. El monje cree que los Discípulos han encontrado una reliquia que puede detener a Teodorico y suplica a los investigadores que lleven los secretos del culto al rey.",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },
@@ -175,7 +175,7 @@
             575.8580322265625,
             503.57421875
           ],
-          "translated_text": "Los Discípulos, sin embargo, tienen sus propios planes. Hartos de los reyes corruptos y la inestabilidad constante, buscan utilizar su antiguo ritual para someter a toda la ciudad al dominio de Teritus, una fuerza externa demoníaca, a quien creen que es la encarnación de un dios pagano olvidado. Creen erróneamente que este dios será un mejor gobernante para los hombres de Rávena que cualquier rey mortal en potencia. Poco saben ellos que su plan traería la destrucción final a Rávena, si no a toda la civilización.",
+          "translated_text": "Los Discípulos, sin embargo, tienen sus propios planes. Hartos de los reyes corruptos y la inestabilidad constante, buscan usar su antiguo ritual para someter a toda la ciudad al influjo de Teritus, una fuerza externa demoníaca, a quien creen que es la encarnación de un dios pagano olvidado. Creen erróneamente que este dios será un mejor gobernante para los hombres de Rávena que cualquier rey mortal en potencia. Poco saben ellos que su plan traería la destrucción final a Rávena, si no a toda la civilización.",
           "font_name": "AGaramondPro-Regular",
           "font_size": 11.0
         },

@@ -1,6 +1,5 @@
 import sys
 import os
-import argparse
 import colorama
 from colorama import Fore, Style
 import fitz
@@ -11,72 +10,58 @@ from pdf_processing.pdf_analyzer import PDFAnalyzer
 from font_matching.matcher_service import FontMatcherService
 from translation.translation_service import TranslationService
 from reconstruction.pdf_rebuilder import PDFRebuilder
-from font_management.session_manager_gui import SessionSettingsGUI
+from font_management.session_manager_gui import SessionSettingsGUI, LauncherGUI
 from utils.cache_manager import ProjectCacheManager
-
-from PySide6.QtWidgets import QApplication, QFileDialog
+from PySide6.QtWidgets import QApplication
 
 def main():
     colorama.init()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', required=False)
-    parser.add_argument('--output', required=False)
-    parser.add_argument('--source', default="English")
-    parser.add_argument('--target', default="Spanish")
-    args = parser.parse_args()
-
     app = QApplication(sys.argv)
 
     print(Fore.CYAN + "="*65)
-    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - GESTIÓN DE PROYECTOS")
+    print(Style.BRIGHT + " PDF TRANSLATOR V1.2 - GESTOR DE PROYECTOS")
     print(Fore.CYAN + "="*65 + Style.RESET_ALL)
 
-    pdf_path = args.input
-    if not pdf_path:
-        file_path, _ = QFileDialog.getOpenFileName(None, "Seleccionar documento PDF a traducir", "", "Documentos PDF (*.pdf)")
-        if not file_path:
-            sys.exit(0)
-        pdf_path = file_path
+    # 1. PANTALLA DE INICIO (LAUNCHER)
+    launcher = LauncherGUI()
+    action, project_path, source_pdf = launcher.get_result()
 
-    # Inicializar el Proyecto
-    cache = ProjectCacheManager(pdf_path)
-    
-    # El archivo de salida ahora se guarda automáticamente en la carpeta /projects/.../salida/
-    output_path = args.output
-    if not output_path:
-        base_name = os.path.basename(pdf_path)
-        output_path = os.path.join(cache.out_dir, f"{os.path.splitext(base_name)[0]}_translated.pdf")
+    if not action:
+        sys.exit(0)
 
-    print(f"\n{Fore.GREEN}[CARPETA DEL PROYECTO]: {cache.project_dir}{Style.RESET_ALL}")
+    # 2. INICIALIZAR CACHÉ DEL PROYECTO
+    cache = ProjectCacheManager(project_path, source_pdf)
+    internal_pdf = cache.internal_pdf_path
+    output_pdf = os.path.join(cache.out_dir, f"{os.path.basename(project_path)}_translated.pdf")
 
-    doc_temp = fitz.open(pdf_path)
+    print(f"\n{Fore.GREEN}[PROYECTO]: {project_path}{Style.RESET_ALL}")
+
+    doc_temp = fitz.open(internal_pdf)
     total_pages = len(doc_temp)
     doc_temp.close()
     
     print(f"\n{Fore.YELLOW}>>> FASE 1: ANÁLISIS DEL LAYOUT{Style.RESET_ALL}")
-    analyzer = PDFAnalyzer(pdf_path)
+    analyzer = PDFAnalyzer(internal_pdf)
     analyzer.analyze()
     
     matcher = FontMatcherService()
     font_cloud_report = matcher.analyze_fonts(analyzer.fonts)
     
-    # Pasamos las configuraciones previas (fuentes y modos de página)
+    print(f"\n{Fore.MAGENTA}>>> FASE INTERMEDIA: Abriendo Configuración de Sesión...{Style.RESET_ALL}")
     gui = SessionSettingsGUI(
         analyzer.fonts, 
         font_cloud_report, 
         total_pages, 
         cache.get_font_mapping(),
-        cache.get_all_page_modes()  # NUEVO: Precarga los fondos anteriores
+        cache.get_all_page_modes()
     )
     
     config = gui.get_results()
-    if not config:
-        print(f"\n{Fore.RED}[ABORTADO] Sesión cancelada.{Style.RESET_ALL}")
-        sys.exit(0)
+    if not config: sys.exit(0)
 
     cache.update_font_mapping(config["font_mappings"])
 
-    rebuilder = PDFRebuilder(pdf_path, output_path, config["font_mappings"])
+    rebuilder = PDFRebuilder(internal_pdf, output_pdf, config["font_mappings"])
     translator = TranslationService()
 
     print(f"\n{Fore.YELLOW}>>> FASE 2: PROCESANDO SESIÓN{Style.RESET_ALL}")
@@ -91,7 +76,8 @@ def main():
 
             for idx, block in enumerate(page_blocks):
                 print(f" -> Traduciendo bloque {idx+1}/{len(page_blocks)}...")
-                resultado = translator.translate_block(block.text, args.source, args.target)
+                # Aquí forzamos de Inglés a Español internamente, en el futuro se podrá pedir en el launcher
+                resultado = translator.translate_block(block.text, "English", "Spanish")
                 translated_blocks.append({
                     'bbox': block.bbox,
                     'translated_text': resultado,
@@ -99,8 +85,12 @@ def main():
                     'font_size': block.font_size
                 })
 
+            # Guardar bloques (esto también copia el fondo .png a la carpeta interna /fondos)
             cache.save_page_translation(page_num, mode_config["mode"], mode_config["bg_path"], translated_blocks)
-            rebuilder.apply_page_rendering(page_num, mode_config["mode"], mode_config["bg_path"], translated_blocks)
+            
+            # Leemos la ruta interna que el caché acaba de generar
+            internal_bg_path = cache.get_page_cache(page_num)["bg_path"]
+            rebuilder.apply_page_rendering(page_num, mode_config["mode"], internal_bg_path, translated_blocks)
 
         elif cache.is_page_translated(page_num):
             print(f"\n{Fore.GREEN}[REUTILIZANDO CACHÉ] Página {page_num}.{Style.RESET_ALL}")
@@ -111,7 +101,7 @@ def main():
     
     print(Fore.GREEN + "="*65)
     print(f" PROCESO COMPLETADO")
-    print(f" Archivo guardado en: {output_path}")
+    print(f" Archivo final generado en: {output_path}")
     print("="*65 + Style.RESET_ALL)
 
 if __name__ == "__main__":

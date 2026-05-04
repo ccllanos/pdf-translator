@@ -1,0 +1,525 @@
+{
+  "font_mappings": {
+    "Symbol": {
+      "type": "base",
+      "value": "symb"
+    },
+    "Minion-Bold": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Bold.otf"
+    },
+    "Times-BoldItalic": {
+      "type": "base",
+      "value": "helv"
+    },
+    "AGaramond-Regular": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Regular.ttf"
+    },
+    "Minion-BoldItalic": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-BoldIt.otf"
+    },
+    "HelveticaNeue-MediumCond": {
+      "type": "base",
+      "value": "helv"
+    },
+    "MathPackFive": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Helvetica-Bold": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Minion-Italic": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Helvetica": {
+      "type": "base",
+      "value": "helv"
+    },
+    "HelveticaNeue-BoldCond": {
+      "type": "base",
+      "value": "helv"
+    },
+    "MathPackTen": {
+      "type": "base",
+      "value": "helv"
+    },
+    "TimesMath-LatinOpenFace": {
+      "type": "base",
+      "value": "helv"
+    },
+    "MinionExp-Regular": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Regular.otf"
+    },
+    "MathPackFour": {
+      "type": "base",
+      "value": "helv"
+    },
+    "HelveticaNeue-HeavyCond": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Helvetica-Oblique": {
+      "type": "base",
+      "value": "helv"
+    },
+    "HelveticaNeue-LightCond": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Charcoal": {
+      "type": "base",
+      "value": "helv"
+    },
+    "AGaramondExp-Regular": {
+      "type": "base",
+      "value": "helv"
+    },
+    "MathPackExSix": {
+      "type": "base",
+      "value": "helv"
+    },
+    "MathPackOne": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Minion-Regular": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Regular.otf"
+    }
+  },
+  "pages": {
+    "12": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            25.336000442504883,
+            635.376953125,
+            30.016000747680664,
+            646.2219848632812
+          ],
+          "translated_text": "1",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            31.312000274658203,
+            111.73200988769531,
+            44.75199890136719,
+            144.91201782226562
+          ],
+          "translated_text": "1",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 28.0
+        },
+        {
+          "bbox": [
+            73.14399719238281,
+            119.42001342773438,
+            170.0640106201172,
+            143.12001037597656
+          ],
+          "translated_text": "Introducción",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 20.0
+        },
+        {
+          "bbox": [
+            73.14399719238281,
+            253.6329803466797,
+            383.3840026855469,
+            264.135986328125
+          ],
+          "translated_text": "El hombre es un animal de juego. Siempre debe estar tratando de mejorar en algo u otro.",
+          "font_name": "HelveticaNeue-MediumCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            275.8240051269531,
+            267.66400146484375,
+            395.7471923828125,
+            276.71197509765625
+          ],
+          "translated_text": "Charles Lamb 1775–1834 'Ensayos de Elia'",
+          "font_name": "HelveticaNeue-LightCond",
+          "font_size": 8.0
+        },
+        {
+          "bbox": [
+            73.13937377929688,
+            296.1259765625,
+            395.9880065917969,
+            629.0946044921875
+          ],
+          "translated_text": "La teoría de juegos es la teoría de la toma de decisiones independientes e interdependientes. Se ocupa de la toma de decisiones en organizaciones donde el resultado depende de las decisiones de dos o más actores autónomos, uno de los cuales puede ser la naturaleza misma, y ​​donde ningún tomador de decisiones tiene control total sobre los resultados. Obviamente, juegos como el ajedrez y el bridge entran dentro del ámbito de la teoría de juegos, pero también lo hacen muchas otras situaciones sociales que comúnmente no se consideran juegos en el sentido cotidiano de la palabra. Los modelos clásicos no abordan la toma de decisiones interdependiente porque tratan a los jugadores como sujetos inanimados. Son modelos de causa y efecto que ignoran el hecho de que las personas toman decisiones conscientemente influenciadas por lo que otros deciden. Por otra parte, un modelo de teoría de juegos se construye en torno a las opciones estratégicas disponibles para los jugadores, donde los resultados preferidos están claramente definidos y conocidos. Considere la siguiente situación. Dos ciclistas van en direcciones opuestas por un camino estrecho. Están a punto de chocar y a ambos les interesa evitar tal colisión. Cada uno tiene tres estrategias: moverse hacia la derecha; moverse hacia la izquierda; o mantener la dirección. Evidentemente, el resultado depende de las decisiones de ambos ciclistas y sus intereses coinciden exactamente. Este es un juego totalmente cooperativo y los jugadores deben expresar sus intenciones entre sí. Sin embargo, a veces los intereses de los jugadores pueden ser completamente opuestos. Digamos, por ejemplo, que varios establecimientos minoristas están cada uno",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    },
+    "13": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            73.21600341796875,
+            46.82078552246094,
+            116.83991241455078,
+            57.48578643798828
+          ],
+          "translated_text": "Introducción",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            28.43199920654297,
+            51.728919982910156,
+            34.152000427246094,
+            64.98391723632812
+          ],
+          "translated_text": "2",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            73.21485900878906,
+            100.41987609863281,
+            396.115234375,
+            628.5733642578125
+          ],
+          "translated_text": "compitiendo por negocios desde una zona de captación común de Wnite. Cada uno tiene que decidir si reduce o no los precios, sin saber lo que han decidido los demás. Suponiendo que el volumen de negocios aumenta cuando bajan los precios, varias combinaciones estratégicas resultan en ganancias o pérdidas para algunos de los minoristas, pero si un minorista gana clientes, otro debe perderlos. Así que este es un juego no cooperativo de suma cero y, a diferencia de los juegos cooperativos, los jugadores deben ocultar sus intenciones entre sí. Una tercera categoría de juego representa situaciones en las que los intereses de los jugadores son en parte opuestos y en parte coincidentes. Digamos, por ejemplo, que el sindicato de profesores de una escuela amenaza con no participar en las veladas de padres a menos que la dirección rescinda la notificación de despido de un colega con muchos años de servicio. La dirección se niega. El sindicato ahora complica el juego amenazando además con no cooperar con los preparativos para la inspección gubernamental, si no se cumplen sus demandas. La dirección tiene la opción de aceptar o negarse, y cualquiera que sea la opción que elija, el sindicato tiene cuatro opciones: reanudar ambas prácticas laborales normales; participar únicamente en las veladas de padres; participar únicamente en los preparativos de la inspección; o no reanudar su participación en cualquiera de ellos. Sólo una de las posibles combinaciones estratégicas conduce a un resultado satisfactorio desde el punto de vista de la dirección (la dirección se niega a satisfacer las demandas del sindicato a pesar de la reanudación del trabajo normal), aunque claramente algunos resultados son peores que otros. Ambos actores (la dirección y el sindicato) prefieren unos resultados a otros. Por ejemplo, ambos preferirían que se reanudara la participación en las veladas de padres (ya que el personal vive en la comunidad y la inscripción depende de ello) que no reanudar la participación en ninguna de las dos. De modo que los intereses de los jugadores son simultáneamente opuestos y coincidentes. Este es un ejemplo de un juego de motivos mixtos. La teoría de juegos pretende encontrar soluciones óptimas a situaciones de conflicto y cooperación como las descritas anteriormente, bajo el supuesto de que los jugadores son instrumentalmente racionales y actúan en su propio interés. En algunos casos se pueden encontrar soluciones. En otros, aunque los intentos formales de solución pueden fracasar, la síntesis analítica en sí misma puede iluminar diferentes facetas del problema. De cualquier manera, la teoría de juegos ofrece una perspectiva interesante sobre la naturaleza de la selección estratégica tanto en circunstancias familiares como inusuales. El supuesto de racionalidad puede justificarse en varios niveles.",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    },
+    "14": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            73.14399719238281,
+            46.82566833496094,
+            117.41500091552734,
+            57.49066925048828
+          ],
+          "translated_text": "Terminología",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            28.288000106811523,
+            51.733924865722656,
+            34.007999420166016,
+            64.98892211914062
+          ],
+          "translated_text": "3",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            73.142822265625,
+            100.42481994628906,
+            395.9075012207031,
+            405.45648193359375
+          ],
+          "translated_text": "En su nivel más básico, se puede argumentar que los jugadores se comportan racionalmente por instinto, aunque la experiencia sugiere que este no es siempre el caso, ya que los tomadores de decisiones frecuentemente adoptan algoritmos simplistas que conducen a soluciones subóptimas. En segundo lugar, se puede argumentar que existe una especie de “selección natural” que inclina un grupo de decisiones hacia lo racional y lo óptimo. En los negocios, por ejemplo, las organizaciones que seleccionan estrategias subóptimas eventualmente cierran ante la competencia de organizaciones optimizadoras. Por lo tanto, las sucesivas generaciones de decisiones son cada vez más racionales, aunque no está claro hasta qué punto esta evolución competitiva se transfiere a sectores sin fines de lucro como la educación y los servicios públicos. Finalmente, se ha sugerido que el supuesto de racionalidad que sustenta la teoría de juegos no es un intento de describir cómo los jugadores realmente toman decisiones, sino simplemente que se comportan como si no fueran irracionales (Friedman, 1953). Todas las teorías y modelos son, por definición, simplificaciones y no deben descartarse simplemente porque no representan todas las posibilidades realistas. Un modelo sólo debe descartarse si sus predicciones son falsas o inútiles, y los modelos de teoría de juegos no lo son. De hecho, como ocurre con las teorías científicas, las pequeñas desviaciones del realismo total a menudo pueden conducir a una mayor comprensión de los problemas (Romp, 1997).",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        },
+        {
+          "bbox": [
+            25.336000442504883,
+            434.4457702636719,
+            89.27000427246094,
+            449.85076904296875
+          ],
+          "translated_text": "Terminología",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 13.0
+        },
+        {
+          "bbox": [
+            73.14285278320312,
+            463.4488830566406,
+            396.1041564941406,
+            629.0925903320312
+          ],
+          "translated_text": "La teoría de juegos representa un modelo abstracto de toma de decisiones, no la realidad social de la toma de decisiones en sí. Por lo tanto, si bien la teoría de juegos asegura que un resultado se deriva lógicamente de un modelo, no puede asegurar que el resultado en sí represente la realidad, excepto en la medida en que el modelo sea preciso. Para describir este modelo con precisión es necesario que los profesionales compartan un lenguaje común que, para los no iniciados, podría parecer excesivamente técnico. Esto es inevitable. Dado que la teoría de juegos representa la interfaz entre las matemáticas y la gestión, necesariamente debe adoptar una terminología que sea familiar para ambos. Los componentes básicos de cualquier juego son sus participantes y tomadores de decisiones autónomos, llamados jugadores. Los jugadores pueden ser personas individuales, organizaciones o, en algunos casos, la propia naturaleza. Cuando la naturaleza está diseñada",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    },
+    "15": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            73.21600341796875,
+            46.83067321777344,
+            116.83991241455078,
+            57.49567413330078
+          ],
+          "translated_text": "Introducción",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            28.43199920654297,
+            51.738624572753906,
+            34.152000427246094,
+            64.99362182617188
+          ],
+          "translated_text": "4",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            73.21597290039062,
+            100.42982482910156,
+            396.23248291015625,
+            628.58447265625
+          ],
+          "translated_text": "nombrado como uno de los jugadores, se supone que se mueve sin favor y según las leyes del azar. En la terminología de la teoría de juegos, la naturaleza no se “cuenta” como uno de los jugadores. Así, por ejemplo, cuando se baraja una baraja de cartas antes de jugar al solitario, la naturaleza (el segundo jugador) está haciendo el primer movimiento en lo que es un juego de “un solo jugador”. Esto es intrínsecamente diferente del ajedrez, por ejemplo, donde la naturaleza no interviene ni inicial ni posteriormente. Un juego debe tener dos o más jugadores, uno de los cuales puede ser la naturaleza. El número total de jugadores puede ser grande, pero debe ser blanco y debe ser conocido. Cada jugador debe tener más de una opción, porque un jugador con una sola forma de seleccionar no puede tener estrategia y por lo tanto no puede alterar el resultado de un juego. Un resultado es el resultado de un conjunto completo de selecciones estratégicas realizadas por todos los jugadores en un juego y se supone que los jugadores tienen preferencias consistentes entre las posibilidades. Además, se supone que los individuos son capaces de ordenar estos posibles resultados en algún orden de preferencia. Si un jugador es indiferente a la diferencia entre dos o más resultados, entonces a esos resultados se les asigna el mismo rango. Con base en este orden de preferencia, es posible asignar pagos numéricos a todos los resultados posibles. En algunos juegos una escala ordinal es suficiente, pero en otros es necesario tener escalas de intervalo donde las preferencias se establecen en términos proporcionales. Por ejemplo, una rentabilidad de seis debería ser tres veces más deseable que una rentabilidad de dos. Una estrategia pura para un jugador es un plan de campaña para todo el juego, que estipula de antemano lo que el jugador hará en respuesta a cada eventualidad. Si un jugador selecciona una estrategia sin saber qué estrategias fueron elegidas por los otros jugadores, entonces las estrategias puras del jugador son simplemente equivalentes a sus elecciones. Si, por el contrario, la estrategia de un jugador se selecciona con posterioridad a la de otros jugadores y sabiendo cuáles fueron, entonces habrá más estrategias puras que elecciones. Por ejemplo, en el caso del conflicto sindical citado anteriormente, la dirección tiene dos opciones y dos estrategias puras: conceder o negarse. Sin embargo, la selección estratégica del sindicato se realiza después de la selección estratégica de la gerencia y con pleno conocimiento de ella, por lo que sus estrategias puras son declaraciones anticipadas de lo que el sindicato seleccionará en respuesta a cada una de las selecciones de la gerencia. En consecuencia, aunque el sindicato sólo tiene cuatro opciones (reanudar ambas prácticas; participar únicamente en las veladas de padres; participar en los preparativos para las reuniones gubernamentales),",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    },
+    "16": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            25.336000442504883,
+            98.61357116699219,
+            141.48240661621094,
+            108.09357452392578
+          ],
+          "translated_text": "Cuadro 1.1 Las estrategias puras del sindicato",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 8.0
+        },
+        {
+          "bbox": [
+            25.336000442504883,
+            133.8417205810547,
+            175.6243438720703,
+            155.35174560546875
+          ],
+          "translated_text": "Si la gerencia así lo decide. . . Entonces el sindicato lo hará. . .",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            210.5919952392578,
+            121.88975524902344,
+            360.8802490234375,
+            155.351806640625
+          ],
+          "translated_text": "Y si la dirección así lo decide. . . Entonces el sindicato lo hará. . .",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            25.336000442504883,
+            163.7217254638672,
+            392.33355712890625,
+            209.13571166992188
+          ],
+          "translated_text": "Conceder Reanudar ambas prácticas Rechazar Reanudar ambas prácticas Conceder Reanudar ambas prácticas Rechazar Reanudar las veladas de padres Conceder Reanudar ambas prácticas Rechazar Reanudar preparativos de inspección Conceder Reanudar ambas prácticas Rechazar Reanudar ninguna práctica",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            25.336000442504883,
+            223.48170471191406,
+            392.3353271484375,
+            268.89569091796875
+          ],
+          "translated_text": "Conceder Reanudar las veladas de padres Rechazar Reanudar ambas prácticas Conceder Reanudar las veladas de padres Rechazar Reanudar las veladas de padres Conceder Reanudar las veladas de padres Rechazar Reanudar los preparativos de inspección Conceder Reanudar las veladas de padres Rechazar Reanudar ninguna práctica",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            25.336000442504883,
+            283.2416687011719,
+            392.3388671875,
+            328.6556701660156
+          ],
+          "translated_text": "Conceder Reanudar los preparativos de Ofsted Rechazar Reanudar ambas prácticas Conceder Reanudar los preparativos de Ofsted Rechazar Reanudar las noches de padres Conceder Reanudar los preparativos de Ofsted Rechazar Reanudar los preparativos de inspección Conceder Reanudar los preparativos de Ofsted Rechazar Reanudar ninguna práctica",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            25.3350830078125,
+            343.00164794921875,
+            392.29925537109375,
+            388.4156188964844
+          ],
+          "translated_text": "Conceder Reanudar ninguna práctica Rechazar Reanudar ambas prácticas Conceder Reanudar ninguna práctica Rechazar Reanudar las veladas de padres Conceder Reanudar ninguna práctica Rechazar Reanudar los preparativos de inspección Conceder Reanudar ninguna práctica Rechazar Reanudar ninguna práctica",
+          "font_name": "Minion-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            73.14399719238281,
+            46.82072448730469,
+            117.41500091552734,
+            57.48572540283203
+          ],
+          "translated_text": "Terminología",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            28.288000106811523,
+            51.728675842285156,
+            34.007999420166016,
+            64.98367309570312
+          ],
+          "translated_text": "5",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            73.14399719238281,
+            421.107666015625,
+            396.0260314941406,
+            628.5814819335938
+          ],
+          "translated_text": "inspección del gobierno únicamente; no reanudar su participación en ninguno de los dos), tienen 16 estrategias puras, como se establece en la Tabla 1.1 anterior. Algunas de ellas pueden parecer absurdas, pero eso no impide que se las considere, ¡como han descubierto muchos gerentes a su costa! En un juego de información completa, los jugadores conocen sus propias estrategias y funciones de pago y las de otros jugadores. Además, cada jugador sabe que los demás jugadores tienen la información completa. En los juegos con información incompleta, los jugadores conocen las reglas del juego y, por supuesto, sus propias preferencias, pero no las funciones de pago de los demás jugadores. Un juego de información perfecta es aquel en el que los jugadores seleccionan estrategias de forma secuencial y son conscientes de lo que otros jugadores ya han elegido, como el ajedrez. Un juego de información imperfecta es aquel en el que los jugadores tienen que actuar ignorando los movimientos de los demás, simplemente anticipando lo que hará el otro jugador.",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    },
+    "17": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            73.21600341796875,
+            46.82566833496094,
+            116.83991241455078,
+            57.49066925048828
+          ],
+          "translated_text": "Introducción",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            28.43199920654297,
+            51.733924865722656,
+            34.152000427246094,
+            64.98892211914062
+          ],
+          "translated_text": "6",
+          "font_name": "HelveticaNeue-HeavyCond",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            25.408000946044922,
+            112.74980163574219,
+            119.70869445800781,
+            128.15480041503906
+          ],
+          "translated_text": "Juegos de clasificación",
+          "font_name": "HelveticaNeue-BoldCond",
+          "font_size": 13.0
+        },
+        {
+          "bbox": [
+            73.21600341796875,
+            141.7528839111328,
+            396.1576843261719,
+            544.417236328125
+          ],
+          "translated_text": "Hay tres categorías de juegos: juegos de habilidad; juegos de azar; y juegos de estrategia. Los juegos de habilidad son juegos de un solo jugador cuya propiedad definitoria es la existencia de un solo jugador que tiene control total sobre todos los resultados. Presentarse a un examen es un ejemplo. Los juegos de habilidad no deberían realmente clasificarse como juegos en absoluto, ya que falta el ingrediente de la interdependencia. Sin embargo, se analizan en el próximo capítulo porque tienen muchas aplicaciones en situaciones de gestión. Los juegos de azar son juegos de un solo jugador contra la naturaleza. A diferencia de los juegos de habilidad, el jugador no controla completamente los resultados y las selecciones estratégicas no conducen inexorablemente a ciertos resultados. Los resultados de un juego de azar dependen en parte de las elecciones del jugador y en parte de la naturaleza, que es un segundo jugador. Los juegos de azar se clasifican además en que implican riesgo o implican incertidumbre. En el primero, el jugador conoce la probabilidad de cada una de las respuestas de la naturaleza y, por tanto, conoce la probabilidad de éxito de cada una de sus estrategias. En los juegos de azar que implican incertidumbre, no se pueden asignar probabilidades significativas a ninguna de las respuestas de la naturaleza (Colman, 1982), por lo que los resultados del jugador son inciertos y la probabilidad de éxito desconocida. Los juegos de estrategia son juegos en los que participan dos o más jugadores, sin incluir la naturaleza, cada uno de los cuales tiene control parcial sobre los resultados. En cierto modo, dado que los jugadores no pueden asignar probabilidades a las elecciones de los demás, los juegos de estrategia son juegos que implican incertidumbre. Se pueden subdividir en juegos para dos jugadores y juegos para varios jugadores. Dentro de cada una de estas dos subdivisiones, hay tres subcategorías adicionales dependiendo de la forma en que las funciones de pago se relacionan entre sí: si los intereses del jugador son completamente coincidentes; completamente conflictivo; o parcialmente coincidentes y partes en conflicto:",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        },
+        {
+          "bbox": [
+            73.21490478515625,
+            545.9984741210938,
+            395.9427490234375,
+            558.9474487304688
+          ],
+          "translated_text": "∑ Juegos de estrategia, ya sean para dos jugadores o multijugador, en los que el",
+          "font_name": "Symbol",
+          "font_size": 11.5
+        },
+        {
+          "bbox": [
+            84.15945434570312,
+            560.06640625,
+            384.54864501953125,
+            572.2794189453125
+          ],
+          "translated_text": "Los intereses de los jugadores coinciden se denominan juegos cooperativos de estrategia.",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        },
+        {
+          "bbox": [
+            73.21603393554688,
+            573.86181640625,
+            395.97381591796875,
+            586.810791015625
+          ],
+          "translated_text": "∑ Juegos en los que los intereses de los jugadores están en conflicto (es decir, estrictamente",
+          "font_name": "Symbol",
+          "font_size": 11.5
+        },
+        {
+          "bbox": [
+            84.15941619873047,
+            588.002197265625,
+            395.88983154296875,
+            628.0797119140625
+          ],
+          "translated_text": "Los juegos competitivos) se conocen como juegos de estrategia de suma cero, llamados así porque los pagos siempre suman cero para cada resultado de un juego justo, o a otra constante si el juego está sesgado.",
+          "font_name": "Minion-Regular",
+          "font_size": 11.5
+        }
+      ]
+    }
+  }
+}

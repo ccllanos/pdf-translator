@@ -1,0 +1,46 @@
+{
+  "pdf_path": "C:\\PLAYGROUND\\Feast-of-Odoacer_CoC.pdf",
+  "font_mappings": {
+    "GiveYouWhatYouLike": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/Give You What You Like - OTF.otf"
+    },
+    "RomanSD": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/ROMANS.ttf"
+    },
+    "AGaramondPro-SemiboldIta": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-SemiboldItalic.otf"
+    },
+    "AGaramondPro-Italic": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
+    },
+    "AGaramondPro-Semibold": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Semibold.otf"
+    },
+    "MinionPro-Regular": {
+      "type": "custom",
+      "value": "C:/Program Files/Adobe/Acrobat DC/Resource/Font/MinionPro-Regular.otf"
+    },
+    "TheanoModern-Regular": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/theano-modern.regular.ttf"
+    },
+    "AGaramondPro-Italic-SC70": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Italic.ttf"
+    },
+    "AGaramondPro-Regular": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/AGaramondPro-Regular.ttf"
+    },
+    "TrajanPro-Bold": {
+      "type": "custom",
+      "value": "C:/Users/hungi/Downloads/trajan-pro-bold.ttf"
+    }
+  },
+  "pages": {}
+}

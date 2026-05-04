@@ -8,10 +8,6 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 class ProjectCacheManager:
     def __init__(self, project_dir: str, source_pdf_path: str = None):
-        """
-        Si source_pdf_path existe, estamos creando un proyecto nuevo.
-        Si solo damos project_dir, estamos cargando un proyecto existente.
-        """
         self.project_dir = os.path.abspath(project_dir)
         self.bg_dir = os.path.join(self.project_dir, "fondos")
         self.out_dir = os.path.join(self.project_dir, "salida")
@@ -20,12 +16,9 @@ class ProjectCacheManager:
         os.makedirs(self.bg_dir, exist_ok=True)
         os.makedirs(self.out_dir, exist_ok=True)
         
-        # Archivo PDF interno (Inmutable)
         self.internal_pdf_path = os.path.join(self.project_dir, "source_document.pdf")
 
         if source_pdf_path and not os.path.exists(self.internal_pdf_path):
-            # Proyecto Nuevo: Copiamos el PDF adentro para aislarlo
-            logging.info("Copiando PDF al ecosistema del proyecto...")
             shutil.copy2(source_pdf_path, self.internal_pdf_path)
 
         self.data: Dict[str, Any] = self._load_or_create()
@@ -41,13 +34,9 @@ class ProjectCacheManager:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
 
     def import_background(self, page_num: int, ext_path: str) -> str:
-        """Copia el fondo externo a la carpeta interna del proyecto y retorna la nueva ruta."""
         if not ext_path or not os.path.exists(ext_path): return None
-        
-        # Si la imagen ya está dentro de la carpeta fondos, no hacer nada
         if os.path.abspath(os.path.dirname(ext_path)) == os.path.abspath(self.bg_dir):
             return ext_path
-            
         ext = os.path.splitext(ext_path)[1]
         internal_path = os.path.join(self.bg_dir, f"page_{page_num}{ext}")
         shutil.copy2(ext_path, internal_path)
@@ -60,12 +49,12 @@ class ProjectCacheManager:
     def get_font_mapping(self) -> Dict[str, Any]:
         return self.data.get("font_mappings", {})
 
-    def save_page_translation(self, page_num: int, mode: str, bg_path: Optional[str], blocks: list):
-        # Aseguramos que la imagen se guarde en el ecosistema
+    # NUEVO: Guardamos el engine (llm o google)
+    def save_page_translation(self, page_num: int, mode: str, bg_path: Optional[str], engine: str, blocks: list):
         internal_bg = self.import_background(page_num, bg_path) if mode == "editorial" else None
-        
         self.data["pages"][str(page_num)] = {
             "mode": mode,
+            "engine": engine,
             "bg_path": internal_bg,
             "blocks": blocks
         }
@@ -75,7 +64,8 @@ class ProjectCacheManager:
         return self.data["pages"].get(str(page_num))
 
     def get_all_page_modes(self) -> Dict[int, Dict]:
-        return {int(k): {"mode": v["mode"], "bg_path": v.get("bg_path")} for k, v in self.data["pages"].items()}
+        # Compatibilidad hacia atrás: si no existe engine, asume 'llm'
+        return {int(k): {"mode": v["mode"], "engine": v.get("engine", "llm"), "bg_path": v.get("bg_path")} for k, v in self.data["pages"].items()}
 
     def is_page_translated(self, page_num: int) -> bool:
         return str(page_num) in self.data["pages"]

@@ -68,7 +68,7 @@ class PDFRebuilder:
             
             is_single_line = box_height <= (block['font_size'] * 1.8)
 
-            # Carga de fuentes
+           # === FASE 2: CARGA DE FUENTES Y MÉTRICAS ===
             mapping_info = self.user_font_mapping.get(raw_font, {"type": "base", "value": "helv"})
             font_obj = None
 
@@ -77,10 +77,12 @@ class PDFRebuilder:
                 if os.path.exists(ttf_path):
                     target_fontname = f"cfont_{self.custom_font_counter}"
                     try:
+                        # Registro de fuente externa física
                         page.insert_font(fontname=target_fontname, fontfile=ttf_path)
                         font_obj = fitz.Font(fontfile=ttf_path)
                         self.custom_font_counter += 1
-                    except:
+                    except Exception as e:
+                        logging.error(f"Error incrustando fuente {ttf_path}: {e}")
                         target_fontname = "helv"
                         font_obj = fitz.Font(fontname=target_fontname)
                 else:
@@ -89,7 +91,7 @@ class PDFRebuilder:
             else:
                 target_fontname = mapping_info["value"]
                 font_obj = fitz.Font(fontname=target_fontname)
-
+                
             # Inyección Estequiométrica
             if is_single_line:
                 len_1pt = font_obj.text_length(new_text, fontsize=1)

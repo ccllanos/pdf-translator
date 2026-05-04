@@ -1,19 +1,21 @@
 from typing import Dict, List, Set
 import os
 from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, 
-                               QPushButton, QGridLayout, QFileDialog, QTabWidget, QWidget, QLineEdit, QMessageBox)
+                               QPushButton, QGridLayout, QFileDialog, QTabWidget, QWidget, 
+                               QLineEdit, QMessageBox, QScrollArea)
+from PySide6.QtCore import Qt
 
 class SessionSettingsGUI(QDialog):
-    def __init__(self, pdf_fonts: Set[str], font_cloud_report: List[Dict], total_pages: int, initial_font_mappings: Dict = None):
+    def __init__(self, pdf_fonts: Set[str], font_cloud_report: List[Dict], total_pages: int, 
+                 initial_font_mappings: Dict = None, initial_page_modes: Dict = None):
         super().__init__()
         self.pdf_fonts = pdf_fonts
         self.font_cloud_report = font_cloud_report
         self.total_pages = total_pages
         
-        # Diccionario maestro que sobrevivirá a la destrucción visual de la ventana
         self.final_configuration = None 
-        
         self.saved_mappings = initial_font_mappings or {}
+        self.saved_page_modes = initial_page_modes or {}
         
         self.font_to_pdf_code = {
             "Helvetica (Base)": "helv",
@@ -26,8 +28,7 @@ class SessionSettingsGUI(QDialog):
 
     def _init_ui(self):
         self.setWindowTitle("Configuración de Proyecto de Traducción")
-        self.resize(800, 500)
-        
+        self.resize(850, 600)
         layout = QVBoxLayout(self)
         layout.addWidget(QLabel("<h2 style='color:#2c3e50;'>⚙️ Parámetros de la Sesión</h2>"))
         
@@ -53,14 +54,18 @@ class SessionSettingsGUI(QDialog):
         
         layout_pages.addLayout(range_layout)
         layout_pages.addStretch()
-        self.tabs.addTab(tab_pages, "1. Selección de Páginas")
+        self.tabs.addTab(tab_pages, "1. Selección")
 
-        # --- TAB 2: FUENTES ---
+        # --- TAB 2: FUENTES (Con SCROLL) ---
         tab_fonts = QWidget()
         layout_fonts = QVBoxLayout(tab_fonts)
         layout_fonts.addWidget(QLabel("<h3>2. Configuración de Tipografías</h3>"))
         
-        grid_fonts = QGridLayout()
+        scroll_fonts = QScrollArea()
+        scroll_fonts.setWidgetResizable(True)
+        inner_fonts = QWidget()
+        grid_fonts = QGridLayout(inner_fonts)
+
         grid_fonts.addWidget(QLabel("<b>Fuente Original</b>"), 0, 0)
         grid_fonts.addWidget(QLabel("<b>Reemplazo</b>"), 0, 1)
         grid_fonts.addWidget(QLabel("<b>Archivo Custom (.ttf)</b>"), 0, 2)
@@ -75,7 +80,6 @@ class SessionSettingsGUI(QDialog):
             cb = QComboBox()
             cb.addItems(list(self.font_to_pdf_code.keys()) + ["-- USAR ARCHIVO .TTF --"])
             
-            # Carga de caché o inteligente
             saved = self.saved_mappings.get(raw_font)
             if saved:
                 if saved["type"] == "custom":
@@ -102,31 +106,50 @@ class SessionSettingsGUI(QDialog):
             hb.addWidget(lbl_file)
             grid_fonts.addLayout(hb, row, 2)
 
-        layout_fonts.addLayout(grid_fonts)
-        layout_fonts.addStretch()
-        self.tabs.addTab(tab_fonts, "2. Mapeo de Fuentes")
+        scroll_fonts.setWidget(inner_fonts)
+        layout_fonts.addWidget(scroll_fonts)
+        self.tabs.addTab(tab_fonts, "2. Tipografías")
 
-        # --- TAB 3: MODOS Y FONDOS ---
+        # --- TAB 3: MODOS Y FONDOS (Con SCROLL TOTAL) ---
         tab_modes = QWidget()
         layout_modes = QVBoxLayout(tab_modes)
         layout_modes.addWidget(QLabel("<h3>3. Modos de Página & Fondos</h3>"))
         
-        self.page_widgets = {}
-        grid_modes = QGridLayout()
+        scroll_modes = QScrollArea()
+        scroll_modes.setWidgetResizable(True)
+        inner_modes = QWidget()
+        grid_modes = QGridLayout(inner_modes)
+
         grid_modes.addWidget(QLabel("<b>Página</b>"), 0, 0)
         grid_modes.addWidget(QLabel("<b>Modo</b>"), 0, 1)
         grid_modes.addWidget(QLabel("<b>Fondo Limpio</b>"), 0, 2)
 
-        max_rows = min(self.total_pages, 8)
-        for p in range(1, max_rows + 1):
+        self.page_widgets = {}
+        
+        # Iteramos TODAS las páginas del PDF
+        for p in range(1, self.total_pages + 1):
             grid_modes.addWidget(QLabel(f"Página {p}"), p, 0)
             
             cb_mode = QComboBox()
             cb_mode.addItems(["Básico (Sin fondos)", "Editorial (Fondo Limpio)"])
-            cb_mode.setCurrentText("Básico (Sin fondos)")
+            
+            lbl_bg = QLabel("Ninguno seleccionado")
+            bg_path = None
+
+            # Recuperar memoria de la sesión anterior
+            saved_mode = self.saved_page_modes.get(p)
+            if saved_mode:
+                if saved_mode["mode"] == "editorial":
+                    cb_mode.setCurrentText("Editorial (Fondo Limpio)")
+                    if saved_mode["bg_path"] and os.path.exists(saved_mode["bg_path"]):
+                        bg_path = saved_mode["bg_path"]
+                        lbl_bg.setText(os.path.basename(bg_path))
+                        lbl_bg.setStyleSheet("color: blue; font-weight: bold;")
+            else:
+                cb_mode.setCurrentText("Básico (Sin fondos)")
+
             grid_modes.addWidget(cb_mode, p, 1)
 
-            lbl_bg = QLabel("Ninguno seleccionado")
             btn_bg = QPushButton("Aportar Arte...")
             btn_bg.clicked.connect(lambda page=p, c=cb_mode, l=lbl_bg: self._browse_bg(page, c, l))
             
@@ -135,10 +158,10 @@ class SessionSettingsGUI(QDialog):
             hb.addWidget(lbl_bg)
             grid_modes.addLayout(hb, p, 2)
             
-            self.page_widgets[p] = {"combo": cb_mode, "path": None}
+            self.page_widgets[p] = {"combo": cb_mode, "path": bg_path, "lbl": lbl_bg}
 
-        layout_modes.addLayout(grid_modes)
-        layout_modes.addStretch()
+        scroll_modes.setWidget(inner_modes)
+        layout_modes.addWidget(scroll_modes)
         self.tabs.addTab(tab_modes, "3. Modos y Arte")
 
         layout.addWidget(self.tabs)
@@ -173,10 +196,10 @@ class SessionSettingsGUI(QDialog):
         if file_path:
             combobox.setCurrentText("Editorial (Fondo Limpio)")
             label.setText(os.path.basename(file_path))
+            label.setStyleSheet("color: blue; font-weight: bold;")
             self.page_widgets[page_num]["path"] = file_path
 
     def _save_and_accept(self):
-        """Recopila todas las variables antes de destruir la ventana."""
         try:
             start = int(self.txt_start.text())
             end = int(self.txt_end.text())
@@ -199,7 +222,6 @@ class SessionSettingsGUI(QDialog):
             mode_str = "editorial" if widgets["combo"].currentText() == "Editorial (Fondo Limpio)" else "standard"
             out_modes[p] = {"mode": mode_str, "bg_path": widgets["path"]}
 
-        # GUARDAMOS EN LA VARIABLE MAESTRA PERMANENTE
         self.final_configuration = {
             "selected_pages": list(range(start, end + 1)),
             "font_mappings": out_fonts,
@@ -209,5 +231,4 @@ class SessionSettingsGUI(QDialog):
 
     def get_results(self):
         self.exec()
-        # Retorna la variable maestra construida justo antes de cerrarse
         return self.final_configuration

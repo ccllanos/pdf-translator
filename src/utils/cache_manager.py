@@ -6,35 +6,44 @@ from typing import Dict, Any, Optional
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 class ProjectCacheManager:
-    """Gestiona el estado persistente, modos de página y traducciones del proyecto."""
+    """Gestiona el ecosistema de carpetas y el estado del proyecto."""
     def __init__(self, pdf_path: str):
-        self.pdf_path = os.path.abspath(pdf_path)
-        # El archivo de caché vivirá al lado del PDF con la extensión .cache.json
-        self.cache_path = self.pdf_path + ".cache.json"
+        self.original_pdf_path = os.path.abspath(pdf_path)
+        base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+        
+        # Estructura del Proyecto en la raíz del software
+        self.project_dir = os.path.join(os.getcwd(), "projects", base_name)
+        self.bg_dir = os.path.join(self.project_dir, "fondos")
+        self.out_dir = os.path.join(self.project_dir, "salida")
+        
+        # Crear directorios si no existen
+        os.makedirs(self.bg_dir, exist_ok=True)
+        os.makedirs(self.out_dir, exist_ok=True)
+        
+        self.cache_path = os.path.join(self.project_dir, "estado_sesion.json")
         self.data: Dict[str, Any] = self._load_or_create()
 
     def _load_or_create(self) -> Dict[str, Any]:
         if os.path.exists(self.cache_path):
             try:
                 with open(self.cache_path, 'r', encoding='utf-8') as f:
-                    logging.info(f"Caché cargada exitosamente desde: {self.cache_path}")
+                    logging.info(f"Cargando sesión desde: {self.cache_path}")
                     return json.load(f)
             except Exception as e:
-                logging.error(f"Error leyendo archivo de caché corrupto: {e}. Creando uno nuevo.")
+                logging.error(f"Error leyendo caché: {e}. Creando una nueva.")
         
         return {
-            "pdf_path": self.pdf_path,
+            "pdf_path": self.original_pdf_path,
             "font_mappings": {},
-            "pages": {} # Almacenará: "1": {"mode": "editorial", "bg_path": "...", "blocks": [...]}
+            "pages": {} 
         }
 
     def save(self):
-        """Guarda el estado actual del proyecto en el archivo JSON."""
         try:
             with open(self.cache_path, 'w', encoding='utf-8') as f:
                 json.dump(self.data, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            logging.error(f"Error guardando la caché: {e}")
+            logging.error(f"Error guardando la sesión: {e}")
 
     def update_font_mapping(self, font_mappings: Dict[str, Any]):
         self.data["font_mappings"] = font_mappings
@@ -44,7 +53,6 @@ class ProjectCacheManager:
         return self.data.get("font_mappings", {})
 
     def save_page_translation(self, page_num: int, mode: str, bg_path: Optional[str], blocks: list):
-        """Guarda el modo de procesamiento, fondo limpio y bloques traducidos de una página."""
         self.data["pages"][str(page_num)] = {
             "mode": mode,
             "bg_path": bg_path,
@@ -53,8 +61,11 @@ class ProjectCacheManager:
         self.save()
 
     def get_page_cache(self, page_num: int) -> Optional[Dict[str, Any]]:
-        """Retorna la traducción guardada de una página si existe."""
         return self.data["pages"].get(str(page_num))
+
+    def get_all_page_modes(self) -> Dict[int, Dict]:
+        """Retorna la configuración de todas las páginas para precargarlas en la GUI."""
+        return {int(k): {"mode": v["mode"], "bg_path": v["bg_path"]} for k, v in self.data["pages"].items()}
 
     def is_page_translated(self, page_num: int) -> bool:
         return str(page_num) in self.data["pages"]

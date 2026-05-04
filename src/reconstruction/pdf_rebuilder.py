@@ -50,15 +50,18 @@ class PDFRebuilder:
 
             # === FASE 1: DESTRUCCIÓN NO DESTRUCTIVA DEL ARTE ===
             if self.bg_folder:
-                # Si hay fondo provisto, aplicamos redacción transparente
-                page.add_redact_annot(bbox, cross_out=False)
+                # MODO EDITORIAL: Fondo provisto.
+                # Como ya tapamos el arte original con la imagen nueva, aplicamos redacción estándar.
+                # (Se borra la memoria del texto de fondo).
+                page.add_redact_annot(bbox)
+                page.apply_redactions()
             else:
-                # Modo normal: caja blanca
-                page.add_redact_annot(bbox, fill=(1, 1, 1), cross_out=False)
-                
-            # CRÍTICO PARA D&D: images=0, graphics=0 evita que el motor borre las 
-            # ilustraciones o texturas de pergamino que están debajo del texto.
-            page.apply_redactions(images=0, graphics=0)
+                # MODO NORMAL: D&D sin fondo de reemplazo.
+                # Aquí pintamos el rectángulo blanco, pero usamos la constante correcta
+                # images=fitz.PDF_REDACT_IMAGE_NONE para proteger las fotos e ilustraciones que
+                # pudieran estar cruzando la caja de texto.
+                page.add_redact_annot(bbox, fill=(1, 1, 1))
+                page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
 
             rect = fitz.Rect(bbox)
             rect.normalize()
@@ -89,7 +92,6 @@ class PDFRebuilder:
 
             # === FASE 3: INYECCIÓN CON ESTEQUIOMETRÍA EDITORIAL ===
             if is_single_line:
-                # ALGORITMO PARA TÍTULOS (Adventure Summary)
                 if font_obj:
                     len_1pt = font_obj.text_length(new_text, fontsize=1)
                     if len_1pt > 0:
@@ -105,16 +107,13 @@ class PDFRebuilder:
                 page.insert_text(punto_base, new_text, fontsize=final_size, fontname=target_fontname, color=(0, 0, 0))
                 
             else:
-                # ALGORITMO PARA PÁRRAFOS (El cuerpo del texto de Odoacer)
-                # Damos un pequeñísimo margen de respiración
                 rect.x1 += 5
                 rect.y1 += 5
                 
                 current_size = float(block['font_size'])
                 texto_insertado = False
                 
-                # INTERLINEADO EDITORIAL: 1.35 es el estándar para lectura en manuales de rol/libros
-                # Da un espaciado armonioso entre líneas, evitando que se vea "apretado".
+                # INTERLINEADO EDITORIAL
                 espaciado_lineal = 1.35 
 
                 while current_size >= 6.0:
@@ -124,7 +123,7 @@ class PDFRebuilder:
                         fontname=target_fontname, 
                         color=(0, 0, 0), 
                         align=0,
-                        lineheight=espaciado_lineal  # Aplicamos el interlineado
+                        lineheight=espaciado_lineal
                     )
                     
                     if resultado >= 0:
@@ -134,7 +133,6 @@ class PDFRebuilder:
                         current_size -= 0.5
 
                 if not texto_insertado:
-                    # Fallback final
                     punto_seguro = fitz.Point(rect.x0, rect.y0 + 8)
                     page.insert_text(punto_seguro, new_text, fontsize=8, fontname=target_fontname, color=(0, 0, 0))
 

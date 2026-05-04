@@ -1,9 +1,58 @@
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Optional
 import os
 from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, 
                                QPushButton, QGridLayout, QFileDialog, QTabWidget, QWidget, 
                                QLineEdit, QMessageBox, QScrollArea)
 from PySide6.QtCore import Qt
+
+class LauncherGUI(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.action = None 
+        self.project_path = None
+        self.source_pdf = None
+        self._init_ui()
+
+    def _init_ui(self):
+        self.setWindowTitle("Gestor de Proyectos - PDF Translator")
+        self.resize(400, 200)
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<h2 style='text-align:center;'>🚀 Selector de Proyecto</h2>"))
+        layout.addStretch()
+        btn_new = QPushButton("📄 Crear Proyecto Nuevo")
+        btn_new.setMinimumHeight(40)
+        btn_new.clicked.connect(self._create_new)
+        btn_load = QPushButton("📁 Cargar Proyecto Existente")
+        btn_load.setMinimumHeight(40)
+        btn_load.clicked.connect(self._load_existing)
+        layout.addWidget(btn_new)
+        layout.addWidget(btn_load)
+        layout.addStretch()
+
+    def _create_new(self):
+        pdf_path, _ = QFileDialog.getOpenFileName(self, "Seleccionar PDF Original", "", "PDF (*.pdf)")
+        if pdf_path:
+            base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+            proj_dir = os.path.abspath(os.path.join(os.getcwd(), "projects", base_name))
+            self.action = 'new'
+            self.project_path = proj_dir
+            self.source_pdf = pdf_path
+            self.accept()
+
+    def _load_existing(self):
+        base_projects_dir = os.path.abspath(os.path.join(os.getcwd(), "projects"))
+        proj_dir = QFileDialog.getExistingDirectory(self, "Carpeta del Proyecto", base_projects_dir)
+        if proj_dir:
+            if os.path.exists(os.path.join(proj_dir, "estado_sesion.json")):
+                self.action = 'load'
+                self.project_path = proj_dir
+                self.accept()
+            else:
+                QMessageBox.warning(self, "Error", "La carpeta no es un proyecto válido.")
+
+    def get_result(self):
+        self.exec()
+        return self.action, self.project_path, self.source_pdf
 
 class SessionSettingsGUI(QDialog):
     def __init__(self, pdf_fonts: Set[str], font_cloud_report: List[Dict], total_pages: int, 
@@ -12,63 +61,48 @@ class SessionSettingsGUI(QDialog):
         self.pdf_fonts = pdf_fonts
         self.font_cloud_report = font_cloud_report
         self.total_pages = total_pages
-        
         self.final_configuration = None 
         self.saved_mappings = initial_font_mappings or {}
         self.saved_page_modes = initial_page_modes or {}
         
         self.font_to_pdf_code = {
-            "Helvetica (Base)": "helv",
-            "Times-Roman (Base)": "tiro",
-            "Courier (Base)": "cour",
-            "Symbol (Base)": "symb",
-            "ZapfDingbats (Base)": "zadb"
+            "Helvetica (Base)": "helv", "Times-Roman (Base)": "tiro",
+            "Courier (Base)": "cour", "Symbol (Base)": "symb", "ZapfDingbats (Base)": "zadb"
         }
         self._init_ui()
 
     def _init_ui(self):
-        self.setWindowTitle("Configuración de Proyecto de Traducción")
+        self.setWindowTitle("Configuración de Proyecto")
         self.resize(850, 600)
         layout = QVBoxLayout(self)
         layout.addWidget(QLabel("<h2 style='color:#2c3e50;'>⚙️ Parámetros de la Sesión</h2>"))
-        
         self.tabs = QTabWidget()
         
-        # --- TAB 1: PÁGINAS ---
+        # TAB 1: PÁGINAS
         tab_pages = QWidget()
         layout_pages = QVBoxLayout(tab_pages)
         layout_pages.addWidget(QLabel("<h3>1. Rango de Páginas a Procesar</h3>"))
-        layout_pages.addWidget(QLabel(f"Total de páginas en el documento: <b>{self.total_pages}</b>"))
-        
         range_layout = QHBoxLayout()
         range_layout.addWidget(QLabel("Desde:"))
         self.txt_start = QLineEdit("1")
         self.txt_start.setFixedWidth(50)
         range_layout.addWidget(self.txt_start)
-        
         range_layout.addWidget(QLabel("Hasta:"))
         self.txt_end = QLineEdit(str(self.total_pages))
         self.txt_end.setFixedWidth(50)
         range_layout.addWidget(self.txt_end)
         range_layout.addStretch()
-        
         layout_pages.addLayout(range_layout)
         layout_pages.addStretch()
         self.tabs.addTab(tab_pages, "1. Selección")
 
-        # --- TAB 2: FUENTES (Con SCROLL) ---
+        # TAB 2: FUENTES
         tab_fonts = QWidget()
         layout_fonts = QVBoxLayout(tab_fonts)
-        layout_fonts.addWidget(QLabel("<h3>2. Configuración de Tipografías</h3>"))
-        
         scroll_fonts = QScrollArea()
         scroll_fonts.setWidgetResizable(True)
         inner_fonts = QWidget()
         grid_fonts = QGridLayout(inner_fonts)
-
-        grid_fonts.addWidget(QLabel("<b>Fuente Original</b>"), 0, 0)
-        grid_fonts.addWidget(QLabel("<b>Reemplazo</b>"), 0, 1)
-        grid_fonts.addWidget(QLabel("<b>Archivo Custom (.ttf)</b>"), 0, 2)
 
         self.font_comboboxes = {}
         self.font_custom_paths = {}
@@ -76,10 +110,8 @@ class SessionSettingsGUI(QDialog):
         for row, font_info in enumerate(self.font_cloud_report, start=1):
             raw_font = font_info['raw_name']
             grid_fonts.addWidget(QLabel(f"• {raw_font}"), row, 0)
-
             cb = QComboBox()
             cb.addItems(list(self.font_to_pdf_code.keys()) + ["-- USAR ARCHIVO .TTF --"])
-            
             saved = self.saved_mappings.get(raw_font)
             if saved:
                 if saved["type"] == "custom":
@@ -88,19 +120,13 @@ class SessionSettingsGUI(QDialog):
                 else:
                     for k, v in self.font_to_pdf_code.items():
                         if v == saved["value"]: cb.setCurrentText(k)
-            else:
-                if "times" in raw_font.lower() or "serif" in raw_font.lower():
-                    cb.setCurrentText("Times-Roman (Base)")
-                else:
-                    cb.setCurrentText("Helvetica (Base)")
-
+            else: cb.setCurrentText("Helvetica (Base)")
             grid_fonts.addWidget(cb, row, 1)
             self.font_comboboxes[raw_font] = cb
 
             lbl_file = QLabel("No cargado" if raw_font not in self.font_custom_paths else os.path.basename(self.font_custom_paths[raw_font]))
             btn_browse = QPushButton("Examinar...")
             btn_browse.clicked.connect(lambda r=raw_font, c=cb, l=lbl_file: self._browse_font(r, c, l))
-            
             hb = QHBoxLayout()
             hb.addWidget(btn_browse)
             hb.addWidget(lbl_file)
@@ -110,33 +136,34 @@ class SessionSettingsGUI(QDialog):
         layout_fonts.addWidget(scroll_fonts)
         self.tabs.addTab(tab_fonts, "2. Tipografías")
 
-        # --- TAB 3: MODOS Y FONDOS (Con SCROLL TOTAL) ---
+        # TAB 3: MODOS, MOTORES Y FONDOS
         tab_modes = QWidget()
         layout_modes = QVBoxLayout(tab_modes)
-        layout_modes.addWidget(QLabel("<h3>3. Modos de Página & Fondos</h3>"))
-        
         scroll_modes = QScrollArea()
         scroll_modes.setWidgetResizable(True)
         inner_modes = QWidget()
         grid_modes = QGridLayout(inner_modes)
 
         grid_modes.addWidget(QLabel("<b>Página</b>"), 0, 0)
-        grid_modes.addWidget(QLabel("<b>Modo</b>"), 0, 1)
-        grid_modes.addWidget(QLabel("<b>Fondo Limpio</b>"), 0, 2)
+        grid_modes.addWidget(QLabel("<b>Estructura Visual</b>"), 0, 1)
+        grid_modes.addWidget(QLabel("<b>Motor de Traducción</b>"), 0, 2) # NUEVO COLLUMNA
+        grid_modes.addWidget(QLabel("<b>Fondo Limpio</b>"), 0, 3)
 
         self.page_widgets = {}
-        
-        # Iteramos TODAS las páginas del PDF
         for p in range(1, self.total_pages + 1):
             grid_modes.addWidget(QLabel(f"Página {p}"), p, 0)
             
+            # Combo visual
             cb_mode = QComboBox()
             cb_mode.addItems(["Básico (Sin fondos)", "Editorial (Fondo Limpio)"])
             
-            lbl_bg = QLabel("Ninguno seleccionado")
+            # NUEVO: Combo Motor IA
+            cb_engine = QComboBox()
+            cb_engine.addItems(["Local LLM (Lento)", "Google (Rápido)"])
+            
+            lbl_bg = QLabel("Ninguno")
             bg_path = None
 
-            # Recuperar memoria de la sesión anterior
             saved_mode = self.saved_page_modes.get(p)
             if saved_mode:
                 if saved_mode["mode"] == "editorial":
@@ -144,33 +171,30 @@ class SessionSettingsGUI(QDialog):
                     if saved_mode["bg_path"] and os.path.exists(saved_mode["bg_path"]):
                         bg_path = saved_mode["bg_path"]
                         lbl_bg.setText(os.path.basename(bg_path))
-                        lbl_bg.setStyleSheet("color: blue; font-weight: bold;")
-            else:
-                cb_mode.setCurrentText("Básico (Sin fondos)")
-
-            grid_modes.addWidget(cb_mode, p, 1)
-
-            btn_bg = QPushButton("Aportar Arte...")
-            btn_bg.clicked.connect(lambda page=p, c=cb_mode, l=lbl_bg: self._browse_bg(page, c, l))
+                if saved_mode.get("engine") == "google":
+                    cb_engine.setCurrentText("Google (Rápido)")
             
+            grid_modes.addWidget(cb_mode, p, 1)
+            grid_modes.addWidget(cb_engine, p, 2)
+
+            btn_bg = QPushButton("Arte...")
+            btn_bg.clicked.connect(lambda page=p, c=cb_mode, l=lbl_bg: self._browse_bg(page, c, l))
             hb = QHBoxLayout()
             hb.addWidget(btn_bg)
             hb.addWidget(lbl_bg)
-            grid_modes.addLayout(hb, p, 2)
+            grid_modes.addLayout(hb, p, 3)
             
-            self.page_widgets[p] = {"combo": cb_mode, "path": bg_path, "lbl": lbl_bg}
+            self.page_widgets[p] = {"combo": cb_mode, "engine": cb_engine, "path": bg_path, "lbl": lbl_bg}
 
         scroll_modes.setWidget(inner_modes)
         layout_modes.addWidget(scroll_modes)
-        self.tabs.addTab(tab_modes, "3. Modos y Arte")
+        self.tabs.addTab(tab_modes, "3. Procesamiento y Arte")
 
         layout.addWidget(self.tabs)
 
-        # Botones
         btn_layout = QHBoxLayout()
         btn_cancel = QPushButton("Cancelar")
         btn_cancel.clicked.connect(self.reject)
-        
         btn_confirm = QPushButton("Confirmar y Procesar ➔")
         btn_confirm.setStyleSheet("background-color: #27ae60; color: white; font-weight: bold; padding: 10px;")
         btn_confirm.clicked.connect(self._save_and_accept)
@@ -184,9 +208,7 @@ class SessionSettingsGUI(QDialog):
         file_path, _ = QFileDialog.getOpenFileName(self, "Seleccionar .ttf", "C:\\Windows\\Fonts", "Fuentes (*.ttf *.otf)")
         if file_path:
             short_name = os.path.basename(file_path)
-            if short_name.startswith("._") or "__MACOSX" in file_path:
-                QMessageBox.warning(self, "Error", "Archivo residual de Mac no permitido.")
-                return
+            if short_name.startswith("._") or "__MACOSX" in file_path: return
             combobox.setCurrentText("-- USAR ARCHIVO .TTF --")
             label.setText(short_name)
             self.font_custom_paths[raw_font] = file_path
@@ -196,19 +218,12 @@ class SessionSettingsGUI(QDialog):
         if file_path:
             combobox.setCurrentText("Editorial (Fondo Limpio)")
             label.setText(os.path.basename(file_path))
-            label.setStyleSheet("color: blue; font-weight: bold;")
             self.page_widgets[page_num]["path"] = file_path
 
     def _save_and_accept(self):
-        try:
-            start = int(self.txt_start.text())
-            end = int(self.txt_end.text())
-            if not (1 <= start <= end <= self.total_pages): raise ValueError()
-        except:
-            QMessageBox.critical(self, "Error", "Rango de páginas inválido.")
-            return
+        start, end = int(self.txt_start.text()), int(self.txt_end.text())
+        out_fonts, out_modes = {}, {}
 
-        out_fonts = {}
         for raw_font, cb in self.font_comboboxes.items():
             selection = cb.currentText()
             if selection == "-- USAR ARCHIVO .TTF --" and raw_font in self.font_custom_paths:
@@ -217,10 +232,10 @@ class SessionSettingsGUI(QDialog):
                 base_sel = selection if selection != "-- USAR ARCHIVO .TTF --" else "Helvetica (Base)"
                 out_fonts[raw_font] = {"type": "base", "value": self.font_to_pdf_code[base_sel]}
 
-        out_modes = {}
         for p, widgets in self.page_widgets.items():
             mode_str = "editorial" if widgets["combo"].currentText() == "Editorial (Fondo Limpio)" else "standard"
-            out_modes[p] = {"mode": mode_str, "bg_path": widgets["path"]}
+            engine_str = "google" if widgets["engine"].currentText() == "Google (Rápido)" else "llm"
+            out_modes[p] = {"mode": mode_str, "engine": engine_str, "bg_path": widgets["path"]}
 
         self.final_configuration = {
             "selected_pages": list(range(start, end + 1)),
@@ -232,63 +247,3 @@ class SessionSettingsGUI(QDialog):
     def get_results(self):
         self.exec()
         return self.final_configuration
-    
-from PySide6.QtWidgets import QDialog, QVBoxLayout, QPushButton, QLabel, QFileDialog
-import os
-
-class LauncherGUI(QDialog):
-    """Pantalla inicial para elegir entre crear o cargar un proyecto."""
-    def __init__(self):
-        super().__init__()
-        self.action = None # 'new' o 'load'
-        self.project_path = None
-        self.source_pdf = None
-        self._init_ui()
-
-    def _init_ui(self):
-        self.setWindowTitle("Gestor de Proyectos - PDF Translator")
-        self.resize(400, 200)
-        layout = QVBoxLayout(self)
-        
-        layout.addWidget(QLabel("<h2 style='text-align:center;'>🚀 Selector de Proyecto</h2>"))
-        layout.addStretch()
-
-        btn_new = QPushButton("📄 Crear Proyecto Nuevo (Seleccionar PDF)")
-        btn_new.setMinimumHeight(40)
-        btn_new.clicked.connect(self._create_new)
-        
-        btn_load = QPushButton("📁 Cargar Proyecto Existente (Seleccionar Carpeta)")
-        btn_load.setMinimumHeight(40)
-        btn_load.clicked.connect(self._load_existing)
-        
-        layout.addWidget(btn_new)
-        layout.addWidget(btn_load)
-        layout.addStretch()
-
-    def _create_new(self):
-        pdf_path, _ = QFileDialog.getOpenFileName(self, "Seleccionar PDF Original", "", "PDF (*.pdf)")
-        if pdf_path:
-            base_name = os.path.splitext(os.path.basename(pdf_path))[0]
-            # Creamos la carpeta del proyecto en ./projects/
-            proj_dir = os.path.abspath(os.path.join(os.getcwd(), "projects", base_name))
-            
-            self.action = 'new'
-            self.project_path = proj_dir
-            self.source_pdf = pdf_path
-            self.accept()
-
-    def _load_existing(self):
-        base_projects_dir = os.path.abspath(os.path.join(os.getcwd(), "projects"))
-        proj_dir = QFileDialog.getExistingDirectory(self, "Seleccionar Carpeta del Proyecto", base_projects_dir)
-        if proj_dir:
-            # Validamos que sea un proyecto válido
-            if os.path.exists(os.path.join(proj_dir, "estado_sesion.json")):
-                self.action = 'load'
-                self.project_path = proj_dir
-                self.accept()
-            else:
-                QMessageBox.warning(self, "Error", "La carpeta seleccionada no es un proyecto válido de PDF Translator.")
-
-    def get_result(self):
-        self.exec()
-        return self.action, self.project_path, self.source_pdf

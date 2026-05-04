@@ -1,4 +1,6 @@
 import logging
+import re
+from deep_translator import GoogleTranslator
 from lm_studio_integration.client import LMStudioClient
 from validation_pipeline.translation_checker import validate_spatial_fit, SpatialOverflowError
 
@@ -7,23 +9,40 @@ class TranslationService:
         self.llm_client = LMStudioClient()
         self.max_retries = 2
 
-    def translate_block(self, text_block: str, source: str, target: str) -> str:
-        """Traduce un bloque completo (párrafo) respetando el espacio visual."""
-        
+    def _clean_chatty_llm(self, text: str) -> str:
+        cleaned = text.strip()
+        if cleaned.startswith('"') and cleaned.endswith('"'): cleaned = cleaned[1:-1]
+        chatty_patterns = [r"(?i)^here is the translation:?\s*", r"(?i)^translation:?\s*", r"(?i)^sure[,!]\s*here.+:?\s*"]
+        for pattern in chatty_patterns:
+            cleaned = re.sub(pattern, "", cleaned).strip()
+        return cleaned
+
+    def translate_block(self, text_block: str, source: str, target: str, engine: str = "llm") -> str:
         if not text_block or text_block.isspace():
             return text_block
 
-        current_prompt_constraint = "Translate accurately, keeping a natural tone."
+        # RUTA 1: GOOGLE TRANSLATE (Rápido, sin restricciones)
+        if engine == "google":
+            logging.info("Usando Google Translate (Modo rápido)...")
+            try:
+                # Target.lower() convierte "Spanish" a "spanish", formato que deep-translator acepta
+                translated = GoogleTranslator(source='auto', target=target.lower()).translate(text_block)
+                return translated
+            except Exception as e:
+                logging.error(f"Error con Google Translate: {e}. Usando texto original.")
+                return text_block
+
+        # RUTA 2: LLM LOCAL (Lento, controlado semánticamente)
+        current_prompt_constraint = "Translate the text exactly."
         max_chars = int(len(text_block) * 1.15) + (5 if len(text_block) < 20 else 0)
 
         for attempt in range(1, self.max_retries + 1):
-            logging.info(f"Traduciendo Bloque ({len(text_block)} chars) - Intento {attempt}")
+            logging.info(f"Traduciendo con LLM Local - Intento {attempt}")
             
-            # Ajustamos el cliente (no necesitamos required_length exacto, solo pasamos el prompt modificado)
             system_prompt = (
-                f"You are a professional document translator. Translate from {source} to {target}. "
-                f"CRITICAL CONSTRAINT: {current_prompt_constraint} "
-                f"Output ONLY the translation. No thinking process, no reasoning, no quotes."
+                f"You are a strict Translation API. Translate from {source} to {target}. "
+                f"{current_prompt_constraint} "
+                f"IMPORTANT: Respond ONLY with the final translated text."
             )
 
             try:
@@ -31,26 +50,21 @@ class TranslationService:
                     model=self.llm_client.model,
                     messages=[
                         {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": f"Text to translate:\n\n{text_block}"}
+                        {"role": "user", "content": f"Text:\n{text_block}"}
                     ],
-                    temperature=0.3,
-                    max_tokens=500  # Espacio amplio para traducir párrafos enteros
+                    temperature=0.1, max_tokens=250
                 )
                 
-                llm_output = response.choices[0].message.content.strip()
-                
-                # Validación Espacial
+                llm_output = self._clean_chatty_llm(response.choices[0].message.content)
                 validate_spatial_fit(text_block, llm_output)
-                logging.info("✅ TRADUCCIÓN ACEPTADA (Encaja en la caja delimitadora)")
                 return llm_output
                 
             except SpatialOverflowError as e:
                 logging.warning(f"❌ FALLO ESPACIAL: {e}")
-                # Modificamos la restricción para el siguiente intento
-                current_prompt_constraint = f"Summarize the translation to be STRICTLY LESS THAN {max_chars} characters. Be concise!"
+                current_prompt_constraint = f"Summarize translation so it is LESS THAN {max_chars} characters!"
             except Exception as e:
-                logging.error(f"Error de conexión LLM: {e}")
+                logging.error(f"Error LLM: {e}")
                 return "<ERROR_LLM>"
                 
-        logging.error("Se agotaron los intentos. Forzando ajuste de texto en la caja.")
-        return llm_output[:max_chars] + "..." # Truncamiento suave al final del bloque
+        logging.error("LLM falló reiteradamente. Forzando longitud.")
+        return llm_output[:max_chars]

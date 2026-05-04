@@ -36,12 +36,10 @@ class PDFRebuilder:
         return lines
 
     def apply_page_rendering(self, page_num: int, mode: str, bg_path: str, blocks: List[Dict[str, Any]]):
-        """Renderiza una página individualmente aplicando los bloques traducidos."""
         page = self.doc[page_num - 1]
 
         # 1. Aplicar Fondo Limpio si existe
         if mode == "editorial" and bg_path and os.path.exists(bg_path):
-            logging.info(f"Página {page_num}: Insertando fondo limpio aportado por el usuario.")
             page.insert_image(page.rect, filename=bg_path)
 
         # 2. Inyección de Bloques
@@ -53,11 +51,13 @@ class PDFRebuilder:
             if not new_text or new_text.isspace():
                 continue
 
-            # Destrucción controlada
+            # CRÍTICO: Corrección del Rectángulo Blanco.
             if mode == "editorial":
+                # La redacción no tiene color (transparente) y NO borramos imágenes
                 page.add_redact_annot(bbox, cross_out=False)
-                page.apply_redactions()
+                page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
             else:
+                # La redacción tiene color blanco (tapa el fondo escaneado base)
                 page.add_redact_annot(bbox, fill=(1, 1, 1), cross_out=False)
                 page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
 
@@ -68,7 +68,6 @@ class PDFRebuilder:
             
             is_single_line = box_height <= (block['font_size'] * 1.8)
 
-           # === FASE 2: CARGA DE FUENTES Y MÉTRICAS ===
             mapping_info = self.user_font_mapping.get(raw_font, {"type": "base", "value": "helv"})
             font_obj = None
 
@@ -77,12 +76,10 @@ class PDFRebuilder:
                 if os.path.exists(ttf_path):
                     target_fontname = f"cfont_{self.custom_font_counter}"
                     try:
-                        # Registro de fuente externa física
                         page.insert_font(fontname=target_fontname, fontfile=ttf_path)
                         font_obj = fitz.Font(fontfile=ttf_path)
                         self.custom_font_counter += 1
-                    except Exception as e:
-                        logging.error(f"Error incrustando fuente {ttf_path}: {e}")
+                    except:
                         target_fontname = "helv"
                         font_obj = fitz.Font(fontname=target_fontname)
                 else:
@@ -91,10 +88,9 @@ class PDFRebuilder:
             else:
                 target_fontname = mapping_info["value"]
                 font_obj = fitz.Font(fontname=target_fontname)
-                
-            # Inyección Estequiométrica
+
             if is_single_line:
-                len_1pt = font_obj.text_length(new_text, fontsize=1)
+                len_1pt = font_obj.text_length(new_text, fontsize=1) if font_obj else 0
                 final_size = min(box_width / len_1pt, block['font_size'] * 1.15) if len_1pt > 0 else block['font_size']
                 page.insert_text(fitz.Point(rect.x0, rect.y0 + (final_size * 0.85)), new_text, fontsize=final_size, fontname=target_fontname, color=(0, 0, 0))
             else:

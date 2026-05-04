@@ -95,7 +95,7 @@ class SessionSettingsGUI(QDialog):
 
             lbl_file = QLabel("No cargado" if raw_font not in self.font_custom_paths else os.path.basename(self.font_custom_paths[raw_font]))
             btn_browse = QPushButton("Examinar...")
-            btn_browse.clicked.connect(lambda _, r=raw_font, c=cb, l=lbl_file: self._browse_font(r, c, l))
+            btn_browse.clicked.connect(lambda r=raw_font, c=cb, l=lbl_file: self._browse_font(r, c, l))
             
             hb = QHBoxLayout()
             hb.addWidget(btn_browse)
@@ -128,7 +128,7 @@ class SessionSettingsGUI(QDialog):
 
             lbl_bg = QLabel("Ninguno seleccionado")
             btn_bg = QPushButton("Aportar Arte...")
-            btn_bg.clicked.connect(lambda _, page=p, c=cb_mode, l=lbl_bg: self._browse_bg(page, c, l))
+            btn_bg.clicked.connect(lambda page=p, c=cb_mode, l=lbl_bg: self._browse_bg(page, c, l))
             
             hb = QHBoxLayout()
             hb.addWidget(btn_bg)

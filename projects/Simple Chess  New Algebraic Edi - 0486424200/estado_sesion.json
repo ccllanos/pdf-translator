@@ -1,0 +1,894 @@
+{
+  "font_mappings": {
+    "Fd1470": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd206917": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd196420": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd196421": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd86904": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd209544": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd206918": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd209547": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd206919": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd209545": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd121851": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd177508": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd57154": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd211852": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd3078": {
+      "type": "base",
+      "value": "tiro"
+    }
+  },
+  "pages": {
+    "8": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            30.600000381469727,
+            33.74378204345703,
+            187.75515747070312,
+            50.62882995605469
+          ],
+          "translated_text": "1. Introducción",
+          "font_name": "Fd206918",
+          "font_size": 13.649999618530273
+        },
+        {
+          "bbox": [
+            64.80999755859375,
+            58.96596145629883,
+            321.6243896484375,
+            68.64595794677734
+          ],
+          "translated_text": "No os dejéis engañar por el título: el ajedrez no es un juego sencillo.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.569000244140625,
+            72.30598449707031,
+            321.7292175292969,
+            81.9859848022461
+          ],
+          "translated_text": "juego (tal afirmación sería engañosa por decir lo menos), pero",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798004150390625,
+            85.64598083496094,
+            321.56982421875,
+            95.32598114013672
+          ],
+          "translated_text": "Eso no significa que debamos soportar todo el peso de su",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97802734375,
+            99.16596984863281,
+            321.552490234375,
+            108.8459701538086
+          ],
+          "translated_text": "dificultad. Cuando nos enfrentamos a un problema demasiado grande para afrontarlo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.6180419921875,
+            112.75596618652344,
+            321.580810546875,
+            122.43596649169922
+          ],
+          "translated_text": "como una entidad única, el sentido común nos dice que la descompongamos",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977020263671875,
+            126.21595764160156,
+            322.0384216308594,
+            135.89596557617188
+          ],
+          "translated_text": "en fragmentos más pequeños de proporciones manejables. Para",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97802734375,
+            139.6759490966797,
+            322.2079772949219,
+            149.35595703125
+          ],
+          "translated_text": "Por ejemplo, el problema aritmético de dividir un número entre",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157012939453125,
+            153.1659393310547,
+            321.49432373046875,
+            162.845947265625
+          ],
+          "translated_text": "otro no es uno que en general se pueda resolver en un solo paso,",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.7969970703125,
+            166.6459503173828,
+            322.2071838378906,
+            176.32595825195312
+          ],
+          "translated_text": "pero la escuela primaria nos enseñó a encontrar la respuesta mediante una serie de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97698974609375,
+            180.1759490966797,
+            321.9380187988281,
+            189.85595703125
+          ],
+          "translated_text": "Procesos de división simples (es decir, división larga).  Entonces, ¿cómo puede",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.61798095703125,
+            193.60594177246094,
+            252.87660217285156,
+            203.28594970703125
+          ],
+          "translated_text": "¿Cómo desglosamos el 'problema' de jugar al ajedrez?",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            64.80799865722656,
+            207.18592834472656,
+            322.22119140625,
+            216.86593627929688
+          ],
+          "translated_text": "Entregue a dos de los no iniciados un tablero de ajedrez, un juego de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.25799560546875,
+            220.7359161376953,
+            321.55401611328125,
+            230.41592407226562
+          ],
+          "translated_text": "piezas de ajedrez, una lista de reglas y mucho tiempo, y es posible que",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977020263671875,
+            234.20591735839844,
+            321.70001220703125,
+            243.88592529296875
+          ],
+          "translated_text": "observe el siguiente proceso: el más brillante de los dos",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.5770263671875,
+            247.70591735839844,
+            321.5534362792969,
+            257.38592529296875
+          ],
+          "translated_text": "comprender rápidamente la idea del jaque mate y ganar algo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977996826171875,
+            261.095947265625,
+            321.3551940917969,
+            270.77593994140625
+          ],
+          "translated_text": "juegos por 1 .  e4 2. Ac4 3. DhS 4. DXf7 mate. cuando menos",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97900390625,
+            274.64593505859375,
+            321.6938171386719,
+            284.325927734375
+          ],
+          "translated_text": "observador de nuestros hermanos aprende a defender su casilla f7",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798980712890625,
+            288.0859375,
+            321.87774658203125,
+            297.76593017578125
+          ],
+          "translated_text": "Con el tiempo, los juegos se harán más largos y esto ocurrirá gradualmente.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.978988647460938,
+            301.7359313964844,
+            322.9974670410156,
+            311.4159240722656
+          ],
+          "translated_text": "a los jugadores que el equipo con más piezas generalmente jugará",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.99798583984375,
+            315.0959167480469,
+            322.0050964355469,
+            324.7759094238281
+          ],
+          "translated_text": "se podrá forzar un eventual jaque mate. Este es el primero",
+          "font_name": "Fd3078",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.7979736328125,
+            328.575927734375,
+            321.528564453125,
+            338.25592041015625
+          ],
+          "translated_text": "importante \"reducción\" del problema del juego de ajedrez: la",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.567977905273438,
+            342.1259460449219,
+            321.4828186035156,
+            351.8059387207031
+          ],
+          "translated_text": "la fuerza numéricamente superior ganará. Así que ahora nuestros dos novicios",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.617996215820312,
+            355.6059265136719,
+            321.6208190917969,
+            365.2859191894531
+          ],
+          "translated_text": "Ya no buscará construir compañeros directos, estas amenazas son",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798004150390625,
+            369.1459045410156,
+            321.4745178222656,
+            378.8258972167969
+          ],
+          "translated_text": "demasiado fácil de parar, pero comenzará a aprender los trucos del oficio",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.61700439453125,
+            382.6959228515625,
+            321.3759460449219,
+            392.37591552734375
+          ],
+          "translated_text": "para ganar material (tenedores, brochetas, alfileres, etc.), confiado",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798019409179688,
+            396.26593017578125,
+            321.6036376953125,
+            405.9459228515625
+          ],
+          "translated_text": "que este objetivo más pequeño es suficiente. El tiempo pasa y cada",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.618011474609375,
+            409.8359375,
+            321.7692565917969,
+            419.51593017578125
+          ],
+          "translated_text": "El jugador se vuelve lo suficientemente competente como para no perder material.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.088043212890625,
+            423.40594482421875,
+            322.0262451171875,
+            433.0859375
+          ],
+          "translated_text": "sin causa. Ahora empiezan a darse cuenta de la importancia de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.61505126953125,
+            436.9859313964844,
+            321.45367431640625,
+            446.6659240722656
+          ],
+          "translated_text": "desarrollarse rápida y armoniosamente y de enrocar al rey.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.614044189453125,
+            450.6059265136719,
+            83.07344055175781,
+            460.2859191894531
+          ],
+          "translated_text": "a la seguridad.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            64.6240463256836,
+            464.2059326171875,
+            321.6900329589844,
+            473.88592529296875
+          ],
+          "translated_text": "Entonces, ¿qué sigue? ¿Dónde están sus nuevos objetivos? Cómo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.434051513671875,
+            477.8059387207031,
+            321.1766662597656,
+            487.4859313964844
+          ],
+          "translated_text": "¿Se puede reducir aún más el problema? Si cada jugador es",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.43603515625,
+            491.2959289550781,
+            321.1682434082031,
+            500.9759216308594
+          ],
+          "translated_text": "capaz de desarrollarse rápidamente, enrocarse y no",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.2550048828125,
+            504.8859558105469,
+            321.1698303222656,
+            514.56591796875
+          ],
+          "translated_text": "desperdiciando las piezas, ¿qué hay para separar las",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            172.44403076171875,
+            551.325927734375,
+            178.4280242919922,
+            561.0059204101562
+          ],
+          "translated_text": "1",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "9": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            28.799999237060547,
+            33.62599563598633,
+            321.88421630859375,
+            43.30599594116211
+          ],
+          "translated_text": "dos lados? Este es el punto de partida del Ajedrez Simple. lo intenta",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.802032470703125,
+            46.83601760864258,
+            321.52911376953125,
+            56.51601791381836
+          ],
+          "translated_text": "reducir aún más el problema recomendando varias",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.801040649414062,
+            60.15602493286133,
+            321.69830322265625,
+            69.83602142333984
+          ],
+          "translated_text": "objetivos posicionales por los que puedes trabajar, otras cosas",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.340042114257812,
+            73.47602844238281,
+            321.749267578125,
+            83.1560287475586
+          ],
+          "translated_text": "(Es decir, material, desarrollo, seguridad de la posición del rey) siendo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.39105224609375,
+            86.92604064941406,
+            321.8128662109375,
+            96.60604095458984
+          ],
+          "translated_text": "igual. Así como nuestros dos amigos ficticios descubrieron que el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.721038818359375,
+            100.33604431152344,
+            321.8604736328125,
+            110.01604461669922
+          ],
+          "translated_text": "uno con más piezas puede esperar ganar si evita alguna",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.481048583984375,
+            114.78605651855469,
+            321.77947998046875,
+            124.46605682373047
+          ],
+          "translated_text": "trampas de apareamiento, Simple Chess le proporcionará algunas",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.9820556640625,
+            128.82606506347656,
+            321.6468811035156,
+            138.50607299804688
+          ],
+          "translated_text": "objetivos igualmente elementales que, de alcanzarse, deberían",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.983062744140625,
+            142.3060760498047,
+            321.9619140625,
+            151.986083984375
+          ],
+          "translated_text": "eventualmente decidirá el juego a su favor, sujeto a las",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1630859375,
+            155.74607849121094,
+            321.53350830078125,
+            165.42608642578125
+          ],
+          "translated_text": "reforzado con la condición de que no permita ningún truco de apareamiento,",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.93310546875,
+            169.2760772705078,
+            182.24510192871094,
+            178.95608520507812
+          ],
+          "translated_text": "ni pierde ningún material en el camino.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.16211700439453,
+            182.7760772705078,
+            321.1980285644531,
+            192.45608520507812
+          ],
+          "translated_text": "Básicamente, Simple Chess pretende brindarte algunas de las",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.8021240234375,
+            196.23606872558594,
+            321.64154052734375,
+            205.91607666015625
+          ],
+          "translated_text": "ideas básicas para formar una campaña a largo plazo. También muestra",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.8011474609375,
+            209.70606994628906,
+            321.7577819824219,
+            219.38607788085938
+          ],
+          "translated_text": "¿Cómo reconocer y acumular cosas pequeñas, a veces?",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.161148071289062,
+            223.24607849121094,
+            321.5201416015625,
+            232.92608642578125
+          ],
+          "translated_text": "ventajas que parecen casi insignificantes y que bien pueden tener",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.981109619140625,
+            236.73606872558594,
+            322.3793029785156,
+            246.41607666015625
+          ],
+          "translated_text": "poco o ningún efecto a corto plazo, pero son características permanentes de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.98211669921875,
+            250.1460723876953,
+            321.7131652832031,
+            259.8260803222656
+          ],
+          "translated_text": "la posición. A medida que avanza el juego, el efecto acumulativo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.8011474609375,
+            263.68609619140625,
+            321.9999084472656,
+            273.3660888671875
+          ],
+          "translated_text": "comienza a hacerse sentir cada vez más, lo que eventualmente lleva",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.980148315429688,
+            277.1460876464844,
+            321.77655029296875,
+            286.8260803222656
+          ],
+          "translated_text": "a ganancias más tangibles. Este estilo de juego es simple y",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.159149169921875,
+            290.6460876464844,
+            321.75823974609375,
+            300.3260803222656
+          ],
+          "translated_text": "económico tanto en su concepción como en su ejecución.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.159164428710938,
+            304.16607666015625,
+            321.921142578125,
+            313.8460693359375
+          ],
+          "translated_text": "Las combinaciones y ataques se dejan de lado para su debido momento.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.159149169921875,
+            317.6860656738281,
+            321.6539611816406,
+            327.3660583496094
+          ],
+          "translated_text": "y colocar como culminación de una estrategia global. Dado que",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15814208984375,
+            331.14605712890625,
+            321.8939514160156,
+            340.8260498046875
+          ],
+          "translated_text": "En una posición adecuada no es tan difícil abrumar al",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.976165771484375,
+            344.64605712890625,
+            321.9239501953125,
+            354.3260498046875
+          ],
+          "translated_text": "oposición con una avalancha de sacrificios. El verdadero problema",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1551513671875,
+            358.14605712890625,
+            321.96636962890625,
+            367.8260498046875
+          ],
+          "translated_text": "es cómo obtener dichos puestos. Este es el objetivo de Simple",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.695159912109375,
+            372.0712585449219,
+            59.790565490722656,
+            381.4256591796875
+          ],
+          "translated_text": "Ajedrez.",
+          "font_name": "Fd3078",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.15515899658203,
+            385.3260498046875,
+            321.5995788574219,
+            395.00604248046875
+          ],
+          "translated_text": "Sin duda la mejor manera de mejorar tu ajedrez es",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1551513671875,
+            398.8760681152344,
+            321.3187561035156,
+            408.5560607910156
+          ],
+          "translated_text": "Estudiar juegos de maestro y gran maestro. Por esta razón yo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97412109375,
+            412.4360656738281,
+            321.8217468261719,
+            422.1160583496094
+          ],
+          "translated_text": "han utilizado una selección de estos juegos como medio a través de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.613143920898438,
+            426.0460510253906,
+            321.75360107421875,
+            435.7260437011719
+          ],
+          "translated_text": "que transmitir los principios fundamentales de la simple",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.972137451171875,
+            439.6560363769531,
+            321.87615966796875,
+            449.3360290527344
+          ],
+          "translated_text": "ajedrez. Estos juegos en su mayoría no son del tipo que capturan el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.971160888671875,
+            453.2360534667969,
+            322.1120300292969,
+            462.9160461425781
+          ],
+          "translated_text": "protagonismo de la literatura sobre ajedrez porque son demasiado simples y",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.53118896484375,
+            466.8660583496094,
+            321.8631896972656,
+            476.5460510253906
+          ],
+          "translated_text": "sensacionales, pero por eso mismo son adecuados para",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.340179443359375,
+            480.446044921875,
+            277.8895568847656,
+            490.12603759765625
+          ],
+          "translated_text": "mostrando claramente las ideas básicas que quiero transmitir.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            64.62117004394531,
+            493.9260559082031,
+            321.5726318359375,
+            503.6060485839844
+          ],
+          "translated_text": "Como paso previo a la división de los elementos de simples",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.7891845703125,
+            507.4960632324219,
+            321.6380310058594,
+            517.176025390625
+          ],
+          "translated_text": "ajedrez en una serie de objetivos reconocibles, como lo hará",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.10919189453125,
+            521.0460205078125,
+            321.61865234375,
+            530.7260131835938
+          ],
+          "translated_text": "ocurrirán en los capítulos siguientes, quiero darles",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            171.35922241210938,
+            555.2003173828125,
+            177.7033233642578,
+            563.6325073242188
+          ],
+          "translated_text": "2",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        }
+      ]
+    }
+  }
+}

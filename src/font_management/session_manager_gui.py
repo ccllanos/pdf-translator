@@ -232,3 +232,63 @@ class SessionSettingsGUI(QDialog):
     def get_results(self):
         self.exec()
         return self.final_configuration
+    
+from PySide6.QtWidgets import QDialog, QVBoxLayout, QPushButton, QLabel, QFileDialog
+import os
+
+class LauncherGUI(QDialog):
+    """Pantalla inicial para elegir entre crear o cargar un proyecto."""
+    def __init__(self):
+        super().__init__()
+        self.action = None # 'new' o 'load'
+        self.project_path = None
+        self.source_pdf = None
+        self._init_ui()
+
+    def _init_ui(self):
+        self.setWindowTitle("Gestor de Proyectos - PDF Translator")
+        self.resize(400, 200)
+        layout = QVBoxLayout(self)
+        
+        layout.addWidget(QLabel("<h2 style='text-align:center;'>🚀 Selector de Proyecto</h2>"))
+        layout.addStretch()
+
+        btn_new = QPushButton("📄 Crear Proyecto Nuevo (Seleccionar PDF)")
+        btn_new.setMinimumHeight(40)
+        btn_new.clicked.connect(self._create_new)
+        
+        btn_load = QPushButton("📁 Cargar Proyecto Existente (Seleccionar Carpeta)")
+        btn_load.setMinimumHeight(40)
+        btn_load.clicked.connect(self._load_existing)
+        
+        layout.addWidget(btn_new)
+        layout.addWidget(btn_load)
+        layout.addStretch()
+
+    def _create_new(self):
+        pdf_path, _ = QFileDialog.getOpenFileName(self, "Seleccionar PDF Original", "", "PDF (*.pdf)")
+        if pdf_path:
+            base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+            # Creamos la carpeta del proyecto en ./projects/
+            proj_dir = os.path.abspath(os.path.join(os.getcwd(), "projects", base_name))
+            
+            self.action = 'new'
+            self.project_path = proj_dir
+            self.source_pdf = pdf_path
+            self.accept()
+
+    def _load_existing(self):
+        base_projects_dir = os.path.abspath(os.path.join(os.getcwd(), "projects"))
+        proj_dir = QFileDialog.getExistingDirectory(self, "Seleccionar Carpeta del Proyecto", base_projects_dir)
+        if proj_dir:
+            # Validamos que sea un proyecto válido
+            if os.path.exists(os.path.join(proj_dir, "estado_sesion.json")):
+                self.action = 'load'
+                self.project_path = proj_dir
+                self.accept()
+            else:
+                QMessageBox.warning(self, "Error", "La carpeta seleccionada no es un proyecto válido de PDF Translator.")
+
+    def get_result(self):
+        self.exec()
+        return self.action, self.project_path, self.source_pdf

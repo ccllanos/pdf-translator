@@ -1,14 +1,18 @@
 {
   "font_mappings": {
+    "Fd206918": {
+      "type": "base",
+      "value": "tiro"
+    },
     "Fd1470": {
       "type": "base",
       "value": "tiro"
     },
-    "Fd206917": {
+    "Fd121851": {
       "type": "base",
       "value": "tiro"
     },
-    "Fd196420": {
+    "Fd209544": {
       "type": "base",
       "value": "tiro"
     },
@@ -20,15 +24,7 @@
       "type": "base",
       "value": "tiro"
     },
-    "Fd209544": {
-      "type": "base",
-      "value": "tiro"
-    },
-    "Fd206918": {
-      "type": "base",
-      "value": "tiro"
-    },
-    "Fd209547": {
+    "Fd57154": {
       "type": "base",
       "value": "tiro"
     },
@@ -36,19 +32,7 @@
       "type": "base",
       "value": "tiro"
     },
-    "Fd209545": {
-      "type": "base",
-      "value": "tiro"
-    },
-    "Fd121851": {
-      "type": "base",
-      "value": "tiro"
-    },
-    "Fd177508": {
-      "type": "base",
-      "value": "tiro"
-    },
-    "Fd57154": {
+    "Fd3078": {
       "type": "base",
       "value": "tiro"
     },
@@ -56,7 +40,23 @@
       "type": "base",
       "value": "tiro"
     },
-    "Fd3078": {
+    "Fd209547": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd196420": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd209545": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd177508": {
+      "type": "base",
+      "value": "tiro"
+    },
+    "Fd206917": {
       "type": "base",
       "value": "tiro"
     }
@@ -887,6 +887,2240 @@
           "translated_text": "2",
           "font_name": "Fd211852",
           "font_size": 6.650000095367432
+        }
+      ]
+    },
+    "10": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            28.799999237060547,
+            33.57594680786133,
+            321.2547302246094,
+            43.25594711303711
+          ],
+          "translated_text": "algo del sabor de lo que está por venir en forma de tres",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.800018310546875,
+            46.83595657348633,
+            320.8984375,
+            56.51595687866211
+          ],
+          "translated_text": "juegos introductorios que contienen la mayoría de los conceptos y",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.980010986328125,
+            60.12593460083008,
+            321.8590087890625,
+            69.8059310913086
+          ],
+          "translated_text": "estrategias que se desarrollarán más adelante. La primera es una victoria de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798004150390625,
+            73.47590637207031,
+            321.3152160644531,
+            83.1559066772461
+          ],
+          "translated_text": "El ex campeón mundial Mikhail Botvinnik sobre el húngaro",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.797027587890625,
+            86.82591247558594,
+            321.33380126953125,
+            96.50591278076172
+          ],
+          "translated_text": "Maestro Internacional Szilagyi en Amsterdam, 1966. Uno de los",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798004150390625,
+            100.24592590332031,
+            322.0792236328125,
+            109.9259262084961
+          ],
+          "translated_text": "verdaderos grandes maestros de la estrategia, Botvinnik ofrece una",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798004150390625,
+            113.74592590332031,
+            321.4810485839844,
+            123.4259262084961
+          ],
+          "translated_text": "presentación poderosa y muy instructiva. Recogemos la obra",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.979034423828125,
+            127.10591125488281,
+            246.1901397705078,
+            136.78591918945312
+          ],
+          "translated_text": "en el diagrama 1 con Botvinnik (Blanco) para mover:",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            169.38804626464844,
+            152.6356658935547,
+            182.13624572753906,
+            165.8413543701172
+          ],
+          "translated_text": "1.",
+          "font_name": "Fd209547",
+          "font_size": 10.949999809265137
+        },
+        {
+          "bbox": [
+            108.53804779052734,
+            332.95013427734375,
+            115.06169891357422,
+            341.3823547363281
+          ],
+          "translated_text": "a",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            126.17904663085938,
+            330.87347412109375,
+            170.23704528808594,
+            342.0318908691406
+          ],
+          "translated_text": "cama",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            180.18704223632812,
+            332.95013427734375,
+            186.89024353027344,
+            341.3823547363281
+          ],
+          "translated_text": "mi",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            199.26803588867188,
+            330.87347412109375,
+            242.15042114257812,
+            342.0318908691406
+          ],
+          "translated_text": "fgh",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            64.80802917480469,
+            357.9259033203125,
+            321.8390808105469,
+            367.60589599609375
+          ],
+          "translated_text": "La situación puede parecer a primera vista bastante buena para",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97906494140625,
+            371.49591064453125,
+            321.2557067871094,
+            381.1759033203125
+          ],
+          "translated_text": "Negro. Sus piezas ocupan buenas casillas en el centro, su rey",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.978073120117188,
+            385.0859069824219,
+            322.056884765625,
+            394.7658996582031
+          ],
+          "translated_text": "es muy seguro y tiene liderazgo en el desarrollo habiendo ya",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977066040039062,
+            398.5959167480469,
+            321.7343444824219,
+            408.2759094238281
+          ],
+          "translated_text": "conectó sus torres en la última fila mientras que las blancas están en largo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.397125244140625,
+            412.1858825683594,
+            321.70697021484375,
+            421.8658752441406
+          ],
+          "translated_text": "manera de hacerlo. Sin embargo, el aliado posicional tiene problemas.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.847122192382812,
+            425.6958923339844,
+            321.3592834472656,
+            435.3758850097656
+          ],
+          "translated_text": "que surge del intercambio de su Alfil de Reina por un Caballero.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.976104736328125,
+            439.35589599609375,
+            321.3652648925781,
+            449.035888671875
+          ],
+          "translated_text": "A la larga tendrá dificultades para defender su blanco.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97711181640625,
+            452.8758850097656,
+            321.44287109375,
+            462.5558776855469
+          ],
+          "translated_text": "cuadrícula. Veremos qué significa esto en términos más tangibles.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.159149169921875,
+            466.48590087890625,
+            142.95753479003906,
+            476.1658935546875
+          ],
+          "translated_text": "a medida que avanza el juego.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.698143005371094,
+            492.25396728515625,
+            83.20684051513672,
+            503.41668701171875
+          ],
+          "translated_text": "1 2 . segundo 4",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.43814086914062,
+            520.48583984375,
+            321.43023681640625,
+            530.1658325195312
+          ],
+          "translated_text": "Un movimiento para ganar espacio. El centro es fijo y blanco.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            172.4481201171875,
+            553.755859375,
+            179.3297119140625,
+            563.4358520507812
+          ],
+          "translated_text": "3",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "11": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            29.15999984741211,
+            32.75600051879883,
+            321.8659973144531,
+            42.43600082397461
+          ],
+          "translated_text": "no quiere avanzar en el Kingside por miedo a exponer",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15899658203125,
+            45.95601272583008,
+            321.60577392578125,
+            55.63601303100586
+          ],
+          "translated_text": "su propio monarca, por lo que la zona lógica de expansión está en la",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.158966064453125,
+            59.26601028442383,
+            82.92616271972656,
+            68.94600677490234
+          ],
+          "translated_text": "Lado de la reina.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.878963470458984,
+            84.64405822753906,
+            129.5479736328125,
+            109.11681365966797
+          ],
+          "translated_text": "1 2 . 1 3 . a 4 B b 6 Rfd 8",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.3389663696289,
+            126.48600769042969,
+            321.4984436035156,
+            136.166015625
+          ],
+          "translated_text": "Las negras no se atreven a devolver el golpe con 1 3 . . .  aS debido a 1 4. Aa3",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977996826171875,
+            139.9860076904297,
+            322.4051818847656,
+            149.666015625
+          ],
+          "translated_text": "seguido de Cc4 o Cb3 con muchas posibilidades peligrosas en",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.757965087890625,
+            153.4860076904297,
+            120.49725341796875,
+            163.166015625
+          ],
+          "translated_text": "la diagonal a3-fB.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.878963470458984,
+            179.04405212402344,
+            129.90296936035156,
+            190.14682006835938
+          ],
+          "translated_text": "1 4 . Qc 2 Carrera 8",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.15896606445312,
+            207.52601623535156,
+            321.8323974609375,
+            217.20602416992188
+          ],
+          "translated_text": "Las negras ya se encuentran sin un buen plan. A",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97796630859375,
+            221.02601623535156,
+            321.9091796875,
+            230.70602416992188
+          ],
+          "translated_text": "mejor idea tiene l4... CfB seguido de Ce6 y como tratando de conseguir",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157958984375,
+            234.4860076904297,
+            321.87274169921875,
+            244.166015625
+          ],
+          "translated_text": "un agarre en cS o d4. Las dificultades de las negras surgen del hecho de que",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.9759521484375,
+            247.93601989746094,
+            211.65036010742188,
+            257.61602783203125
+          ],
+          "translated_text": "no tiene un buen puesto de avanzada para sus piezas.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.875946044921875,
+            273.50408935546875,
+            88.69124603271484,
+            284.5368347167969
+          ],
+          "translated_text": "1 5 . ser 2",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.15594482421875,
+            301.9760437011719,
+            321.7147521972656,
+            311.6560363769531
+          ],
+          "translated_text": "Por el contrario, el avance de Botvinnik le ha dado una buena",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97491455078125,
+            315.4860534667969,
+            321.4603271484375,
+            325.1660461425781
+          ],
+          "translated_text": "casilla en c4 que puede ocupar con un Caballo o un",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.973907470703125,
+            328.946044921875,
+            65.08110809326172,
+            338.62603759765625
+          ],
+          "translated_text": "Obispo.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.693906784057617,
+            354.5941162109375,
+            126.58985900878906,
+            365.57684326171875
+          ],
+          "translated_text": "1 5 . cS? ?",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.80390930175781,
+            383.1160583496094,
+            321.7322998046875,
+            392.7960510253906
+          ],
+          "translated_text": "Dos signos de interrogación para una jugada que no",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.972900390625,
+            396.6760559082031,
+            321.49627685546875,
+            406.3560485839844
+          ],
+          "translated_text": "perder material puede parecer un poco duro, pero quiero",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.291900634765625,
+            410.3060607910156,
+            321.3222961425781,
+            419.9860534667969
+          ],
+          "translated_text": "Enfatice el punto de que antes de l S . . .  cS Black simplemente tenía",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.790863037109375,
+            423.8660583496094,
+            168.06358337402344,
+            433.5460510253906
+          ],
+          "translated_text": "problemas, pero ahora está perdido.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.51087188720703,
+            449.464111328125,
+            86.74742126464844,
+            460.8468322753906
+          ],
+          "translated_text": "1 6 . bS!",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            171.36087036132812,
+            555.466064453125,
+            179.3248748779297,
+            565.1460571289062
+          ],
+          "translated_text": "4",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "12": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            169.38999938964844,
+            33.37355041503906,
+            182.21319580078125,
+            44.531951904296875
+          ],
+          "translated_text": "2.",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            109.08000183105469,
+            211.0902099609375,
+            115.60365295410156,
+            219.5224151611328
+          ],
+          "translated_text": "a",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            126.54100036621094,
+            209.01356506347656,
+            134.5050048828125,
+            220.17196655273438
+          ],
+          "translated_text": "b",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            144.90499877929688,
+            210.09596252441406,
+            151.69859313964844,
+            219.77597045898438
+          ],
+          "translated_text": "do",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            162.72900390625,
+            209.01356506347656,
+            170.781005859375,
+            220.17196655273438
+          ],
+          "translated_text": "d",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            180.7310028076172,
+            211.0902099609375,
+            187.4342041015625,
+            219.5224151611328
+          ],
+          "translated_text": "mi",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            199.6320037841797,
+            209.01356506347656,
+            242.69039916992188,
+            220.17196655273438
+          ],
+          "translated_text": "fgh",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.16000366210938,
+            236.1559600830078,
+            322.41583251953125,
+            245.83596801757812
+          ],
+          "translated_text": "¿Por qué están perdidas las negras? El material es igual y las blancas no.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.401031494140625,
+            249.4459686279297,
+            321.9668273925781,
+            259.1259765625
+          ],
+          "translated_text": "Obtuve una pieza más allá de la segunda categoría. La respuesta está en el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.521026611328125,
+            263.06597900390625,
+            322.01446533203125,
+            272.7459716796875
+          ],
+          "translated_text": "Peones. Las blancas tienen dos hermosas casillas en c4 y dS, además de una",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.52105712890625,
+            276.4659729003906,
+            321.902099609375,
+            286.1459655761719
+          ],
+          "translated_text": "rodillo de peones móvil en el flanco izquierdo, mientras que los peones negros",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.841064453125,
+            289.9659729003906,
+            321.8445129394531,
+            299.6459655761719
+          ],
+          "translated_text": "constriñe terriblemente sus propias piezas, particularmente el alfil.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.52105712890625,
+            303.4659729003906,
+            322.0783386230469,
+            313.1459655761719
+          ],
+          "translated_text": "Botvinnik nos ofrece ahora una vigorosa exhibición de conocimientos técnicos.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.340057373046875,
+            316.92596435546875,
+            265.31427001953125,
+            326.60595703125
+          ],
+          "translated_text": "ajedrez mientras convierte estas ventajas en una victoria.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            30.059043884277344,
+            342.5840148925781,
+            48.899940490722656,
+            380.4667663574219
+          ],
+          "translated_text": "1 6 . 1 7 . 1 8 .",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            29.879043579101562,
+            423.89404296875,
+            48.71393966674805,
+            434.7367858886719
+          ],
+          "translated_text": "1 8 .",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.15904235839844,
+            356.0440368652344,
+            91.21208953857422,
+            380.38677978515625
+          ],
+          "translated_text": "N c 4 B g S !",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            101.33904266357422,
+            342.57403564453125,
+            127.52994537353516,
+            366.9667663574219
+          ],
+          "translated_text": "Ne 8 N d 6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.80904388427734,
+            398.0159912109375,
+            308.2772521972656,
+            407.69598388671875
+          ],
+          "translated_text": "Un disparo táctico sorpresa, pero sus punterías son posicionales.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            100.98904418945312,
+            423.8040466308594,
+            116.1513442993164,
+            434.64678955078125
+          ],
+          "translated_text": "f6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.80904388427734,
+            452.1960144042969,
+            321.65740966796875,
+            461.8760070800781
+          ],
+          "translated_text": "El punto de la combinación. El negro se ve obligado a",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.6190185546875,
+            465.8059997558594,
+            321.53265380859375,
+            475.4859924316406
+          ],
+          "translated_text": "debilitar otra casilla blanca (e6) en el corazón de su",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.800018310546875,
+            479.3860168457031,
+            321.7914733886719,
+            489.0660095214844
+          ],
+          "translated_text": "posición. La negativa a aceptar los planes de las blancas es aún más",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.801025390625,
+            492.9259948730469,
+            89.51982879638672,
+            502.6059875488281
+          ],
+          "translated_text": "desagradable:",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.34103393554688,
+            506.5260314941406,
+            232.4350128173828,
+            516.2059936523438
+          ],
+          "translated_text": "(yo) l S . . .  DxgS 1 9. Cxd6 TbS 20. Ac4",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.16102600097656,
+            520.0559692382812,
+            240.81622314453125,
+            529.7359619140625
+          ],
+          "translated_text": "(ii) l S . . .  Cf6 19 Ce3 seguido de NdS",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            172.27102661132812,
+            553.8035888671875,
+            179.0646209716797,
+            564.9619750976562
+          ],
+          "translated_text": "5",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "13": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            29.70000457763672,
+            33.94401931762695,
+            132.46755981445312,
+            58.32674789428711
+          ],
+          "translated_text": "1 9 . Ae 3 Cxc4 2 0 . Axc4+Rh 8",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            29.70000457763672,
+            60.29399490356445,
+            124.82264709472656,
+            72.06673431396484
+          ],
+          "translated_text": "2 1 . como B c 7",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            29.70000457763672,
+            74.17399597167969,
+            124.73834991455078,
+            85.05672454833984
+          ],
+          "translated_text": "2 2 . Rfd l Nf8",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.34000396728516,
+            102.31593322753906,
+            322.0854187011719,
+            111.99593353271484
+          ],
+          "translated_text": "Un intercambio de torres no curará las heridas de las negras. En",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.34100341796875,
+            115.74592590332031,
+            232.05429077148438,
+            125.4259262084961
+          ],
+          "translated_text": "por otro lado, tampoco lo hará nada más.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.52001190185547,
+            141.42396545410156,
+            141.23866271972656,
+            193.00674438476562
+          ],
+          "translated_text": "2 3 . Qa 2 Rxd l + 2 4 . Rxd l R d 8 2 5 . Rxd 8 Axd 8 2 6 . un 6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.52001190185547,
+            210.2359161376953,
+            321.9463806152344,
+            219.91592407226562
+          ],
+          "translated_text": "Conquistando otra casilla blanca (c6 ) y",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.86895751953125,
+            223.7459259033203,
+            321.63336181640625,
+            233.42593383789062
+          ],
+          "translated_text": "liberando simultáneamente a la Reina de su defensa de la a",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.33795166015625,
+            237.21592712402344,
+            242.12515258789062,
+            246.89593505859375
+          ],
+          "translated_text": "Empeño en preparación para un servicio más activo.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.5179443359375,
+            262.5639953613281,
+            120.01829528808594,
+            274.166748046875
+          ],
+          "translated_text": "2 6 . segundo 6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            29.5179443359375,
+            276.3539733886719,
+            89.63014221191406,
+            287.33673095703125
+          ],
+          "translated_text": "2 7 . kilogramos 2",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.98794555664062,
+            304.6859130859375,
+            321.9347229003906,
+            314.36590576171875
+          ],
+          "translated_text": "El control de la posición por parte de las blancas es tan grande que",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157928466796875,
+            318.1859130859375,
+            321.9175720214844,
+            327.86590576171875
+          ],
+          "translated_text": "podría escribir sus iniciales en el tablero con su rey si",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.797943115234375,
+            331.7259216308594,
+            321.9397888183594,
+            341.4059143066406
+          ],
+          "translated_text": "buscado. Botvinnik, bastante menos indulgente consigo mismo, se contenta",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157974243164062,
+            345.25592041015625,
+            321.815185546875,
+            354.9359130859375
+          ],
+          "translated_text": "él mismo con un movimiento de rey preparatorio antes de embarcarse en",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97698974609375,
+            358.7759094238281,
+            321.8108215332031,
+            368.4559020996094
+          ],
+          "translated_text": "el proceso ganador. En principios generales, su Rey se sentirá",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157012939453125,
+            372.3559265136719,
+            145.939208984375,
+            382.0359191894531
+          ],
+          "translated_text": "más seguro en un cuadrado blanco.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157012939453125,
+            398.2039794921875,
+            89.10550689697266,
+            436.2267150878906
+          ],
+          "translated_text": "2 7 . 2 8 . 2 9 . Qe 2 B b 3",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            100.98701477050781,
+            398.3039855957031,
+            126.45507049560547,
+            422.7667236328125
+          ],
+          "translated_text": "Qd 7 N g 6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.62701416015625,
+            453.9059143066406,
+            321.88641357421875,
+            463.5859069824219
+          ],
+          "translated_text": "Por fin un ataque, pero no hay necesidad de ningún",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.797027587890625,
+            467.4959411621094,
+            321.33819580078125,
+            477.1759338378906
+          ],
+          "translated_text": "excitación. El resultado es una mera formalidad. con un obispo",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.795989990234375,
+            481.3559265136719,
+            321.6566162109375,
+            491.0359191894531
+          ],
+          "translated_text": "Al tener la movilidad de una tortuga con reumatismo, Black está en",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.79498291015625,
+            494.7059326171875,
+            221.03277587890625,
+            504.38592529296875
+          ],
+          "translated_text": "ninguna posición para ofrecer una resistencia real.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.79999542236328,
+            520.2640380859375,
+            124.56519317626953,
+            544.7367553710938
+          ],
+          "translated_text": "2 9 . Ce7 3 0 . Dc4 h 6",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            170.82998657226562,
+            552.4559326171875,
+            178.24838256835938,
+            562.1359252929688
+          ],
+          "translated_text": "6",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "14": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            30.059999465942383,
+            34.54399490356445,
+            127.1992416381836,
+            45.46676254272461
+          ],
+          "translated_text": "3 1 . Df7 ! K h 7",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            66.5999984741211,
+            62.43593215942383,
+            322.2865905761719,
+            72.11592864990234
+          ],
+          "translated_text": "3 1 .  .. DxbS pierde una pieza por 32. DfS+ Rh7 33. DxdS Dxb3",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.969970703125,
+            75.78590393066406,
+            76.59717559814453,
+            85.46590423583984
+          ],
+          "translated_text": "34. Dxe7.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            30.060970306396484,
+            101.32395935058594,
+            126.67797088623047,
+            125.66670989990234
+          ],
+          "translated_text": "3 2 . B c 4 Qd 6 3 3 . h 4",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.70097351074219,
+            143.05592346191406,
+            322.0970764160156,
+            152.73593139648438
+          ],
+          "translated_text": "Botvinnik ahora teje una red de apareamiento sobre el Blanco",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.87994384765625,
+            156.57591247558594,
+            70.22714233398438,
+            166.25592041015625
+          ],
+          "translated_text": "cuadrícula.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.87994384765625,
+            182.20396423339844,
+            125.58624267578125,
+            206.54672241210938
+          ],
+          "translated_text": "3 3 . Pregunta 1 3 4 . Pregunta 8",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            65.63994598388672,
+            224.03590393066406,
+            322.1485900878906,
+            233.71591186523438
+          ],
+          "translated_text": "Con la amenaza de Af7, hS, seguido de Ag6+, etc.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.3389892578125,
+            237.41590881347656,
+            123.2793960571289,
+            247.09591674804688
+          ],
+          "translated_text": "No hay defensa.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.699989318847656,
+            262.85980224609375,
+            200.26040649414062,
+            314.4959716796875
+          ],
+          "translated_text": "3 4 . f S 3 5 . exfS NxfS 3 6 . B gramo 8 + K h 8 3 7 . B f7 + y mate en el siguiente movimiento.",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            64.98899841308594,
+            331.7359924316406,
+            322.15020751953125,
+            341.4159851074219
+          ],
+          "translated_text": "Una perfecta ilustración de lo que se conoce como Blanco.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.0780029296875,
+            345.2359924316406,
+            322.016845703125,
+            354.9159851074219
+          ],
+          "translated_text": "estrategia cuadrada, algo que exploraremos con más profundidad",
+          "font_name": "Fd3078",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.3380126953125,
+            358.7359924316406,
+            322.3894348144531,
+            368.4159851074219
+          ],
+          "translated_text": "luego. Por el momento, sin embargo, sólo quiero dibujar",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15802001953125,
+            372.2560119628906,
+            321.9940490722656,
+            381.9360046386719
+          ],
+          "translated_text": "su atención a la sencillez sin esfuerzo con la que",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.339004516601562,
+            385.82598876953125,
+            321.9451904296875,
+            395.5059814453125
+          ],
+          "translated_text": "Botvinnik estableció y aprovechó su ventaja. Con",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.73797607421875,
+            399.3559875488281,
+            321.8042297363281,
+            409.0359802246094
+          ],
+          "translated_text": "Con la posible excepción de I S. BgS !, ninguno de sus movimientos podría en",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.338973999023438,
+            412.8659973144531,
+            321.9043884277344,
+            422.5459899902344
+          ],
+          "translated_text": "De ninguna manera puede calificarse de sorprendente o difícil de visualizar.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.978973388671875,
+            426.4859924316406,
+            321.9332275390625,
+            436.1659851074219
+          ],
+          "translated_text": "Todos eran realmente bastante obvios. Entonces, ¿por qué no todos pueden",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97998046875,
+            440.1259765625,
+            321.43341064453125,
+            449.80596923828125
+          ],
+          "translated_text": "jugar asi? Bueno, pueden hacerlo siempre que reconozcan y",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.980987548828125,
+            453.6559753417969,
+            321.82373046875,
+            463.3359680175781
+          ],
+          "translated_text": "Comprender la importancia de la estructura. lo mas importante",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.981002807617188,
+            467.19598388671875,
+            321.2953796386719,
+            476.8759765625
+          ],
+          "translated_text": "La única característica de una posición de ajedrez es la actividad de las piezas.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.470977783203125,
+            480.7659606933594,
+            321.85699462890625,
+            490.4459533691406
+          ],
+          "translated_text": "Esto es absolutamente fundamental en todas las fases del juego.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.34197998046875,
+            494.3559875488281,
+            321.8100280761719,
+            504.0359802246094
+          ],
+          "translated_text": "(apertura, medio juego y especialmente final), un tema",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.021026611328125,
+            507.8859558105469,
+            321.8096618652344,
+            517.56591796875
+          ],
+          "translated_text": "que espero que se haga cada vez más evidente a medida que el libro",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.622039794921875,
+            521.3759155273438,
+            321.49566650390625,
+            531.055908203125
+          ],
+          "translated_text": "progresa. La principal restricción a la actividad de la pieza es",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            172.09104919433594,
+            552.1359252929688,
+            179.14865112304688,
+            561.81591796875
+          ],
+          "translated_text": "7",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "15": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            30.020000457763672,
+            34.68599319458008,
+            322.2884216308594,
+            44.36599349975586
+          ],
+          "translated_text": "la estructura de peones. Así como un edificio se construye alrededor",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.879013061523438,
+            47.91597366333008,
+            322.1054382324219,
+            57.59597396850586
+          ],
+          "translated_text": "un armazón de vigas de hierro, un juego de ajedrez se construye alrededor de un",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.698028564453125,
+            61.19600296020508,
+            322.3141784667969,
+            70.8759994506836
+          ],
+          "translated_text": "estructura subyacente de los peones. La diferencia radica en el hecho",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.696990966796875,
+            74.55598449707031,
+            322.3944091796875,
+            84.2359848022461
+          ],
+          "translated_text": "que la estructura de hierro es fija, mientras que el jugador de ajedrez",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.697998046875,
+            87.92597961425781,
+            275.64825439453125,
+            97.6059799194336
+          ],
+          "translated_text": "tiene cierta flexibilidad con sus peones.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            65.69601440429688,
+            101.49598693847656,
+            322.26458740234375,
+            111.17598724365234
+          ],
+          "translated_text": "Por lo tanto, el trabajo del jugador de ajedrez debe ser utilizar",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.69598388671875,
+            114.82597351074219,
+            322.4504089355469,
+            124.50597381591797
+          ],
+          "translated_text": "su habilidad para crear una configuración de peón que le permitirá a su",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.834991455078125,
+            128.3359832763672,
+            322.1045837402344,
+            138.0159912109375
+          ],
+          "translated_text": "piezas la libertad y estabilidad óptimas, mientras se niega su",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.6949462890625,
+            141.78599548339844,
+            321.574951171875,
+            151.46600341796875
+          ],
+          "translated_text": "alcance similar del oponente. Este es el problema de la estructura,",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.3349609375,
+            155.3159942626953,
+            221.18576049804688,
+            164.99600219726562
+          ],
+          "translated_text": "que se tratará con cierta profundidad.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            169.20396423339844,
+            180.8057403564453,
+            183.9762725830078,
+            194.0114288330078
+          ],
+          "translated_text": "3.",
+          "font_name": "Fd209547",
+          "font_size": 10.949999809265137
+        },
+        {
+          "bbox": [
+            65.15396118164062,
+            386.6860046386719,
+            322.55615234375,
+            396.3659973144531
+          ],
+          "translated_text": "Para tomar un ejemplo, volvamos a la posición de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1529541015625,
+            400.1759948730469,
+            321.4213562011719,
+            409.8559875488281
+          ],
+          "translated_text": "Diagrama 2 y examínalo desde un punto de vista estructural.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1539306640625,
+            413.7659912109375,
+            321.416748046875,
+            423.44598388671875
+          ],
+          "translated_text": "Quitando las piezas del tablero, pero dejando el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.27392578125,
+            427.3559875488281,
+            321.822509765625,
+            437.0359802246094
+          ],
+          "translated_text": "peones, tenemos el Diagrama 3. De esto vemos muy fuertes",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.1539306640625,
+            440.94598388671875,
+            321.6937255859375,
+            450.6259765625
+          ],
+          "translated_text": "casillas o puestos de avanzada para sus piezas en c4 y dS. Ellos son",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.973907470703125,
+            454.5459899902344,
+            321.271484375,
+            464.2259826660156
+          ],
+          "translated_text": "fuerte porque ninguno puede ser desafiado por un peón negro.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            33.663909912109375,
+            468.3760070800781,
+            321.662109375,
+            478.0559997558594
+          ],
+          "translated_text": "Por el contrario, las negras no tienen ningún puesto de avanzada. tan aritméticamente",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.283920288085938,
+            481.7559814453125,
+            321.8407287597656,
+            491.43597412109375
+          ],
+          "translated_text": "Hablando, las blancas tenían una ventaja de 2-0 en puestos de avanzada, una situación muy saludable.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.79290771484375,
+            495.4159851074219,
+            321.2571105957031,
+            505.0959777832031
+          ],
+          "translated_text": "situación. Teniendo esto en cuenta, observe el papel vital",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.871917724609375,
+            509.0459899902344,
+            321.2483825683594,
+            518.7259521484375
+          ],
+          "translated_text": "jugado por el peón blanco en c3 protegiendo la posición natural de las negras.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.021942138671875,
+            522.35595703125,
+            321.55450439453125,
+            532.0359497070312
+          ],
+          "translated_text": "puesto de avanzada en d4. Si las blancas alguna vez jugaran el juego posicional",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            171.18191528320312,
+            553.4459228515625,
+            178.33631896972656,
+            563.1259155273438
+          ],
+          "translated_text": "8",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "16": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            29.8799991607666,
+            34.66597366333008,
+            321.9754333496094,
+            44.34597396850586
+          ],
+          "translated_text": "c4 abismal? no sólo le daría a Black su tan esperado",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            30.1400146484375,
+            47.99599075317383,
+            322.0342102050781,
+            57.67599105834961
+          ],
+          "translated_text": "puesto de avanzada, pero también sofocaría su propia casilla c4,",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.699005126953125,
+            61.21596145629883,
+            322.1658630371094,
+            70.89595794677734
+          ],
+          "translated_text": "igualando el marcador del puesto avanzado a 1-1 de un plumazo. Además el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.69805908203125,
+            74.59596252441406,
+            321.868896484375,
+            84.27596282958984
+          ],
+          "translated_text": "el daño sería irreversible. Los peones no pueden retroceder.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.8770751953125,
+            88.10597229003906,
+            321.99090576171875,
+            97.78597259521484
+          ],
+          "translated_text": "Si sin darte cuenta colocas una pieza en un cuadrado malo, puedes",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.875106811523438,
+            101.48597717285156,
+            321.98388671875,
+            111.16597747802734
+          ],
+          "translated_text": "siempre retraerlo a costa de algo de tiempo (y cara), pero en el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.696075439453125,
+            114.94596862792969,
+            321.9488830566406,
+            124.62596893310547
+          ],
+          "translated_text": "En el caso de un peón, te lo cargan durante el resto del tiempo.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.965087890625,
+            128.4459686279297,
+            321.8921203613281,
+            138.1259765625
+          ],
+          "translated_text": "juego. Piénselo dos veces antes de los movimientos de peón, especialmente en el centro.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            169.03509521484375,
+            154.02574157714844,
+            182.86795043945312,
+            167.23143005371094
+          ],
+          "translated_text": "4.",
+          "font_name": "Fd209547",
+          "font_size": 10.949999809265137
+        },
+        {
+          "bbox": [
+            64.8250961303711,
+            359.6360168457031,
+            321.99029541015625,
+            369.3160095214844
+          ],
+          "translated_text": "Volviendo al Diagrama 3, ¿hay alguna manera para que las negras",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15509033203125,
+            373.1260070800781,
+            321.74871826171875,
+            382.8059997558594
+          ],
+          "translated_text": "¿Para mejorar las cosas, desde el punto de vista estructural? Ciertamente. si el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.425079345703125,
+            386.6360168457031,
+            321.6272888183594,
+            396.3160095214844
+          ],
+          "translated_text": "Si pudiera avanzar c5-c4, el mundo de repente sería mucho más",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.60406494140625,
+            400.2460021972656,
+            321.331298828125,
+            409.9259948730469
+          ],
+          "translated_text": "lugar más feliz para él. Mire el Diagrama 4. Las negras ahora tienen",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.973052978515625,
+            413.8059997558594,
+            321.42767333984375,
+            423.4859924316406
+          ],
+          "translated_text": "tres casillas excelentes cS, d3 y b3, mientras que las blancas deben ser",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.242034912109375,
+            427.3659973144531,
+            321.4176025390625,
+            437.0459899902344
+          ],
+          "translated_text": "contenido con uno (d5).  Entonces vemos que la casilla c4 de las blancas es",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.9739990234375,
+            440.96600341796875,
+            321.43780517578125,
+            450.64599609375
+          ],
+          "translated_text": "estratégicamente el punto focal del puesto. Así como el",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.063018798828125,
+            454.5559997558594,
+            321.4180603027344,
+            464.2359924316406
+          ],
+          "translated_text": "El resultado de una batalla real puede depender del control de un alto nivel.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.791046142578125,
+            468.14599609375,
+            321.4584655761719,
+            477.82598876953125
+          ],
+          "translated_text": "punto o montaña que domina el terreno circundante, un",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.791046142578125,
+            481.70599365234375,
+            321.81427001953125,
+            491.385986328125
+          ],
+          "translated_text": "El juego de ajedrez puede girar en torno a la lucha por el control de",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.79107666015625,
+            495.2259826660156,
+            321.15924072265625,
+            504.9059753417969
+          ],
+          "translated_text": "un cuadrado clave. En este caso es el cuadrado c4. Tú",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.112060546875,
+            508.8260192871094,
+            321.41741943359375,
+            518.5059814453125
+          ],
+          "translated_text": "¿Recuerdas el movimiento número 15 de Botvinnik, Ae2? Puede que no pareciera",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.442047119140625,
+            522.3059692382812,
+            321.19964599609375,
+            531.9859619140625
+          ],
+          "translated_text": "terriblemente significativo en ese momento, pero de hecho muestra que él",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            172.26303100585938,
+            553.4459838867188,
+            179.76942443847656,
+            563.1259765625
+          ],
+          "translated_text": "9",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        }
+      ]
+    },
+    "17": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            29.56999969482422,
+            33.68599319458008,
+            321.70977783203125,
+            43.36599349975586
+          ],
+          "translated_text": "Ya había reconocido plenamente la importancia estratégica de la",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15997314453125,
+            46.97597122192383,
+            321.739990234375,
+            69.8359603881836
+          ],
+          "translated_text": "c4 cuadrado. ¡Qué inteligentes estos rusos! Ahora dirigimos nuestra atención a un hecho aún más sorprendente.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157958984375,
+            73.59596252441406,
+            321.6527404785156,
+            83.27596282958984
+          ],
+          "translated_text": "demostración del poder y la importancia de la estructura, esta",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.157958984375,
+            86.92594909667969,
+            321.45941162109375,
+            96.60594940185547
+          ],
+          "translated_text": "Tiempo cedido por el gran maestro de la defensa Tigran Petrosian.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.977996826171875,
+            100.43595886230469,
+            321.65277099609375,
+            110.11595916748047
+          ],
+          "translated_text": "La novena partida de su Partido de Candidatos con Lajos Portisch",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.697998046875,
+            112.48402404785156,
+            320.91015625,
+            123.50597381591797
+          ],
+          "translated_text": "(Negro) comenzó 1 .  Cf3 Cf6 2 .  c4 g6 3 .  segundo 3 segundo gramo 7 4 .  Sib 2",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.15899658203125,
+            126.05403137207031,
+            322.22601318359375,
+            150.22598266601562
+          ],
+          "translated_text": "CS 5 .  g3 d6 6. B g 2 y S 7 . 0-0 Cc6 8 .  Cc3 0-0 9 .  d3 Nh S 1 0 . Cd2 Ag4 1 1 . a3 Ah6 alcanzando la posición de",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            29.160003662109375,
+            154.1959686279297,
+            84.01980590820312,
+            163.8759765625
+          ],
+          "translated_text": "Diagrama 5.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            169.02999877929688,
+            179.6857452392578,
+            182.1302490234375,
+            192.8914337158203
+          ],
+          "translated_text": "s.",
+          "font_name": "Fd209547",
+          "font_size": 10.949999809265137
+        },
+        {
+          "bbox": [
+            108.53999328613281,
+            360.31024169921875,
+            115.06364440917969,
+            368.7424621582031
+          ],
+          "translated_text": "a",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            126.00099182128906,
+            358.23358154296875,
+            134.05299377441406,
+            369.3919982910156
+          ],
+          "translated_text": "b",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            144.54299926757812,
+            359.3160095214844,
+            151.3365936279297,
+            368.9960021972656
+          ],
+          "translated_text": "do",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            162.18699645996094,
+            358.23358154296875,
+            170.23899841308594,
+            369.3919982910156
+          ],
+          "translated_text": "d",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            180.18899536132812,
+            360.31024169921875,
+            186.89219665527344,
+            368.7424621582031
+          ],
+          "translated_text": "mi",
+          "font_name": "Fd211852",
+          "font_size": 6.650000095367432
+        },
+        {
+          "bbox": [
+            199.08999633789062,
+            358.23358154296875,
+            242.33319091796875,
+            369.3919982910156
+          ],
+          "translated_text": "fgh",
+          "font_name": "Fd206917",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            64.80999755859375,
+            385.4460144042969,
+            322.0205993652344,
+            395.1260070800781
+          ],
+          "translated_text": "A primera vista, las piezas negras pueden parecer",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798980712890625,
+            399.0760192871094,
+            321.47540283203125,
+            408.7560119628906
+          ],
+          "translated_text": "amenazadoramente preparado para un ataque Kingside. Por otra parte un",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.427978515625,
+            412.6659851074219,
+            321.202880859375,
+            422.3459777832031
+          ],
+          "translated_text": "Un vistazo rápido a la estructura de peones revela que las blancas tienen una",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.797988891601562,
+            426.2259826660156,
+            321.8585205078125,
+            435.9059753417969
+          ],
+          "translated_text": "Excelente puesto de avanzada en d5, pero ¿en qué ayuda eso? Ciertamente",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.798980712890625,
+            439.7859802246094,
+            321.5500183105469,
+            449.4659729003906
+          ],
+          "translated_text": "no tiene valor inmediato, como 1 2 .  Cd5 Cd4! 1 3 .  Axd4 exd4 sería",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.97900390625,
+            453.57598876953125,
+            321.25823974609375,
+            463.2559814453125
+          ],
+          "translated_text": "permitir que las negras desarrollen mucha presión sobre la columna electrónica. Sin embargo,",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.618011474609375,
+            466.94598388671875,
+            321.8008117675781,
+            476.6259765625
+          ],
+          "translated_text": "la casilla d5 está ahí para quedarse y si no puede ser rentable",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.618972778320312,
+            480.7259826660156,
+            321.8244323730469,
+            490.4059753417969
+          ],
+          "translated_text": "utilizado actualmente, sin embargo es una buena inversión para",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            28.618988037109375,
+            494.14599609375,
+            247.6263885498047,
+            503.82598876953125
+          ],
+          "translated_text": "el futuro. Teniendo esto en cuenta, Petrosian eligió.",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
+        },
+        {
+          "bbox": [
+            29.3389892578125,
+            519.7540283203125,
+            86.2152328491211,
+            530.7767333984375
+          ],
+          "translated_text": "1 2 . b 4 !",
+          "font_name": "Fd196421",
+          "font_size": 9.149999618530273
+        },
+        {
+          "bbox": [
+            168.6689910888672,
+            554.2959594726562,
+            182.62518310546875,
+            563.9759521484375
+          ],
+          "translated_text": "10",
+          "font_name": "Fd177508",
+          "font_size": 8.800000190734863
         }
       ]
     }

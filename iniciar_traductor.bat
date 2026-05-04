@@ -10,25 +10,16 @@ set REQ_FILE=requirements.txt
 echo =======================================================
 echo   PDF TRANSLATOR V1.2 - INICIALIZACION DE ENTORNO
 echo =======================================================
-echo [INFO] Verificando Python %PYTHON_VER%...
-
-py -%PYTHON_VER% --version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo [ERROR] Instala Python %PYTHON_VER% y el 'py launcher'.
-    pause && exit /b
-)
 
 if not exist "%VENV_DIR%" (
-    echo [INFO] Creando entorno virtual limpio en %VENV_DIR%...
+    echo [INFO] Creando entorno virtual...
     py -%PYTHON_VER% -m venv %VENV_DIR%
 )
 
 call %VENV_DIR%\Scripts\activate
 
-REM --- GENERACION DE RECURSOS Y DEPENDENCIAS ---
-echo [INFO] Generando manifiesto de dependencias exactas...
+REM --- GENERACION DE DEPENDENCIAS ---
 (
-  echo # LISTA DE VERSIONES PINNED
   echo PyMuPDF==1.23.8
   echo openai==1.35.0
   echo httpx==0.27.2
@@ -38,25 +29,16 @@ echo [INFO] Generando manifiesto de dependencias exactas...
   echo PySide6==6.6.2
 ) > %REQ_FILE%
 
-if not exist ".gitignore" (
-    echo .venv/ > .gitignore
-    echo __pycache__/ >> .gitignore
-    echo *.pdf >> .gitignore
-)
-
-echo [INFO] Instalando librerias (PySide6 tomara unos segundos)...
 pip install -r %REQ_FILE% >nul 2>&1
 
-REM --- GENERAR PDF DE PRUEBA EN INGLÉS ---
-if exist "test.pdf" del "test.pdf"
-python -c "import fitz; doc = fitz.open(); page = doc.new_page(); page.insert_text((50, 50), 'The legal contract', fontsize=12, fontname='helv'); page.insert_text((50, 70), 'has severe consequences', fontsize=12, fontname='tiro'); doc.save('test.pdf'); doc.close()"
-
 REM --- EJECUCION DEL SISTEMA ---
-echo [OK] Entorno listo. Iniciando sistema...
+echo [OK] Entorno listo. Iniciando Interfaz Grafica...
 echo =======================================================
 echo.
 
-python src\pdf_translation\main.py --input documento_real.pdf --output traducido_real.pdf --source English --target Spanish --bg-folder fondos_limpios
+REM Lanzamos la app. Los idiomas por defecto seran Ingles a Español, 
+REM y el programa pedira el archivo PDF graficamente.
+python src\pdf_translation\main.py --source English --target Spanish
 
 echo.
 echo =======================================================

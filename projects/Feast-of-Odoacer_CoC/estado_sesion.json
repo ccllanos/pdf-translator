@@ -42,5 +42,166 @@
       "value": "C:/Users/hungi/Downloads/trajan-pro-bold.ttf"
     }
   },
-  "pages": {}
+  "pages": {
+    "1": {
+      "mode": "editorial",
+      "bg_path": "C:/Apps/PDFTranslator/fondos_limpios/page_1.png",
+      "blocks": [
+        {
+          "bbox": [
+            322.75,
+            749.2576904296875,
+            327.25,
+            760.6966552734375
+          ],
+          "translated_text": "1",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 9.0
+        },
+        {
+          "bbox": [
+            40.5,
+            253.24386596679688,
+            238.83660888671875,
+            267.2438659667969
+          ],
+          "translated_text": "Acerca de la Aventura",
+          "font_name": "RomanSD",
+          "font_size": 14.0
+        },
+        {
+          "bbox": [
+            40.5,
+            268.4881896972656,
+            299.5000915527344,
+            282.4692077636719
+          ],
+          "translated_text": "Festín de Odacro es un juego de Llamada a Cthulhu: Cthulhu Invictus.",
+          "font_name": "AGaramondPro-Italic",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            281.6882019042969,
+            302.2669372558594,
+            295.6692199707031
+          ],
+          "translated_text": "tura, aunque puede adaptarse fácilmente a otros sistemas (un",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            294.88818359375,
+            299.50018310546875,
+            308.86920166015625
+          ],
+          "translated_text": "Disponible GURPS Horror en www.1shotadventures.",
+          "font_name": "AGaramondPro-Italic",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            308.08819580078125,
+            302.2801818847656,
+            414.4692077636719
+          ],
+          "translated_text": "com). La aventura está ambientada en Rávena en marzo de 493 d.C., apenas unas décadas después de que el último emperador romano abdicara y Italia pasara al control de Odoacro, un patricio que intentó desesperadamente mantener los restos del Imperio intactos. La aventura es adecuada para cuatro a seis investigadores, apropiados para ser sirvientes de alto nivel del rey Odoacro; el final de la aventura incluye seis personajes pregenerados.",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            426.88818359375,
+            302.3099670410156,
+            520.0691528320312
+          ],
+          "translated_text": "Los personajes introducidos por primera vez en la aventura se destacan en MAYÚSCULAS. Las tiradas de habilidad están en minúsculas. Las secciones marcadas con un mapa son misiones secundarias y elementos para iniciar aventuras que no son esenciales para el argumento principal. Las secciones marcadas con una persona representan oportunidades para tipos específicos de investigadores, especialmente los personajes pregenerados de esta aventura.",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            534.0438232421875,
+            225.7886199951172,
+            548.0438232421875
+          ],
+          "translated_text": "Resumen de la aventura",
+          "font_name": "RomanSD",
+          "font_size": 14.0
+        },
+        {
+          "bbox": [
+            40.5,
+            549.2882080078125,
+            271.2579345703125,
+            695.2691650390625
+          ],
+          "translated_text": "Para el año 493 d.C., el Imperio Romano había colapsado. EL REY FLAVIO ODOACER (pronunciado o-do-a-cer) gobierna los restos de Italia. Antaño bendecido por Zeno, el emperador del imperio oriental, Odoacer es ahora considerado un rival. Decidido a eliminar a Odoacer del poder, el emperador Zeno ha prometido Italia a un joven caudillo godo ostrogótico, TEODORICO. Tras siete años de guerra y numerosas derrotas, Odoacer finalmente se ha atrincherado en la ciudad capital amurallada de Rávena, desesperado por aferrarse al poder y sobrevivir al largo asedio.",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            40.5,
+            707.688232421875,
+            271.245849609375,
+            734.8692016601562
+          ],
+          "translated_text": "Los investigadores son miembros de la corte de Odoacro. Le han servido con voluntad y honra durante",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            317.70001220703125,
+            251.99319458007812,
+            575.859130859375,
+            384.7742004394531
+          ],
+          "translated_text": "años, incluso mientras se ha vuelto más miserable. Sabiendo que la situación empeora día tras día, Odoacro los envía a buscar a Severino, un monje misterioso que le ha escrito cartas cada vez más frenéticas insistiendo en que ha encontrado algo que puede ayudar a Odoacro a resistir la conquista de Teodorico. Sin embargo, Severino se ha vuelto loco después de presenciar cómo cultistas, los Discípulos de Teritus, experimentaban con un cadáver antinatural y abisal. El monje cree que los Discípulos han encontrado una reliquia que puede detener a Teodorico y suplica a los investigadores que lleven los secretos del culto al rey.",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            317.70001220703125,
+            397.1932067871094,
+            575.8580322265625,
+            503.57421875
+          ],
+          "translated_text": "Los Discípulos, sin embargo, tienen sus propios planes. Hartos de los reyes corruptos y la inestabilidad constante, buscan utilizar su antiguo ritual para someter a toda la ciudad al dominio de Teritus, una fuerza externa demoníaca, a quien creen que es la encarnación de un dios pagano olvidado. Creen erróneamente que este dios será un mejor gobernante para los hombres de Rávena que cualquier rey mortal en potencia. Poco saben ellos que su plan traería la destrucción final a Rávena, si no a toda la civilización.",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 11.0
+        },
+        {
+          "bbox": [
+            486.7200012207031,
+            224.92466735839844,
+            588.25,
+            234.92466735839844
+          ],
+          "translated_text": "de J.C. Connors",
+          "font_name": "RomanSD",
+          "font_size": 10.0
+        },
+        {
+          "bbox": [
+            570.9600219726562,
+            766.5839233398438,
+            588.416015625,
+            776.7518920898438
+          ],
+          "translated_text": "v1.11",
+          "font_name": "AGaramondPro-Regular",
+          "font_size": 8.0
+        }
+      ]
+    }
+  }
 }

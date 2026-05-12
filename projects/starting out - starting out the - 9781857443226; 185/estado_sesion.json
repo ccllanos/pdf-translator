@@ -1,94 +1,6 @@
 {
   "font_mappings": {
-    "Fd4614": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd292342": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd91008": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd114367": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd390868": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd318373": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd241620": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd294522": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd276495": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd41672": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd185036": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd385980": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd63169": {
-      "type": "base",
-      "value": "helv"
-    },
     "Fd166": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd400243": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd1905": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd155452": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd128922": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd3567": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd273666": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd301206": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd395618": {
-      "type": "base",
-      "value": "helv"
-    },
-    "Fd385981": {
       "type": "base",
       "value": "helv"
     },
@@ -96,7 +8,11 @@
       "type": "base",
       "value": "helv"
     },
-    "Fd63172": {
+    "Fd301206": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd385980": {
       "type": "base",
       "value": "helv"
     },
@@ -104,7 +20,91 @@
       "type": "base",
       "value": "helv"
     },
+    "Fd3567": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd395618": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd292342": {
+      "type": "base",
+      "value": "helv"
+    },
     "Fd39227": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd276495": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd318373": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd390868": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd273666": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd114367": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd41672": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd63172": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd241620": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd1905": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd128922": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd294522": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd155452": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd4614": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd91008": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd400243": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd385981": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd63169": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd185036": {
       "type": "base",
       "value": "helv"
     }

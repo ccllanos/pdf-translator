@@ -1,0 +1,644 @@
+{
+  "font_mappings": {
+    "Fd4614": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd292342": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd91008": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd114367": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd390868": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd318373": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd241620": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd294522": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd276495": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd41672": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd185036": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd385980": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd63169": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd166": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd400243": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd1905": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd155452": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd128922": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd3567": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd273666": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd301206": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd395618": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd385981": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd263378": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd63172": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd203082": {
+      "type": "base",
+      "value": "helv"
+    },
+    "Fd39227": {
+      "type": "base",
+      "value": "helv"
+    }
+  },
+  "pages": {
+    "8": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            39.849998474121094,
+            138.21888732910156,
+            210.48483276367188,
+            169.02589416503906
+          ],
+          "translated_text": "Introducción",
+          "font_name": "Fd318373",
+          "font_size": 24.450000762939453
+        },
+        {
+          "bbox": [
+            215.04000854492188,
+            387.2134094238281,
+            258.66162109375,
+            399.9324035644531
+          ],
+          "translated_text": "Diagrama 1",
+          "font_name": "Fd294522",
+          "font_size": 10.550000190734863
+        },
+        {
+          "bbox": [
+            193.6800079345703,
+            401.8852233886719,
+            280.37445068359375,
+            411.71240234375
+          ],
+          "translated_text": "La apertura inglesa",
+          "font_name": "Fd41672",
+          "font_size": 7.400000095367432
+        },
+        {
+          "bbox": [
+            109.6300048828125,
+            429.1712951660156,
+            436.2818298339844,
+            498.6273193359375
+          ],
+          "translated_text": "La Apertura Inglesa es a veces descrita por sus detractores como una apertura negativa: es decir, en lugar de salir luchando con 1 e4 o 1 d4, las blancas se contentan con contener sus peones en el centro para formar una barrera inexpugnable contra la cual esperan que su oponente se destruya presionando demasiado. En otras palabras, piensan que las blancas tienen la solidez y las negras las posibilidades dinámicas.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            109.43798828125,
+            504.09130859375,
+            435.581787109375,
+            550.4273071289062
+          ],
+          "translated_text": "Sin embargo, tal pensamiento equivale a malinterpretar la naturaleza del planteamiento de las blancas. No ha sacrificado la capacidad de jugar activamente fortaleciendo su centro: ¡es precisamente esta solidez la que hace posible un enfoque dinámico!",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            109.80499267578125,
+            555.9512939453125,
+            437.106201171875,
+            577.6973266601562
+          ],
+          "translated_text": "Una de las reglas de oro de la estrategia del ajedrez es que no debes iniciar un ataque en una de las alas a menos que tengas un centro seguro.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            109.85394287109375,
+            583.09130859375,
+            433.0106506347656,
+            628.8372802734375
+          ],
+          "translated_text": "En la Apertura Inglesa, las blancas tienen la libertad de embarcarse en ataques laterales que serían demasiado arriesgados si hubieran jugado 1 e4 o 1 d4. En este libro verás muchos casos en los que las blancas pudieron iniciar un ataque emprendedor en el flanco de rey, a menudo comenzando con g2-g4. Blanco",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            429.3639221191406,
+            667.48486328125,
+            435.7787170410156,
+            677.209716796875
+          ],
+          "translated_text": "7",
+          "font_name": "Fd301206",
+          "font_size": 7.900000095367432
+        }
+      ]
+    },
+    "9": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            39.36000061035156,
+            23.684789657592773,
+            152.8067169189453,
+            33.409690856933594
+          ],
+          "translated_text": "Empezando: los ingleses",
+          "font_name": "Fd301206",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            36.970001220703125,
+            667.3712768554688,
+            43.80410385131836,
+            677.0172729492188
+          ],
+          "translated_text": "8",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            111.48999786376953,
+            48.86127471923828,
+            434.114501953125,
+            82.18726348876953
+          ],
+          "translated_text": "también es capaz de lanzar un ataque audaz en el flanco de dama, moviendo todos sus peones hacia adelante; nuevamente, esto sólo es posible porque la situación en el centro es estable.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            111.2509765625,
+            87.68128204345703,
+            432.2201232910156,
+            157.7272491455078
+          ],
+          "translated_text": "Por lo tanto, las blancas conservan un dinamismo y una flexibilidad considerables al contener sus peones centrales. Además, después de 1 d4 o 1 e4 podría haber un baño de sangre inmediato, en el que se intercambiarían todas las piezas y se produciría un empate. La Apertura Inglesa mantiene todas las piezas sobre el tablero: las negras no pueden reducir la tensión liquidando inmediatamente.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            111.04791259765625,
+            163.43121337890625,
+            436.542236328125,
+            221.2172393798828
+          ],
+          "translated_text": "Esto significa que es una buena apertura en una situación en la que \"debemos ganar\". Tal vez recuerden que Kasparov eligió a los ingleses contra Karpov en la última partida de su match en Sevilla en 1987, que Kasparov tenía que ganar para empatar el match y conservar su título mundial. En esa partida, la presión a largo plazo resultó demasiado para Karpov.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.44894409179688,
+            226.56121826171875,
+            437.1322937011719,
+            296.5272216796875
+          ],
+          "translated_text": "Este libro busca explicar todas las ideas básicas detrás de la Apertura Inglesa tanto para blancas como para negras. Se examina cada sistema de defensa y de ataque y, cuando es necesario, se analizan las variaciones tácticas. He tratado de mantener este análisis al mínimo, pero a veces los principios generales tienen que dar paso a un examen detallado de lo que ha funcionado y lo que no en el pasado.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.59390258789062,
+            301.9012145996094,
+            425.8843688964844,
+            323.21722412109375
+          ],
+          "translated_text": "¡Te deseo la mejor de las suertes, ya sea probando la Apertura Inglesa con blancas o ganándola con negras!",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            362.8829040527344,
+            344.0512390136719,
+            437.797607421875,
+            377.6272277832031
+          ],
+          "translated_text": "Neil McDonald, Gravesend, mayo de 2003.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        }
+      ]
+    },
+    "10": {
+      "mode": "standard",
+      "engine": "google",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            40.08000183105469,
+            137.81886291503906,
+            390.38995361328125,
+            168.62586975097656
+          ],
+          "translated_text": "Orden de movimiento en inglés.",
+          "font_name": "Fd318373",
+          "font_size": 24.450000762939453
+        },
+        {
+          "bbox": [
+            110.17095947265625,
+            221.311279296875,
+            423.2916564941406,
+            254.98728942871094
+          ],
+          "translated_text": "La inglesa es una apertura muy flexible. Por lo tanto, especialmente cuando se juega con negras, hay que ser consciente de las posibilidades de transposición a otras aperturas.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.17401885986328,
+            260.1593933105469,
+            399.7619934082031,
+            270.2160949707031
+          ],
+          "translated_text": "ADVERTENCIA: Como negras, ten cuidado de no caer en un 1 d4.",
+          "font_name": "Fd91008",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            110.17501831054688,
+            272.2593994140625,
+            271.343017578125,
+            282.31610107421875
+          ],
+          "translated_text": "¡Apertura de la que no sabes nada!",
+          "font_name": "Fd91008",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            110.03604125976562,
+            290.6912841796875,
+            436.0108337402344,
+            372.6273193359375
+          ],
+          "translated_text": "Los jugadores blancos que normalmente juegan 1 d4 a veces lanzan una partida de 1 c4 y a menudo están felices de volver a transponer las líneas principales a 1 d4. Por ejemplo si respondes 1 c4 con L.c6 tienes que estar preparado para 2 d4, cuando 2... d5 (¿qué más?) es eslavo. O en el caso de 1 c4 e6, entonces 2 d4 limita sus opciones a un Gambito de Dama después de 2... d5, un Holandés después de 2... f5 o un Nimzo/India de Dama después de 2... Cf6 3 Cc3 Ab4 o 3 Cf3 b6. ¡Espero que juegues una de esas aperturas!",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.17799377441406,
+            377.9913330078125,
+            435.02105712890625,
+            411.6473388671875
+          ],
+          "translated_text": "He aquí un truco útil con las blancas si estás contento enfrentándote a la India de Rey pero no a Griinfeld. Deberías jugarlo así: 1 c4 Cf6 2 Cc3 g6 3 e4! (Diagrama 2)",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            214.58009338378906,
+            583.2034912109375,
+            259.7312927246094,
+            595.9224853515625
+          ],
+          "translated_text": "Diagrama 2",
+          "font_name": "Fd294522",
+          "font_size": 10.550000190734863
+        },
+        {
+          "bbox": [
+            198.25009155273438,
+            598.115234375,
+            275.43450927734375,
+            607.9424438476562
+          ],
+          "translated_text": "Truco anti-Grunfeld",
+          "font_name": "Fd41672",
+          "font_size": 7.400000095367432
+        },
+        {
+          "bbox": [
+            429.14007568359375,
+            667.3148803710938,
+            435.7918701171875,
+            677.0397338867188
+          ],
+          "translated_text": "9",
+          "font_name": "Fd301206",
+          "font_size": 7.900000095367432
+        }
+      ]
+    },
+    "11": {
+      "mode": "standard",
+      "engine": "llm",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            39.599998474121094,
+            23.754796981811523,
+            152.85568237304688,
+            33.479698181152344
+          ],
+          "translated_text": "Comenzando: El Inglés",
+          "font_name": "Fd301206",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            37.920005798339844,
+            667.3148193359375,
+            49.85230255126953,
+            677.0396728515625
+          ],
+          "translated_text": "10",
+          "font_name": "Fd301206",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            111.60098266601562,
+            49.18128204345703,
+            427.489501953125,
+            82.09729766845703
+          ],
+          "translated_text": "Ahora después de 3...d6 4 d4 tenemos la línea principal del juego indio del Rey. Si el negro quería una posición tipo Griinfeld después de 1 c4 Nf6 2 Nc3 tuvo que jugar 2",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            111.1309814453125,
+            87.3393783569336,
+            431.6200866699219,
+            97.39607238769531
+          ],
+          "translated_text": "TIP: Jugando 1 ... e5 o 1 ... c5 previene que Blanco cambie directamente a",
+          "font_name": "Fd91008",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            111.85198974609375,
+            99.39937591552734,
+            178.0731964111328,
+            109.45606994628906
+          ],
+          "translated_text": "Apertura 1 d4",
+          "font_name": "Fd91008",
+          "font_size": 7.900000095367432
+        },
+        {
+          "bbox": [
+            111.27285766601562,
+            117.86127471923828,
+            435.51263427734375,
+            212.5072479248047
+          ],
+          "translated_text": "Si juegas L.e5 entonces el juego permanece como un inglés, aunque dependiendo de cómo responda Black, tendrá el sabor de un indio del Rey, Nimzo-India o Griinfeld. Lo mismo se puede decir sobre L.c5 - la única transposición notable aquí es a líneas de Hiedehog que más típicamente surgen de la línea principal siciliana. Estas líneas tienden a ser batallas posicional en las que el blanco intenta explotar su ventaja espacial: son completamente diferentes del dragón, por ejemplo, donde necesitas saber mucha teoría.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.64285278320312,
+            217.70123291015625,
+            435.127197265625,
+            299.5672302246094
+          ],
+          "translated_text": "Como se verá, a la mejor opción de White para responder al primer movimiento de Black es elegir 2 Nc3, 2 Nf3 o incluso 2 g3. En general, 2 Nc3 es el movimiento más flexible ya que el caballo de reina está casi siempre mejor colocado en c3 donde aumenta la presión de White sobre la d5. A diferencia de esto, dependiendo de las circunstancias, a White le puede gustar jugar Nf3 o tal vez e2-e3 y luego desarrollar el caballo del rey a e2. Del mismo modo, el obispo en f1 podría ir a e2 o g2.",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        },
+        {
+          "bbox": [
+            110.63992309570312,
+            304.5312194824219,
+            431.0931091308594,
+            338.2772216796875
+          ],
+          "translated_text": "Las idiosincrasias del orden de movimiento en el inglés pueden ser confusas, lo que es una razón más por la cual debes comprender las ideas detrás de los movimien",
+          "font_name": "Fd390868",
+          "font_size": 9.100000381469727
+        }
+      ]
+    },
+    "12": {
+      "mode": "standard",
+      "engine": "llm",
+      "bg_path": null,
+      "blocks": [
+        {
+          "bbox": [
+            38.65000534057617,
+            92.00558471679688,
+            143.2924041748047,
+            111.28158569335938
+          ],
+          "translated_text": "Capítulo Uno",
+          "font_name": "Fd63169",
+          "font_size": 15.800000190734863
+        },
+        {
+          "bbox": [
+            38.8800048828125,
+            131.1388702392578,
+            351.9939880371094,
+            161.9458770751953
+          ],
+          "translated_text": "Inglés simétrico 1:",
+          "font_name": "Fd318373",
+          "font_size": 24.450000762939453
+        },
+        {
+          "bbox": [
+            39.85002136230469,
+            168.31886291503906,
+            421.07550048828125,
+            199.12586975097656
+          ],
+          "translated_text": "Fiancetado del Rey de Black",
+          "font_name": "Fd318373",
+          "font_size": 24.450000762939453
+        },
+        {
+          "bbox": [
+            66.24003601074219,
+            231.19895935058594,
+            92.74803924560547,
+            257.2369689941406
+          ],
+          "translated_text": "No tex",
+          "font_name": "Fd385981",
+          "font_size": 23.5
+        },
+        {
+          "bbox": [
+            105.59303283691406,
+            235.8255615234375,
+            206.74884033203125,
+            255.1015625
+          ],
+          "translated_text": "Introducción",
+          "font_name": "Fd63169",
+          "font_size": 15.800000190734863
+        },
+        {
+          "bbox": [
+            66.24002838134766,
+            265.5389709472656,
+            92.74803161621094,
+            291.57696533203125
+          ],
+          "translated_text": "Error",
+          "font_name": "Fd385981",
+          "font_size": 23.5
+        },
+        {
+          "bbox": [
+            105.60002899169922,
+            270.20556640625,
+            371.16961669921875,
+            289.4815673828125
+          ],
+          "translated_text": "El Negro Ocupa el Espacio en el Cent",
+          "font_name": "Fd63169",
+          "font_size": 15.800000190734863
+        },
+        {
+          "bbox": [
+            66.24000549316406,
+            299.6189880371094,
+            92.74800872802734,
+            325.656982421875
+          ],
+          "translated_text": "No tex",
+          "font_name": "Fd385981",
+          "font_size": 23.5
+        },
+        {
+          "bbox": [
+            105.84000396728516,
+            304.28558349609375,
+            338.5476379394531,
+            323.56158447265625
+          ],
+          "translated_text": "Negro defiende el cuadrado dS",
+          "font_name": "Fd63169",
+          "font_size": 15.800000190734863
+        },
+        {
+          "bbox": [
+            66.01002502441406,
+            333.72900390625,
+            92.51802825927734,
+            359.7669982910156
+          ],
+          "translated_text": "Error",
+          "font_name": "Fd385981",
+          "font_size": 23.5
+        },
+        {
+          "bbox": [
+            105.60002136230469,
+            338.3356018066406,
+            306.84661865234375,
+            357.6116027832031
+          ],
+          "translated_text": "Copias Negras con S ... Nf6",
+          "font_name": "Fd63169",
+          "font_size": 15.800000190734863
+        },
+        {
+          "bbox": [
+            66.01101684570312,
+            367.6290283203125,
+            245.8865966796875,
+            393.6670227050781
+          ],
+          "translated_text": "White Avoids Nf3",
+          "font_name": "Fd385981",
+          "font_size": 23.5
+        }
+      ]
+    }
+  }
+}
